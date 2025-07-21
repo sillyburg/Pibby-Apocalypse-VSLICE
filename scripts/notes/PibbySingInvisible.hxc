@@ -1,0 +1,56 @@
+import funkin.play.notes.notekind.NoteKind;
+import funkin.play.PlayState;
+
+import funkin.modding.module.Module;
+
+import flixel.FlxG;
+
+import funkin.Assets;
+import funkin.Paths;
+
+class InvisiblePibbySing extends NoteKind
+{
+    public function new()
+    {
+        super('pibbyInvisibleSingKind');
+
+        this.noteKind = 'pibbyInvisibleSing';
+        this.description = 'Pibby Invisible Sing (P:A)';
+    }
+
+    function onCreate(e:Dynamic)
+    {
+        super.onCreate(e);
+
+        if (PlayState.instance == null) return;
+    }
+
+    function onDestroy(e:Dynamic)
+    {
+        super.onDestroy(e);
+    }
+
+    function onUpdate(e:Dynamic)
+    {
+        super.onUpdate(e);
+    }
+
+    function onNoteIncoming(e:Dynamic)
+    {
+        super.onNoteIncoming(e);
+
+        for (i in this.getNotes()) if (i != null) i.visible = false;
+    }
+
+    function onNoteHit(e:Dynamic)
+    {
+        super.onNoteHit(e);
+
+        if (PlayState.instance == null) return;
+        if (e.note.noteData.kind != "pibbyInvisibleSing") return;
+
+        e.cancel();
+
+        PlayState.instance.currentStage.getGirlfriend().playSingAnimation(e.note.noteData.getDirection(), false);
+    }
+}
