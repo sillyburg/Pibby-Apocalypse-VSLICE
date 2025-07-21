@@ -1,0 +1,98 @@
+import funkin.modding.module.Module;
+
+import flixel.addons.display.FlxRuntimeShader;
+
+import funkin.play.PlayState;
+
+import flixel.FlxG;
+
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+class GlitchyStrumsModule extends Module
+{
+    var glitchStrumsShads:Array<FlxRuntimeShader>;
+    var initializedStrums:Bool = false;
+
+    public function new()
+    {
+        super('glitchStrumsModule');
+    }
+
+    function onDestroy(e:Dynamic)
+    {
+        super.onDestroy(e);
+    }
+
+    function onSongRetry(e:Dynamic)
+    {
+        super.onSongRetry(e);
+
+        initializedStrums = false;
+    }
+
+    function glitchifyStrums(e:Dynamic)
+    {
+        if (PlayState.instance == null) return;
+
+        glitchStrumsShads = [
+            new FlxRuntimeShader(Assets.getText(Paths.frag('distort'))),
+            new FlxRuntimeShader(Assets.getText(Paths.frag('distort'))),
+            new FlxRuntimeShader(Assets.getText(Paths.frag('distort'))),
+            new FlxRuntimeShader(Assets.getText(Paths.frag('distort')))
+        ];
+
+        for (i in PlayState.instance.playerStrumline.strumlineNotes.members)
+
+        for (i in glitchStrumsShads) i.setFloat('negativity', 0);
+
+        initializedStrums = true;
+    }
+
+    var time:Float = 0;
+
+    function onUpdate(e:Dynamic)
+    {
+        if (!initializedStrums) return;
+
+        super.onUpdate(e);
+
+        time += e.elapsed;
+
+        if (PlayState.instance == null) return;
+
+        for (i in PlayState.instance.opponentStrumline.strumlineNotes.members) i.shader = glitchStrumsShads[PlayState.instance.opponentStrumline.strumlineNotes.members.indexOf(i)];
+    }
+
+    function glitchStrums()
+        {
+            for (cameraLol in [FlxG.camera, PlayState.instance.camHUD]) cameraLol.shake(0.01, 0.05);
+
+            for (i in PlayState.instance.playerStrumline.strumlineNotes.members)
+            {
+                i.offset.x += FlxG.random.float(2.5, -2.5);
+                i.offset.y += FlxG.random.float(2.5, -2.5);
+            }
+        }
+
+    function onNoteHit(event:Dynamic)
+    {
+        if (PlayState.instance == null) return;
+
+        if (!initializedStrums) return;
+
+        if (!event.note.noteData.getMustHitNote()) glitchStrumsShads[event.note.noteData.getDirection()].setFloat('binaryIntensity', FlxG.random.float(1.5, 3) * FlxG.random.int(1, -1, [0]));
+
+        if (event.note.noteData.kind == 'glitchChar') glitchStrums();
+    }
+
+    function onStepHit(e:Dynamic)
+    {
+        super.onStepHit(e);
+
+        if (PlayState.instance == null) return;
+
+        if (!initializedStrums) return;
+
+        if (e.step % 2 == 0 && glitchStrumsShads != null) for (i in glitchStrumsShads) i.setFloat('binaryIntensity', FlxG.random.float(5, 6) * FlxG.random.int(1, -1, [0]));
+    }
+}

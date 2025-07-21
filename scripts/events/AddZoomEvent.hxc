@@ -1,0 +1,45 @@
+import funkin.play.event.SongEvent;
+import funkin.play.PlayState;
+import flixel.FlxG;
+
+class AddZoomEvent extends SongEvent
+{
+    function new()
+    {
+        super('AddZoomEvent');
+    }
+
+    override function getTitle()
+    {
+        return "Add Camera Zoom";
+    }
+
+    override function handleEvent(params:Dynamic)
+    {
+        if (PlayState.instance == null) return;
+
+        var hudZoom:Float = params.value.hudZoom;
+        var gameZoom:Float = params.value.gameZoom;
+
+        PlayState.instance.camHUD.zoom += hudZoom;
+        FlxG.camera.zoom += gameZoom;
+    }
+
+    override function getEventSchema()
+    {
+        return [
+            {
+                name: "hudZoom",
+                title: "Add to HUD",
+                defaultValue: "0.03",
+                type: "float"
+            },
+            {
+                name: "gameZoom",
+                title: "Add to camGame",
+                defaultValue: "0.015",
+                type: "float"
+            }
+        ];
+    }
+}

@@ -1,0 +1,75 @@
+{
+  "props": [
+    {
+      "danceEvery": 0,
+      "zIndex": 10,
+      "position": [ -200, 180 ],
+      "scale": [ 1.0, 1.0 ],
+      "animType": "sparrow",
+      "name": "bg",
+      "isPixel": false,
+      "assetPath": "lab/bg",
+      "scroll": [ 1.0, 1.0 ],
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 400,
+      "position": [ 200, 180 ],
+      "scale": [ 1.0, 1.0 ],
+      "animType": "sparrow",
+      "name": "light",
+      "isPixel": false,
+      "assetPath": "lab/bulb",
+      "scroll": [ 1.0, 1.0 ],
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 500,
+      "position": [ -200, 180 ],
+      "alpha": 0.7,
+      "scale": [ 1.0, 1.0 ],
+      "animType": "sparrow",
+      "name": "darkout",
+      "isPixel": false,
+      "assetPath": "lab/dark",
+      "scroll": [ 1.0, 1.0 ],
+      "animations": []
+    },
+    {
+      "danceEvery": 0,
+      "zIndex": 500,
+      "position": [ -200, 180 ],
+      "alpha": 0.5,
+      "scale": [ 1.0, 1.0 ],
+      "animType": "sparrow",
+      "name": "darkin",
+      "isPixel": false,
+      "assetPath": "lab/light",
+      "scroll": [ 1.0, 1.0 ],
+      "animations": []
+    }
+  ],
+  "cameraZoom": 1.1,
+  "version": "1.0.0",
+  "characters": {
+    "bf": {
+      "zIndex": 300,
+      "position": [989.5, 885],
+      "cameraOffsets": [-100, -100]
+    },
+    "dad": {
+      "zIndex": 200,
+      "position": [235, 900],
+      "cameraOffsets": [150, -100]
+    },
+    "gf": {
+      "zIndex": 100,
+      "cameraOffsets": [0, 0],
+      "position": [751.5, 787]
+    }
+  },
+  "name": "lab",
+  "directory": "AdventureTime"
+}

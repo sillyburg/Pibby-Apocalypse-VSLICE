@@ -1,0 +1,47 @@
+import funkin.play.event.SongEvent;
+import funkin.play.PlayState;
+import flixel.FlxG;
+
+import funkin.play.character.CharacterType;
+
+class JakeFocusEvent extends SongEvent
+{
+    function new()
+    {
+        super('JakeOrGF');
+    }
+
+    override function getTitle()
+    {
+        return "Focus on GF or Jake";
+    }
+
+    override function handleEvent(params:Dynamic)
+    {
+        if (PlayState.instance == null) return;
+
+        switch (params.value.focusTo)
+        {
+            case 1:
+                PlayState.instance.cameraFollowPoint.setPosition(PlayState.instance.currentStage.getGirlfriend().cameraFocusPoint.x, PlayState.instance.currentStage.getGirlfriend().cameraFocusPoint.y);
+            case 2:
+                PlayState.instance.cameraFollowPoint.setPosition(PlayState.instance.currentStage.getCharacter('Jake').cameraFocusPoint.x, PlayState.instance.currentStage.getCharacter('Jake').cameraFocusPoint.y);
+        }
+    }
+
+    override function getEventSchema()
+    {
+        return [
+            {
+                name: "focusTo",
+                title: "Focus to",
+                defaultValue: "Girlfriend",
+                type: "enum",
+                keys: [
+                    'Girlfriend' => 1,
+                    'Jake' => 2
+                ]
+            }
+        ];
+    }
+}

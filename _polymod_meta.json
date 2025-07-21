@@ -1,0 +1,19 @@
+{
+  "title": "Suffering Siblings Port",
+  "description": "im porting it oh my god im porting it",
+  "contributors": [
+    {
+      "name": "Lemuhdee",
+      "role": "Base Port (Stage, characters)",
+      "url": "https://www.youtube.com/@Lem0dy"
+    },
+    {
+      "name": "silly burger",
+      "role": "Coder of the port",
+      "url": "https://www.youtube.com/@sillyborja"
+    }
+  ],
+  "api_version": "0.7.2",
+  "mod_version": "1.0.0",
+  "license": "Apache-2.0"
+}

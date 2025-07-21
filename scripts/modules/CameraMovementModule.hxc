@@ -1,0 +1,117 @@
+import flixel.FlxG;
+
+import flixel.math.FlxMath;
+
+import funkin.play.PlayState;
+import funkin.play.GameOverSubState;
+
+import funkin.audio.FunkinSound;
+
+import funkin.data.song.SongRegistry;
+
+import funkin.modding.module.Module;
+
+import StringTools;
+
+class CameraMovementModule extends Module {
+   public function new() {
+     super('CameraMovementModule', 1);
+   }
+
+   var intensity = 10;
+   
+   var initialized = false;
+
+   var ismovement = true;
+
+   var curFocus = null;
+
+   private inline function setCharFocus(char)
+{
+		     curFocus = switch (char)
+{
+		     	    case 0: "bf";
+			         case 1: "dad";
+		     	    case 2: "gf";
+                case 3: "jake";
+		     }
+   	}
+
+   override function onSongEvent(event:SongEventScriptEvent)
+{
+   if (PlayState.instance == null || !initialized) return;
+
+	     	 super.onSongEvent(event);
+		         if (PlayState.instance == null)
+		        	     return;
+
+      		   var eventData = event.eventData;
+
+       		 switch (eventData.eventKind)
+{
+		           	case "FocusCamera":
+				              setCharFocus(eventData.value.char);
+                  case "JakeOrGF":
+                          setCharFocus(eventData.value.focusTo == 2 ? 3 : 2);
+		         }
+     }
+
+   function initCamMovement()
+   {
+      if (PlayState.instance == null) return;
+
+      ismovement = initialized = true;
+   }
+
+   function onUpdate(event:Dynamic) {
+      super.onUpdate(event);
+
+      if (PlayState.instance == null) return;
+      if (!initialized) return;
+      if (GameOverSubState.instance != null) return;
+
+      if (!ismovement) return;
+
+      if (curFocus == "bf") setMovement(PlayState.instance.currentStage.getBoyfriend().animation.curAnim.name);
+      if (curFocus == "dad") setMovement(PlayState.instance.currentStage.getDad().animation.curAnim.name);
+      if (curFocus == "gf") setMovement(PlayState.instance.currentStage.getGirlfriend().animation.curAnim.name);
+      if (curFocus == "jake") setMovement(PlayState.instance.currentStage.getCharacter("Jake").animation.curAnim.name);
+   }
+
+   private inline function setMovement(name:String)
+   {
+      switch(name)
+      {
+         case "singLEFT": updateMovement(-intensity, 0, -1);
+
+         case "singDOWN": updateMovement(0, intensity, 0);
+
+         case "singUP": updateMovement(0, -intensity, 0);
+
+         case "singRIGHT": updateMovement(intensity, 1);
+
+         case "idle": updateMovement(0, 0);          
+      }
+   }
+
+   private inline function updateMovement(x, y, angle)
+   {
+      FlxG.camera.targetOffset.set(x, y);
+      FlxG.camera.angle = FlxMath.lerp(FlxG.camera.angle, angle, FlxG.camera.followLerp);
+   }
+
+   function onSongRetry(e:Dynamic)
+   {
+      super.onSongRetry(e);
+
+      FlxG.camera.angle = 0;
+      FlxG.camera.targetOffset.set(0, 0);
+   }
+
+   function onDestroy(event) { 
+      if (PlayState.instance == null || !initialized) return;
+
+	     	super.onDestroy(event); 
+	      	ismovement = false;
+   	}
+}

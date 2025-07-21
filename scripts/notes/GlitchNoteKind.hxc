@@ -1,0 +1,72 @@
+import funkin.play.notes.notekind.NoteKind;
+import funkin.play.PlayState;
+
+import funkin.modding.module.Module;
+
+import flixel.addons.display.FlxRuntimeShader;
+
+import flixel.util.FlxTimer;
+
+import flixel.FlxG;
+
+import funkin.Assets;
+import funkin.Paths;
+
+class GlitchNoteKind extends NoteKind
+{
+    var glitchShad;
+
+    public function new()
+    {
+        super('glitcherNote');
+
+        this.noteKind = 'glitchChar';
+        this.description = 'Glitch Character (P:A)';
+    }
+
+    function onSongStart(e:Dynamic)
+    {
+        super.onSongStart(e);
+
+        if (PlayState.instance == null) return;
+    }
+
+    function onSongRetry(e:Dynamic)
+    {
+        super.onSongRetry(e);
+    }
+
+    function onDestroy(e:Dynamic)
+    {
+        super.onDestroy(e);
+
+        if (glitchShad != null) glitchShad = null;
+    }
+
+    function onUpdate(e:Dynamic)
+    {
+        super.onUpdate(e);
+    }
+
+    function onNoteHit(e:Dynamic)
+    {
+        super.onNoteHit(e);
+
+        if (PlayState.instance == null) return;
+
+        if (e.note.noteData.kind != "glitchChar") return;
+
+        trace('you pressed a glitch note!!!!!!!!! kind to confirm: ' + e.note.noteData.kind);
+
+        if (glitchShad != null) glitchShad = null;
+
+        glitchShad = new FlxRuntimeShader(Assets.getText(Paths.frag('distort')));
+
+        PlayState.instance.currentStage.getDad().shader = glitchShad;
+
+        glitchShad.setFloat('negativity', 1);
+        glitchShad.setFloat('binaryIntensity', FlxG.random.float(2, 1) * FlxG.random.int(-1, 1, [0]));
+
+        new FlxTimer().start(0.05, function() PlayState.instance.currentStage.getDad().shader = null);
+    }
+}

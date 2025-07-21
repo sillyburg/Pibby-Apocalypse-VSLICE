@@ -1,0 +1,30 @@
+import funkin.play.notes.notekind.NoteKind;
+import funkin.play.PlayState;
+
+import funkin.modding.module.Module;
+
+import flixel.FlxG;
+
+import funkin.Assets;
+import funkin.Paths;
+
+class BothCharSing extends NoteKind
+{
+    public function new()
+    {
+        super('bothChar');
+
+        this.noteKind = 'bothChar';
+        this.description = 'Finn and Jake sing (P:A)';
+    }
+
+    function onNoteHit(e:Dynamic)
+    {
+        super.onNoteHit(e);
+
+        if (PlayState.instance == null) return;
+        if (e.note.noteData.kind != "bothChar") return;
+
+        PlayState.instance.currentStage.getCharacter('Jake').playSingAnimation(e.note.noteData.getDirection(), false);
+    }
+}

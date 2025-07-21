@@ -1,0 +1,45 @@
+import funkin.modding.module.Module;
+
+import flixel.FlxG;
+
+import funkin.save.Save;
+
+import funkin.Conductor;
+
+import funkin.play.PlayState;
+
+class AnnoyingAhhShakeModule extends Module
+{
+    var enabled:Bool;
+
+    var angled:Bool = false;
+
+    public function new()
+    {
+        super("AnnoyingAHhSHAKEEEE");
+    }
+
+    function onSongStart(e:Dynamic)
+    {
+        super.onSongStart(e);
+
+        enabled = Save.instance.modOptions.get('PibbyApocalypse').get('annoyingAhhShake');
+    }
+
+    function onBeatHit(e:Dynamic)
+    {
+        super.onBeatHit(e);
+
+        if (enabled)
+        {
+            if (PlayState.instance.camHUD != null) PlayState.instance.camHUD.zoom += 0.03;
+            if (FlxG.camera != null) FlxG.camera.zoom += 0.015;
+
+            if (PlayState.instance.camHUD != null) PlayState.instance.camHUD.shake(0.002, Conductor.instance.beatLengthMs / 1000);
+
+            angled = !angled;
+
+            if (PlayState.instance.camHUD != null) PlayState.instance.camHUD.angle = angled ? 1 : -1;
+        }
+    }
+}

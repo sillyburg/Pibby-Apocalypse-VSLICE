@@ -1,0 +1,165 @@
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.FlxSprite;
+
+import funkin.play.PlayState;
+
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+
+import funkin.modding.module.Module;
+
+import funkin.Conductor;
+
+import Reflect;
+
+class CinematicsModule extends Module
+{
+    var topBar:FlxSprite;
+    var bottomBar:FlxSprite;
+
+    var topY:Float;
+    var bottomY:Float;
+
+    var barCamera:FlxCamera;
+
+    var topBarTween:FlxTween = null;
+    var bottomBarTween:FlxTween = null;
+
+    function new()
+    {
+        super("CinematicsModule");
+    }
+
+    function onSongLoaded(e:Dynamic)
+    {
+        super.onSongLoaded(e);
+
+        if (PlayState.instance == null) return;
+
+        barCamera = new FlxCamera();
+
+        FlxG.cameras.remove(PlayState.instance.camHUD, false);
+        FlxG.cameras.remove(PlayState.instance.camCutscene, false);
+
+        FlxG.cameras.add(barCamera, false);
+        FlxG.cameras.add(PlayState.instance.camHUD, false);
+        FlxG.cameras.add(PlayState.instance.camCutscene, false);
+
+        barCamera.bgColor = 0;
+
+        topBar = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
+        bottomBar = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
+
+        topBar.cameras = [barCamera];
+        topBar.screenCenter(0x01);
+        topBar.y = -FlxG.height;
+
+        bottomBar.cameras = [barCamera];
+        bottomBar.screenCenter(0x01);
+        bottomBar.y = FlxG.height;
+
+        topY = topBar.y;
+        bottomY = bottomBar.y;
+        
+        trace('truers2');
+
+        PlayState.instance.add(topBar);
+        PlayState.instance.add(bottomBar);
+    }
+
+    function onSongStart(e:Dynamic)
+    {
+        super.onSongStart(e);
+    }
+
+    function doCinematics(distance:Float, speed:Float, ease:String)
+    {
+        if (topBarTween != null) topBarTween.cancel();
+        if (bottomBarTween != null) bottomBarTween.cancel();
+
+        if (speed > 0) {
+            topBarTween = FlxTween.tween(topBar, {y: topY + distance}, (Conductor.instance.stepLengthMs * speed) / 1000, {ease: getTweenEaseByString(ease)});
+            bottomBarTween = FlxTween.tween(bottomBar, {y: bottomY - distance}, (Conductor.instance.stepLengthMs * speed) / 1000, {ease: getTweenEaseByString(ease)});
+        } else {
+            topBar.y = topY + distance;
+            bottomBar.y = bottomY - distance;
+        }
+    }
+
+    function onSongRetry(e:Dynamic)
+    {
+        super.onSongRetry(e);
+
+        topBar.y = topY;
+        bottomBar.y = bottomY;
+    }
+
+    function onDestroy(e:Dynamic)
+    {
+        super.onDestroy(e);
+
+        if (topBar != null) topBar.kill();
+        if (bottomBar != null) bottomBar.kill();
+    }
+
+    function onPause(e:Dynamic)
+    {
+        super.onPause(e);
+
+        if (e.cancelled) return;
+
+        for (i in [topBarTween, bottomBarTween]) if (i != null) i.active = false;
+    }
+
+    function onResume(e:Dynamic)
+    {
+        super.onResume(e);
+
+        for (i in [topBarTween, bottomBarTween]) if (i != null) i.active = true;
+    }
+
+    // why did they block reflect omg
+
+    function getTweenEaseByString(?ease:String = '') {
+		switch(ease.toLowerCase()) {
+			case 'backin': return FlxEase.backIn;
+			case 'backinout': return FlxEase.backInOut;
+			case 'backout': return FlxEase.backOut;
+			case 'bouncein': return FlxEase.bounceIn;
+			case 'bounceinout': return FlxEase.bounceInOut;
+			case 'bounceout': return FlxEase.bounceOut;
+			case 'circin': return FlxEase.circIn;
+			case 'circinout': return FlxEase.circInOut;
+			case 'circout': return FlxEase.circOut;
+			case 'cubein': return FlxEase.cubeIn;
+			case 'cubeinout': return FlxEase.cubeInOut;
+			case 'cubeout': return FlxEase.cubeOut;
+			case 'elasticin': return FlxEase.elasticIn;
+			case 'elasticinout': return FlxEase.elasticInOut;
+			case 'elasticout': return FlxEase.elasticOut;
+			case 'expoin': return FlxEase.expoIn;
+			case 'expoinout': return FlxEase.expoInOut;
+			case 'expoout': return FlxEase.expoOut;
+			case 'quadin': return FlxEase.quadIn;
+			case 'quadinout': return FlxEase.quadInOut;
+			case 'quadout': return FlxEase.quadOut;
+			case 'quartin': return FlxEase.quartIn;
+			case 'quartinout': return FlxEase.quartInOut;
+			case 'quartout': return FlxEase.quartOut;
+			case 'quintin': return FlxEase.quintIn;
+			case 'quintinout': return FlxEase.quintInOut;
+			case 'quintout': return FlxEase.quintOut;
+			case 'sinein': return FlxEase.sineIn;
+			case 'sineinout': return FlxEase.sineInOut;
+			case 'sineout': return FlxEase.sineOut;
+			case 'smoothstepin': return FlxEase.smoothStepIn;
+			case 'smoothstepinout': return FlxEase.smoothStepInOut;
+			case 'smoothstepout': return FlxEase.smoothStepOut;
+			case 'smootherstepin': return FlxEase.smootherStepIn;
+			case 'smootherstepinout': return FlxEase.smootherStepInOut;
+			case 'smootherstepout': return FlxEase.smootherStepOut;
+		}
+		return FlxEase.linear;
+	}
+}

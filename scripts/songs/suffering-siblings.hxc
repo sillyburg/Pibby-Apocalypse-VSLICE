@@ -1,0 +1,152 @@
+import funkin.play.song.Song;
+import funkin.play.PlayState;
+
+import funkin.Conductor;
+import funkin.Preferences;
+
+import funkin.play.stage.Stage;
+
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+
+import funkin.play.character.BaseCharacter;
+import funkin.play.character.CharacterType;
+import funkin.play.character.CharacterDataParser;
+
+import funkin.play.components.HealthIcon;
+
+import flixel.FlxG;
+
+import funkin.modding.module.ModuleHandler;
+
+class SufferingOhMyGod extends Song
+{
+    public var jake:BaseCharacter;
+
+    var jakeIcon:HealthIcon = null;
+    var pibbyIcon:HealthIcon = null;
+
+    public function new()
+    {
+        super('suffering-siblings');
+    }
+
+    function onSongStart(e:Dynamic)
+    {
+        super.onSongStart(e);
+
+        FlxG.camera.fade(0xFF000000, 10, true);
+
+        trace('meower');
+
+        ModuleHandler.getModule('paShaderModule').scriptCall('createShaders');
+        ModuleHandler.getModule('paShaderModule').scriptCall('pa_addPlayerIcon', [pibbyIcon]);
+        ModuleHandler.getModule('paShaderModule').scriptCall('pa_addCpuIcon', [jakeIcon]);
+        ModuleHandler.getModule('glitchStrumsModule').scriptCall('glitchifyStrums');
+        ModuleHandler.getModule('CameraMovementModule').scriptCall('initCamMovement');
+        ModuleHandler.getModule('FinnHealthBar').scriptCall('createHealthBar');
+        ModuleHandler.getModule('FinnHealthBar').scriptCall('addPlayer', [pibbyIcon]);
+        ModuleHandler.getModule('FinnHealthBar').scriptCall('addCpu', [jakeIcon]);
+    }
+
+    function onCountdownStart(e:Dynamic)
+    {
+        super.onCountdownStart(e);
+
+        jake = CharacterDataParser.fetchCharacter('Jake', false);
+
+        PlayState.instance.currentStage.addCharacter(jake, CharacterType.OTHER);
+ 
+        PlayState.instance.currentStage.remove(jake);
+        PlayState.instance.currentStage.insert(PlayState.instance.currentStage.members.indexOf(PlayState.instance.currentStage.getDad()), jake);
+
+        jakeIcon = new HealthIcon('Jake', 1);
+        pibbyIcon = new HealthIcon('Pibby', 0);
+
+        jakeIcon.configure(jake._data?.healthIcon);
+        pibbyIcon.configure(PlayState.instance.currentStage.getGirlfriend()._data?.healthIcon);
+
+        pibbyIcon.flipX = true;
+
+        for (i in [pibbyIcon, jakeIcon])
+        {
+            i.zIndex = 1000;
+
+            PlayState.instance.insert(PlayState.instance.members.indexOf(PlayState.instance.iconP1) + 100, i);
+            i.cameras = [PlayState.instance.camHUD];
+            i.screenCenter();
+            i.autoUpdate = false;
+        }
+
+        pibbyIcon.setPosition(990, Preferences.get_downscroll() ? -15 : 550);
+        jakeIcon.setPosition(100, Preferences.get_downscroll() ? -15 : 550);
+
+        jake.x = PlayState.instance.currentStage.getDad().x + 75;
+        jake.y = PlayState.instance.currentStage.getDad().y + 10;
+
+        jake.scale.set(0.7, 0.7);
+
+        FlxG.camera.fade(0xFF000000, 0.001);
+        PlayState.instance.camHUD.alpha = 0;
+    }
+
+    function onUpdate(e:Dynamic)
+    {
+        super.onUpdate(e);
+
+        if (PlayState.instance == null) return;
+        
+        if (jakeIcon != null) jakeIcon.scale.set(PlayState.instance.iconP2.scale.x, PlayState.instance.iconP2.scale.y);
+        if (pibbyIcon != null) pibbyIcon.scale.set(PlayState.instance.iconP1.scale.x, PlayState.instance.iconP1.scale.y);
+    }
+
+    function onNoteHit(event:Dynamic)
+    {
+        super.onNoteHit(event);
+    }
+
+    function onSongRetry(e:Dynamic)
+    {
+        FlxG.camera.fade(0xFF000000, 0.001);
+        
+        super.onSongRetry(e);
+
+        if (jake != null) jake.destroy();
+        if (pibbyIcon != null) pibbyIcon.destroy();
+        if (jakeIcon != null) jakeIcon.destroy();
+
+        PlayState.instance.camHUD.alpha = 0;
+    }
+
+    function onDestroy(e:Dynamic)
+    {
+        super.onDestroy(e);
+
+        if (jake != null) jake.destroy();
+        if (pibbyIcon != null) pibbyIcon.destroy();
+        if (jakeIcon != null) jakeIcon.destroy();
+    }
+
+    function onBeatHit(e:Dynamic)
+    {
+        super.onBeatHit(e);
+
+        if (PlayState.instance == null) return;
+
+        if (!PlayState.instance.startingSong && jake.animation.curAnim.name != 'idle' && jake.animation.curAnim.finished && jake.holdTimer <= 0) jake.playAnimation('idle', false, false, false);
+
+        switch (e.beat)
+        {
+            case 32:
+                PlayState.instance.camHUD.flash(0xFFFFFFFF, 1);
+                PlayState.instance.camHUD.alpha = 1;
+        }
+    }
+    
+    function onPause(e:Dynamic)
+    {
+        if (Conductor.instance.currentBeat >= 517 && Conductor.instance.currentBeat < 584) e.cancel();
+
+        super.onPause(e);
+    }
+}

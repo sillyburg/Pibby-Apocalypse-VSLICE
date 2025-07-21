@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="pavol1-text.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idle0000" x="5" y="5" width="304" height="133"/>
+	<SubTexture name="idle0001" x="5" y="5" width="304" height="133"/>
+	<SubTexture name="idle0002" x="5" y="5" width="304" height="133"/>
+	<SubTexture name="idle0003" x="5" y="5" width="304" height="133"/>
+	<SubTexture name="idle0004" x="5" y="5" width="304" height="133"/>
+	<SubTexture name="idle0005" x="5" y="5" width="304" height="133"/>
+	<SubTexture name="idle0006" x="5" y="5" width="304" height="133"/>
+	<SubTexture name="idle0007" x="5" y="5" width="304" height="133"/>
+	<SubTexture name="switch0000" x="5" y="143" width="304" height="128"/>
+	<SubTexture name="switch0001" x="5" y="143" width="304" height="128"/>
+	<SubTexture name="switch0002" x="5" y="143" width="304" height="128"/>
+	<SubTexture name="switch0003" x="5" y="143" width="304" height="128"/>
+</TextureAtlas>

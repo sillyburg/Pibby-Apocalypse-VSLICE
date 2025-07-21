@@ -1,0 +1,92 @@
+{
+	"version": "1.0.0",
+	"renderType": "sparrow",
+	"offsets": [
+		0,
+		0
+	],
+	"danceEvery": 1,
+	"scale": 1,
+	"name": "Jake",
+	"cameraOffsets": [
+		60,
+		-100
+	],
+	"flipX": false,
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/Jake",
+	"healthIcon": {
+		"isPixel": false,
+		"offsets": [
+			0,
+			0
+		],
+		"scale": 1,
+		"id": "jake",
+		"flipX": false
+	},
+	"animations": [
+		{
+			"offsets": [
+				1,
+				0
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Idle",
+			"name": "idle",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				160,
+				66
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Left",
+			"name": "singLEFT",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				20,
+				-75
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Down",
+			"name": "singDOWN",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				134,
+				357
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Up",
+			"name": "singUP",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				50,
+				97
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Right",
+			"name": "singRIGHT",
+			"looped": false,
+			"flipX": false
+		}
+	]
+}

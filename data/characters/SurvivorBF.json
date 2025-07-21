@@ -1,0 +1,141 @@
+{
+	"version": "1.0.0",
+	"renderType": "sparrow",
+	"offsets": [
+		0,
+		0
+	],
+	"danceEvery": 1,
+	"scale": 1,
+	"flipX": true,
+	"name": "SurvivorBF",
+	"cameraOffsets": [
+		0,
+		20
+	],
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/cropbf",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"id": "SurvivorBF",
+		"flipX": false,
+		"isPixel": false,
+		"scale": 1
+	},
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				-5,
+				0
+			],
+			"loop": true,
+			"frameRate": 24,
+			"prefix": "BF idle dance",
+			"flipX": false,
+			"looped": false,
+			"name": "idle"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-36,
+				-4
+			],
+			"frameRate": 24,
+			"prefix": "left0",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-28,
+				-24
+			],
+			"frameRate": 24,
+			"prefix": "down0",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-1,
+				37
+			],
+			"frameRate": 24,
+			"prefix": "up0",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				27,
+				2
+			],
+			"frameRate": 24,
+			"prefix": "right0",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-53,
+				-6
+			],
+			"frameRate": 24,
+			"prefix": "MissL",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-35,
+				-35
+			],
+			"frameRate": 24,
+			"prefix": "MissD",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				11,
+				57
+			],
+			"frameRate": 24,
+			"prefix": "MissU",
+			"flipX": false,
+			"looped": false,
+			"name": "singUPmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				5,
+				1
+			],
+			"frameRate": 24,
+			"prefix": "MissR",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHTmiss"
+		}
+	]
+}

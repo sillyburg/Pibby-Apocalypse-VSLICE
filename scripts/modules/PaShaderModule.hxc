@@ -1,0 +1,185 @@
+import funkin.play.PlayState;
+import funkin.play.components.HealthIcon;
+
+import funkin.save.Save;
+
+import flixel.math.FlxMath;
+
+import openfl.filters.ShaderFilter;
+
+import funkin.modding.module.Module;
+
+import flixel.addons.display.FlxRuntimeShader;
+
+import flixel.FlxG;
+
+class ZoomShaderModule extends Module
+{
+    var zoomShad:FlxRuntimeShader;
+    var pibbyFNF:FlxRuntimeShader;
+
+    var shadIntensity:Float;
+    var glitchIntensity:Float;
+
+    var playerIcons:Array<HealthIcon> = [];
+    var cpuIcons:Array<HealthIcon> = [];
+
+    var initialized:Bool = false;
+
+    var healthDrainEnabled:Bool;
+
+    public function new()
+    {
+        super('paShaderModule', 1);
+    }
+
+    function onSongRetry(e:Dynamic)
+    {
+        super.onSongRetry(e);
+
+        initialized = false;
+
+        cpuIcons = [];
+        playerIcons = [];
+    }
+
+    function createShaders()
+    {
+        if (!Save.instance.modOptions.get('PibbyApocalypse').get('glitchEffects')) return;
+
+        healthDrainEnabled = Save.instance.modOptions.get('PibbyApocalypse').get('healthDrain');
+
+        if (PlayState.instance == null) return;
+
+        playerIcons.push(PlayState.instance.iconP1);
+        cpuIcons.push(PlayState.instance.iconP2);
+
+        var zoomShadString:String = Assets.getText(Paths.frag('aberrationCam'));
+        zoomShad = new FlxRuntimeShader(zoomShadString);
+
+        var zoomShadStringpibbyFNF:String = Assets.getText(Paths.frag('Pibbified'));
+        pibbyFNF = new FlxRuntimeShader(zoomShadStringpibbyFNF);
+
+        pibbyFNF.setFloat('iMouseX', 500);
+        pibbyFNF.setInt('NUM_SAMPLES', 3);
+
+        pibbyFNF.setFloat('glitchMultiply', 0);
+
+        FlxG.camera.filters = [new ShaderFilter(zoomShad), new ShaderFilter(pibbyFNF)];
+        PlayState.instance.camHUD.filters = [new ShaderFilter(zoomShad), new ShaderFilter(pibbyFNF)];
+
+        initialized = true;
+    }
+
+    function onBeatHit(e:SongEventScriptEvent)
+    {
+        if (PlayState.instance == null) return;
+        if (!initialized) return;
+
+        super.onBeatHit(e);
+
+        if (!PlayState.instance.startingSong && e.beat % PlayState.instance.cameraZoomRate == 0) shadIntensity = 0.07;
+    }
+
+    override function onNoteHit(event:Dynamic)
+    {
+        if (PlayState.instance == null) return;
+        if (!initialized) return;
+
+        super.onNoteHit(event);
+
+        if (PlayState.instance.health > 0.1 && !event.note.noteData.getMustHitNote() && healthDrainEnabled) PlayState.instance.health -= 0.0275;
+
+        if (!event.note.noteData.getMustHitNote() && FlxG.random.bool(50)) glitchIntensity = FlxG.random.float(0.2, 0.7);
+    }
+
+    var time:Float = 0;
+
+    function onUpdate(e:Dynamic)
+    {
+        if (PlayState.instance == null) return;
+        if (!initialized) return;
+
+        super.onUpdate(e);
+
+        time += e.elapsed * 2;
+
+        if (PlayState.instance != null)
+        {
+            if (PlayState.instance.isGamePaused) return;
+            
+            shadIntensity = FlxMath.lerp(shadIntensity, 0, e.elapsed * 6);
+            glitchIntensity = FlxMath.lerp(glitchIntensity, 0, e.elapsed * 7) * FlxG.random.int(1, -1, [0]);
+            zoomShad.setFloat('aberration', shadIntensity);
+            pibbyFNF.setFloat('glitchMultiply', glitchIntensity);
+            pibbyFNF.setFloat('uTime', time);
+        }
+    }
+
+    function onDestroy(e:Dynamic)
+    {
+        if (PlayState.instance == null) return;
+        if (!initialized) return;
+
+        super.onDestroy(e);
+
+        FlxG.camera.filters = [];
+    }
+
+    function onStepHit(e:Dynamic)
+    {
+        super.onStepHit(e);
+
+        if (PlayState.instance == null) return;
+
+        if (!initialized) return;
+
+        if (PlayState.instance.health <= 0.4)
+        {
+            for (i in playerIcons)
+            {
+                if (i != null) setIconGlitch(i);
+                if (i != null) updateIconGlitch(i);
+            }
+        } else for (i in playerIcons) if (i != null) removeIconGlitch(i);
+
+        if (PlayState.instance.health >= 1.6)
+        {
+            for (i in cpuIcons)
+            {
+                if (i != null) setIconGlitch(i);
+                if (i != null) updateIconGlitch(i);
+            }
+        } else for (i in cpuIcons) if (i != null)  removeIconGlitch(i);
+    }
+
+    function setIconGlitch(icon:HealthIcon)
+    {
+        if (icon.shader != null) return;
+
+        icon.shader = new FlxRuntimeShader(Assets.getText(Paths.frag('distort')));
+    }
+
+    function removeIconGlitch(icon:HealthIcon)
+    {
+        if (icon.shader == null) return;
+
+        icon.shader = null;
+    }
+
+    function updateIconGlitch(icon:HealthIcon)
+    {
+        icon.shader.setFloat('binaryIntensity', FlxG.random.float(5, 1) * FlxG.random.int(1, -1, [0]));
+        icon.shader.setFloat('negativity', 0);
+    }
+
+    function pa_addPlayerIcon(icon:HealthIcon)
+    {
+        playerIcons.push(icon);
+    }
+
+    function pa_addCpuIcon(icon:HealthIcon)
+    {
+        cpuIcons.push(icon);
+    }
+}

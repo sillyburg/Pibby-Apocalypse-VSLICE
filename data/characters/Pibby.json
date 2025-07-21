@@ -1,0 +1,165 @@
+{
+	"version": "1.0.0",
+	"renderType": "sparrow",
+	"offsets": [
+		35,
+		-10
+	],
+	"danceEvery": 1,
+	"scale": 1.3,
+	"flipX": false,
+	"name": "Pibby",
+	"cameraOffsets": [
+		0,
+		0
+	],
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/pibby",
+	"healthIcon": {
+		"isPixel": false,
+		"offsets": [
+			0,
+			0
+		],
+		"scale": 1,
+		"id": "pibby",
+		"flipX": false
+	},
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [
+				-30,
+				-48
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Idle",
+			"name": "idle",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				132,
+				5
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Left",
+			"name": "singLEFT",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				108,
+				13
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Down",
+			"name": "singDOWN",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				-7,
+				89
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Up",
+			"name": "singUP",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				1,
+				7
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "Right",
+			"name": "singRIGHT",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				132,
+				3
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "MissL",
+			"name": "singLEFTmiss",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				97,
+				-9
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "MissD",
+			"name": "singDOWNmiss",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				-10,
+				89
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "MissU",
+			"name": "singUPmiss",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				1,
+				4
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "MissR",
+			"name": "singRIGHTmiss",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				-30,
+				-47
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "cmon",
+			"name": "Cmon",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				-10,
+				-17
+			],
+			"flipY": false,
+			"frameRate": 24,
+			"prefix": "HEY Pose",
+			"name": "hey",
+			"looped": false,
+			"flipX": false
+		}
+	]
+}

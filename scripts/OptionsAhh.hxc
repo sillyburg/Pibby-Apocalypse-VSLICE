@@ -1,0 +1,60 @@
+import Std;
+
+import funkin.Preferences;
+
+import funkin.save.Save;
+
+import funkin.ui.options.OptionsState;
+import funkin.ui.options.PreferencesMenu;
+
+import funkin.modding.module.Module;
+
+class PAOptionsModule extends Module
+{
+    public function new()
+    {
+        super('paOptions');
+
+        // thanks gameplay modifiers
+
+        if (Save.instance.modOptions.get('PibbyApocalypse') == null)
+        {
+            var defaultSettings:Map<String, Dynamic> = [
+                "annoyingAhhShake" => false,
+                "healthDrain" => true,
+                "glitchEffects" => true
+            ];
+
+            Save.instance.modOptions.set('PibbyApocalypse', defaultSettings);
+			Save.instance.flush();
+        }
+    }
+
+    function onStateChangeEnd(e:Dynamic)
+    {
+        if (Std.isOfType(e.targetState, OptionsState))
+        {
+            var modSettings = Save.instance.modOptions.get('PibbyApocalypse');
+            var state = e.targetState;
+			var options = state.optionsCodex.pages.get('options');
+			
+			// modifier menu itself
+			var paOptions:PreferencesMenu = state.optionsCodex.addPage('PibbyApocalypse', new PreferencesMenu());
+
+            paOptions.items.clear();
+            paOptions.preferenceItems.clear();
+            paOptions.preferenceDesc = [];
+
+            paOptions.onExit.add(function() state.optionsCodex.switchPage('options'));
+
+            options.createItem('Pibby: Apocalypse', function() options.codex.switchPage('PibbyApocalypse'));
+            options.items.members[options.items.length - 1].y = 0;
+
+            paOptions.createPrefItemCheckbox("Health Drain", "Enable health drain or not.", function(setTo:Bool) modSettings.set("healthDrain", setTo), modSettings.get("healthDrain"));
+            paOptions.createPrefItemCheckbox("Camera Glitch Shaders", "Enable the glitch shaders or not.", function(setTo:Bool) modSettings.set("glitchEffects", setTo), modSettings.get("glitchEffects"));
+            paOptions.createPrefItemCheckbox("Annoying Ahh Shake", "Dude i dont know about you but im suffering. With my siblings. Call that a suffering siblings. Heh. Get it. Suffering siblings? Like that one pibby apocalypse demo song? please laugh. please. i spent too much thinking about this joke. i just wanna hear you laugh. please. it'd mean the world to me. please.", function(setTo:Bool) modSettings.set("annoyingAhhShake", setTo), modSettings.get("annoyingAhhShake"));
+
+            Save.instance.flush();
+        }
+    }
+}

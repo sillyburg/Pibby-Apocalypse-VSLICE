@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="brotherspixel.png">
+    <!-- Created using the Spritesheet and XML generator -->
+    <!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+    <SubTexture name="idle0000" x="104" y="0" width="53" height="36" frameX="1" frameY="-6" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="confirm0000" x="104" y="0" width="53" height="36" frameX="1" frameY="-6" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="confirm0001" x="53" y="0" width="51" height="39" frameX="0" frameY="-3" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="confirm0002" x="0" y="39" width="51" height="40" frameX="1" frameY="-1" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="confirm0003" x="0" y="0" width="53" height="39" frameX="2" frameY="-3" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="idle confirm0000" x="0" y="0" width="53" height="39" frameX="2" frameY="-3" frameWidth="50" frameHeight="50"/>
+</TextureAtlas>

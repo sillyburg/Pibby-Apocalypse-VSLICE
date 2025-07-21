@@ -1,0 +1,96 @@
+import flixel.FlxSprite;
+
+import funkin.Assets;
+import funkin.Paths;
+
+import funkin.play.PlayState;
+import funkin.play.components.HealthIcon;
+
+import funkin.modding.module.Module;
+
+class FinnHealthBarModule extends Module
+{
+    function new ()
+    {
+        super('FinnHealthBar', 1);
+    }
+
+    var initialized = false;
+
+    var cpuIcons:Array<HealthIcon> = [];
+    var playerIcons:Array<HealthIcon> = [];
+
+    var finnHealthBar:FlxSprite;
+
+    function onSongRetry(e:Dynamic)
+    {
+        super.onSongRetry(e);
+
+        initialized = false;
+
+        playerIcons = [];
+        cpuIcons = [];
+    }
+
+    function createHealthBar()
+    {
+        if (PlayState.instance == null) return;
+
+        PlayState.instance.healthBar.visible = PlayState.instance.healthBarBG.visible = false;
+
+        playerIcons.push(PlayState.instance.iconP1);
+        cpuIcons.push(PlayState.instance.iconP2);
+
+        finnHealthBar = new FlxSprite(0, 0);
+
+        finnHealthBar.frames = Paths.getSparrowAtlas('healthBar/finn');
+
+        finnHealthBar.animation.addByPrefix('neutral', 'Icons Bar0', 24, true);
+        finnHealthBar.animation.play('neutral');
+        finnHealthBar.screenCenter();
+
+        finnHealthBar.y = PlayState.instance.iconP1.y;
+        finnHealthBar.offset.x = -30;
+        finnHealthBar.scale.set(1.1, 1.1);
+
+        finnHealthBar.cameras = [PlayState.instance.camHUD];
+
+        PlayState.instance.insert(PlayState.instance.members.indexOf(PlayState.instance.iconP2) - 2, finnHealthBar);
+
+        for (icon in playerIcons) if (icon != null) icon.autoUpdate = false;
+        for (icon in cpuIcons) if (icon != null) icon.autoUpdate = false;
+
+        initialized = true;
+    }
+
+    function onUpdate(e:Dynamic)
+    {
+        if (PlayState.instance == null) return;
+        if (!initialized) return;
+
+        // manually update icons
+
+        for (icon in cpuIcons) if (icon != null) icon.updateHealthIcon(2 - PlayState.instance.health);
+        for (icon in playerIcons) if (icon != null) icon.updateHealthIcon(PlayState.instance.health);
+    }
+
+    function addPlayer(icon:HealthIcon)
+    {
+        playerIcons.push(icon);
+    }
+
+    function addCpu(icon:HealthIcon)
+    {
+        cpuIcons.push(icon);
+    }
+
+    function getPaHealthBar()
+    {
+        return finnHealthBar;
+    }
+
+    function onDestroy(e:Dynamic)
+    {
+        if (finnHealthBar != null) finnHealthBar.kill();
+    }
+}
