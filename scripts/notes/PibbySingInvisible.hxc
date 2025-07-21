@@ -40,6 +40,8 @@ class InvisiblePibbySing extends NoteKind
         super.onNoteIncoming(e);
 
         for (i in this.getNotes()) if (i != null) i.visible = false;
+
+        for (i in PlayState.instance.opponentStrumline.holdNotes.members) if (i?.noteData?.kind != null) if (i?.noteData?.kind == 'pibbyInvisibleSing') i.alpha = 0;
     }
 
     function onNoteHit(e:Dynamic)

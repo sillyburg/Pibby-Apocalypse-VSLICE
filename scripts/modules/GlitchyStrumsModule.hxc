@@ -41,8 +41,6 @@ class GlitchyStrumsModule extends Module
             new FlxRuntimeShader(Assets.getText(Paths.frag('distort')))
         ];
 
-        for (i in PlayState.instance.playerStrumline.strumlineNotes.members)
-
         for (i in glitchStrumsShads) i.setFloat('negativity', 0);
 
         initializedStrums = true;
@@ -80,7 +78,7 @@ class GlitchyStrumsModule extends Module
 
         if (!initializedStrums) return;
 
-        if (!event.note.noteData.getMustHitNote()) glitchStrumsShads[event.note.noteData.getDirection()].setFloat('binaryIntensity', FlxG.random.float(1.5, 3) * FlxG.random.int(1, -1, [0]));
+        if (!event.note.noteData.getMustHitNote() && event.note.noteData.kind != 'pibbyInvisibleSing') glitchStrumsShads[event.note.noteData.getDirection()].setFloat('binaryIntensity', FlxG.random.float(1.5, 3) * FlxG.random.int(1, -1, [0]));
 
         if (event.note.noteData.kind == 'glitchChar') glitchStrums();
     }
