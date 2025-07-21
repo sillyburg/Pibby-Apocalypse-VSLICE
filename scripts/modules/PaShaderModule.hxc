@@ -54,9 +54,6 @@ class ZoomShaderModule extends Module
         playerIcons.push(PlayState.instance.iconP1);
         cpuIcons.push(PlayState.instance.iconP2);
 
-        var zoomShadString:String = Assets.getText(Paths.frag('aberrationCam'));
-        zoomShad = new FlxRuntimeShader(zoomShadString);
-
         var zoomShadStringpibbyFNF:String = Assets.getText(Paths.frag('Pibbified'));
         pibbyFNF = new FlxRuntimeShader(zoomShadStringpibbyFNF);
 
@@ -65,8 +62,8 @@ class ZoomShaderModule extends Module
 
         pibbyFNF.setFloat('glitchMultiply', 0);
 
-        FlxG.camera.filters = [new ShaderFilter(zoomShad), new ShaderFilter(pibbyFNF)];
-        PlayState.instance.camHUD.filters = [new ShaderFilter(zoomShad), new ShaderFilter(pibbyFNF)];
+        FlxG.camera.filters = [new ShaderFilter(pibbyFNF)];
+        PlayState.instance.camHUD.filters = [new ShaderFilter(pibbyFNF)];
 
         initialized = true;
     }
@@ -110,7 +107,6 @@ class ZoomShaderModule extends Module
             
             shadIntensity = FlxMath.lerp(shadIntensity, 0, e.elapsed * 6);
             glitchIntensity = FlxMath.lerp(glitchIntensity, 0, e.elapsed * 7) * FlxG.random.int(1, -1, [0]);
-            zoomShad.setFloat('aberration', shadIntensity);
             pibbyFNF.setFloat('glitchMultiply', glitchIntensity);
             pibbyFNF.setFloat('uTime', time);
         }
