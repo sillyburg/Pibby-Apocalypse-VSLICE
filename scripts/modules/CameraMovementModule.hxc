@@ -72,10 +72,10 @@ class CameraMovementModule extends Module {
 
       if (!ismovement) return;
 
-      if (curFocus == "bf") setMovement(PlayState.instance.currentStage.getBoyfriend().animation.curAnim.name);
-      if (curFocus == "dad") setMovement(PlayState.instance.currentStage.getDad().animation.curAnim.name);
-      if (curFocus == "gf") setMovement(PlayState.instance.currentStage.getGirlfriend().animation.curAnim.name);
-      if (curFocus == "jake") setMovement(PlayState.instance.currentStage.getCharacter("Jake").animation.curAnim.name);
+      if (curFocus == "bf") if (PlayState.instance.currentStage.getBoyfriend() != null) setMovement(PlayState.instance.currentStage.getBoyfriend().animation.curAnim.name);
+      if (curFocus == "dad") if (PlayState.instance.currentStage.getDad() != null) setMovement(PlayState.instance.currentStage.getDad().animation.curAnim.name);
+      if (curFocus == "gf") if (PlayState.instance.currentStage.getGirlfriend() != null) setMovement(PlayState.instance.currentStage.getGirlfriend().animation.curAnim.name);
+      if (curFocus == "jake") if (PlayState.instance.currentStage.getCharacter("Jake") != null) setMovement(PlayState.instance.currentStage.getCharacter("Jake").animation.curAnim.name);
    }
 
    private inline function setMovement(name:String)

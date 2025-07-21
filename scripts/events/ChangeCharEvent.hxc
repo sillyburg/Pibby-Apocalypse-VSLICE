@@ -1,0 +1,48 @@
+import funkin.play.event.SongEvent;
+
+import funkin.play.PlayState;
+
+import flixel.FlxG;
+
+import funkin.modding.module.ModuleHandler;
+
+class BurgerChangeCharEvent extends SongEvent
+{
+    function new()
+    {
+        super('BurgerChangeCharEvent');
+    }
+
+    override function getTitle()
+    {
+        return "Change Character";
+    }
+
+    override function handleEvent(params:Dynamic)
+    {
+        ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('changeChar', [params.value.changeTo, params.value.changeFrom]);
+    }
+
+    override function getEventSchema()
+    {
+        return [
+            {
+                name: "changeFrom",
+                title: "From",
+                defaultValue: "Girlfriend",
+                type: "enum",
+                keys: [
+                    "Opponent" => 1,
+                    "Boyfriend" => 2,
+                    "Girlfriend" => 3
+                ] 
+            },
+            {
+                name: "changeTo",
+                title: "To",
+                defaultValue: "",
+                type: "string"
+            }
+        ];
+    }
+}

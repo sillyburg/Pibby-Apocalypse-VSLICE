@@ -137,7 +137,11 @@ class SufferingOhMyGod extends Song
 
         switch (e.beat)
         {
+            case 16:
+                ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('preloadChar', ['Finn']);
             case 32:
+                ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('changeChar', ['Finn', 3]);
+
                 PlayState.instance.camHUD.flash(0xFFFFFFFF, 1);
                 PlayState.instance.camHUD.alpha = 1;
         }

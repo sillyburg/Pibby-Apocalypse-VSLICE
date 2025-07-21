@@ -1,0 +1,146 @@
+import funkin.play.character.BaseCharacter;
+import funkin.play.character.CharacterType;
+import funkin.play.character.CharacterDataParser;
+import funkin.play.PlayState;
+
+import funkin.modding.module.Module;
+
+class ChangeCharStuffModule extends Module
+{
+    var preloadedChars:Map<String, Dynamic> = [
+        "mega" => "loaded"
+    ];
+    
+    public function new()
+    {
+        super('ChangeCharacterBurgerModule');
+    }
+
+    function preloadChar(charString:String)
+    {
+        var preloadedChar:BaseCharacter = changeChar(charString);
+
+        preloadedChar.alpha = 0.00001;
+
+        preloadedChars.set(charString, preloadedChar);
+    }
+
+    function changeChar(charString:String, ?charType:Int = 1)
+    {
+        if (preloadedChars.get(charString) != null)
+        {
+            var type = null;
+            var oldProperties = null;
+
+            preloadedChars.get(charString).alpha = 1;
+
+            switch (charType)
+            {
+                case 1:
+                    oldProperties = getOldProperties(PlayState.instance.currentStage.getDad());
+
+                    type = CharacterType.DAD;
+
+                    PlayState.instance.currentStage.getDad().destroy();
+                case 2:
+                    oldProperties = getOldProperties(PlayState.instance.currentStage.getBoyfriend());
+
+                    type = CharacterType.BF;
+
+                    PlayState.instance.currentStage.getBoyfriend().destroy();
+                case 3:
+                    oldProperties = getOldProperties(PlayState.instance.currentStage.getGirlfriend());
+
+                    type = CharacterType.GF;
+
+                    PlayState.instance.currentStage.getGirlfriend().destroy();
+                default: 
+                    oldProperties = getOldProperties(PlayState.instance.currentStage.getBoyfriend());  
+
+                    type = CharacterType.OTHER;
+            }
+
+            preloadedChars.get(charString).characterType = type;
+
+            trace('Already preloaded Character found!');
+
+            return;
+        }
+
+        var oldProperties = null;
+        var type = null;
+
+        switch (charType)
+        {
+            case 1:
+                oldProperties = getOldProperties(PlayState.instance.currentStage.getDad());
+
+                type = CharacterType.DAD;
+
+                PlayState.instance.currentStage.getDad().destroy();
+            case 2:
+                oldProperties = getOldProperties(PlayState.instance.currentStage.getBoyfriend());
+
+                type = CharacterType.BF;
+
+                PlayState.instance.currentStage.getBoyfriend().destroy();
+            case 3:
+                oldProperties = getOldProperties(PlayState.instance.currentStage.getGirlfriend());
+
+                type = CharacterType.GF;
+
+                PlayState.instance.currentStage.getGirlfriend().destroy();
+            default: 
+                oldProperties = getOldProperties(PlayState.instance.currentStage.getBoyfriend());  
+
+                type = CharacterType.OTHER;
+        }
+
+        var newChar:BaseCharacter = CharacterDataParser.fetchCharacter(charString, false);
+
+        PlayState.instance.currentStage.addCharacter(newChar, type);
+
+        PlayState.instance.currentStage.remove(newChar);
+        PlayState.instance.currentStage.insert(oldProperties.index, newChar);
+
+        setCharProperties(newChar, oldProperties);
+
+        return newChar;
+    }
+
+    function getOldProperties(char:BaseCharacter)
+        {
+            var oldShi = {
+                x: char.x,
+                y: char.y,
+                scale: {
+                    x: char.scale.x,
+                    y: char.scale.y
+                },
+                index: PlayState.instance.currentStage.members.indexOf(char),
+                alpha: char.alpha,
+                visible: char.visible,
+                color: char.color,
+                flipX: char.flipX
+            }
+
+            return oldShi;
+        }
+
+    function setCharProperties(char:BaseCharacter, oldPropertyMap:Dynamic)
+    {
+        char.scale.x = oldPropertyMap.scale.x;
+        char.scale.y = oldPropertyMap.scale.y;
+
+        char.x = oldPropertyMap.x;
+        char.y = oldPropertyMap.y;
+
+        char.alpha = oldPropertyMap.alpha;
+
+        char.color = oldPropertyMap.color;
+
+        char.visible = oldPropertyMap.visible;
+
+        char.flipX = oldPropertyMap.flipX;
+    }
+}
