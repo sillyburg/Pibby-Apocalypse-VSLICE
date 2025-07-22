@@ -96,8 +96,8 @@ class SufferingOhMyGod extends Song
 
         if (PlayState.instance == null) return;
         
-        if (jakeIcon != null) jakeIcon.scale.set(PlayState.instance.iconP2.scale.x, PlayState.instance.iconP2.scale.y);
-        if (pibbyIcon != null) pibbyIcon.scale.set(PlayState.instance.iconP1.scale.x, PlayState.instance.iconP1.scale.y);
+        if (jakeIcon != null) jakeIcon?.scale.set(PlayState.instance.iconP2.scale.x, PlayState.instance.iconP2.scale.y);
+        if (pibbyIcon != null) pibbyIcon?.scale.set(PlayState.instance.iconP1.scale.x, PlayState.instance.iconP1.scale.y);
     }
 
     function onNoteHit(event:Dynamic)
@@ -140,6 +140,10 @@ class SufferingOhMyGod extends Song
             case 32:
                 PlayState.instance.camHUD.flash(0xFFFFFFFF, 1);
                 PlayState.instance.camHUD.alpha = 1;
+            case 416:
+                PlayState.instance.camHUD.fade(0xFF000000, 0.00001);
+            case 424:
+                PlayState.instance.camHUD.fade(0xFF000000, 10, true);
         }
     }
     
