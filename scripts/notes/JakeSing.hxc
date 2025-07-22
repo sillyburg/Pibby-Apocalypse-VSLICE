@@ -37,13 +37,11 @@ class JakeSing extends NoteKind
 
     function onNoteHit(e:Dynamic)
     {
-        super.onNoteHit(e);
-
         if (PlayState.instance == null) return;
         if (e.note.noteData.kind != "jakeSing") return;
 
-        PlayState.instance.currentStage.getCharacter('Jake').holdTimer = 0;
+        return;
 
-        PlayState.instance.currentStage.getCharacter('Jake').playSingAnimation(e.note.noteData.getDirection(), false);
+        super.onNoteHit(e);
     }
 }
