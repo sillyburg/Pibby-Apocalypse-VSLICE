@@ -28,6 +28,8 @@ class ZoomShaderModule extends Module
 
     var healthDrainEnabled:Bool;
 
+    var singMult:Float;
+
     public function new()
     {
         super('paShaderModule', 1);
@@ -47,9 +49,11 @@ class ZoomShaderModule extends Module
     {
         if (!Save.instance.modOptions.get('PibbyApocalypse').get('glitchEffects')) return;
 
+        if (PlayState.instance == null) return;
+
         healthDrainEnabled = Save.instance.modOptions.get('PibbyApocalypse').get('healthDrain');
 
-        if (PlayState.instance == null) return;
+        singMult = Save.instance.modOptions.get("PibbyApocalypse").get('singGlitchMult');
 
         playerIcons.push(PlayState.instance.iconP1);
         cpuIcons.push(PlayState.instance.iconP2);
@@ -90,7 +94,7 @@ class ZoomShaderModule extends Module
 
         if (PlayState.instance.health > 0.1 && !event.note.noteData.getMustHitNote() && healthDrainEnabled) PlayState.instance.health -= 0.0275;
 
-        if (!event.note.noteData.getMustHitNote() && FlxG.random.bool(50)) glitchIntensity = FlxG.random.float(0.2, 0.7);
+        if (!event.note.noteData.getMustHitNote() && FlxG.random.bool(50)) glitchIntensity = FlxG.random.float(0.2, 0.7) * singMult;
     }
 
     var time:Float = 0;
