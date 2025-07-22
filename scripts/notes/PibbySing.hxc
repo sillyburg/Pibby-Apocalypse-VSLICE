@@ -42,6 +42,9 @@ class PibbySing extends NoteKind
         if (PlayState.instance == null) return;
         if (e.note.noteData.kind != "pibbySing") return;
 
+        PlayState.instance.currentStage.getGirlfriend().holdTimer = 0;
+        PlayState.instance.currentStage.getDad().holdTimer = 0;
+        
         PlayState.instance.currentStage.getGirlfriend().playSingAnimation(e.note.noteData.getDirection(), false);
     }
 
@@ -51,6 +54,9 @@ class PibbySing extends NoteKind
 
         if (PlayState.instance == null) return;
         if (e.note.noteData.kind != "pibbySing") return;
+
+        PlayState.instance.currentStage.getGirlfriend().holdTimer = 0;
+        PlayState.instance.currentStage.getDad().holdTimer = 0;
 
         PlayState.instance.currentStage.getGirlfriend().playSingAnimation(e.note.noteData.getDirection(), true);
     }

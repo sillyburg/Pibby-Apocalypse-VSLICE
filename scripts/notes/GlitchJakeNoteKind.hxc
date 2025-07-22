@@ -12,7 +12,7 @@ import flixel.FlxG;
 import funkin.Assets;
 import funkin.Paths;
 
-class GlitchNoteKind extends NoteKind
+class GlitchJakeNoteKind extends NoteKind
 {
     var glitchShad;
 
@@ -62,6 +62,10 @@ class GlitchNoteKind extends NoteKind
 
         PlayState.instance.currentStage.getCharacter("Jake").shader = glitchShad;
 
+        PlayState.instance.currentStage.getCharacter('Jake').holdTimer = 0;
+
+        PlayState.instance.currentStage.getCharacter('Jake').playSingAnimation(e.note.noteData.getDirection(), false);
+        
         glitchShad.setFloat('negativity', 1);
         glitchShad.setFloat('binaryIntensity', FlxG.random.float(2, 1) * FlxG.random.int(-1, 1, [0]));
 

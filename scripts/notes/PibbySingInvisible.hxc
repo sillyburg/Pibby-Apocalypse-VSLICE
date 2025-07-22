@@ -53,6 +53,8 @@ class InvisiblePibbySing extends NoteKind
 
         e.cancel();
 
+        PlayState.instance.currentStage.getGirlfriend().holdTimer = 0;
+
         PlayState.instance.currentStage.getGirlfriend().playSingAnimation(e.note.noteData.getDirection(), false);
     }
 }

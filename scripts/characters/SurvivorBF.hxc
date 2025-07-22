@@ -2,7 +2,7 @@ import funkin.play.character.SparrowCharacter;
 import funkin.play.character.CharacterType;
 import funkin.play.PlayState;
 
-class FinnCharacter extends SparrowCharacter
+class SurvivorBFCharacter extends SparrowCharacter
 {
   function new()
   {
@@ -11,7 +11,7 @@ class FinnCharacter extends SparrowCharacter
 
   function onNoteHit(event:HitNoteScriptEvent)
   {
-    if (!event.note.noteData.getMustHitNote())
+    if (event.note.noteData.getMustHitNote())
     {
       // Override the hit note animation.
       switch (event.note.noteData.kind)
@@ -22,5 +22,20 @@ class FinnCharacter extends SparrowCharacter
     }
 
     super.onNoteHit(event);
+  }
+
+  function onNoteMiss(event:HitNoteScriptEvent)
+  {
+    if (event.note.noteData.getMustHitNote())
+    {
+      // Override the hit note animation.
+      switch (event.note.noteData.kind)
+      {
+        case "pibbySing":
+          return;
+      }
+    }
+
+    super.onNoteMiss(event);
   }
 }

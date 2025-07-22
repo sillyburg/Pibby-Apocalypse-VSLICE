@@ -36,8 +36,6 @@ class LabStage extends Stage
 
         FlxG.camera.followLerp = 0.08;
 
-        alphaTween.active = PlayState.instance.isGamePaused;
-
         if (PlayState.instance != null && !PlayState.instance.isGamePaused && GameOverSubState.instance == null){
             if (getNamedProp('darkin') != null) getNamedProp('darkin').angle = Math.sin((Conductor.instance.songPosition / 1000) * (Conductor.instance.bpm / 60) * 1.0) * 5;
             if (getNamedProp('darkout') != null) getNamedProp('darkout').angle = getNamedProp('darkin').angle;
