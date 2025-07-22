@@ -92,9 +92,9 @@ class ZoomShaderModule extends Module
 
         super.onNoteHit(event);
 
-        if (PlayState.instance.health > 0.1 && !event.note.noteData.getMustHitNote() && healthDrainEnabled) PlayState.instance.health -= 0.0275;
+        if (PlayState.instance.health > 0.1 && !event.note.noteData.getMustHitNote() && healthDrainEnabled && event.note.noteData.kind != 'pibbyInvisibleSing') PlayState.instance.health -= 0.0275;
 
-        if (!event.note.noteData.getMustHitNote() && FlxG.random.bool(50)) glitchIntensity = FlxG.random.float(0.2, 0.7) * singMult;
+        if (!event.note.noteData.getMustHitNote() && FlxG.random.bool(50) && event.note.noteData.kind != 'pibbyInvisibleSing') glitchIntensity = FlxG.random.float(0.2, 0.7) * singMult;
     }
 
     var time:Float = 0;
