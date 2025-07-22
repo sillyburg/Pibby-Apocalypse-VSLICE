@@ -9,7 +9,7 @@ pull requests _are_ welcome just don't shit on my code or else i _will_ lose mot
 
 # Credits:
 - Awe && Saster ~ Suffering Siblings (ofc)
-- Lem0dy ~ Base port (stage, characters, etc)
+- Lem0dy ~ Base port (stage, characters, etc) and "Darkness Vol. 2" text
 - Zenith ~ Camera Movement Module (tweaked it a bit)
 - ADA_Funni ~ Helping me add Jake and some other stuff
 - Gameplay Modifiers Mod (NoMoreNuzlocke & Nebula_Zorua) ~ Options Menu Code
