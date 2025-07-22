@@ -1,0 +1,26 @@
+import funkin.play.character.SparrowCharacter;
+import funkin.play.character.CharacterType;
+import funkin.play.PlayState;
+
+class FinnSwordCharacter extends SparrowCharacter
+{
+  function new()
+  {
+    super('finn-sword');
+  }
+
+  function onNoteHit(event:HitNoteScriptEvent)
+  {
+    if (!event.note.noteData.getMustHitNote())
+    {
+      // Override the hit note animation.
+      switch (event.note.noteData.kind)
+      {
+        case "jakeSing", "glitchJakeChar":
+          return;
+      }
+    }
+
+    super.onNoteHit(event);
+  }
+}

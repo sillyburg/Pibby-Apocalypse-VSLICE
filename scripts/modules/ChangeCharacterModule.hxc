@@ -19,8 +19,6 @@ class ChangeCharStuffModule extends Module
 
         preloadedChar.alpha = 0.00001;
 
-        preloadedChars.set(charString, preloadedChar);
-
         PlayState.instance.add(preloadedChar);
     }
 
@@ -52,7 +50,7 @@ class ChangeCharStuffModule extends Module
                     dad.zIndex = ModuleHandler.getModule("CharacterResetHandler").scriptGet("characterZIndexes")['bf'];
 
                     PlayState.instance.currentStage.refresh();
-                    
+
                     return dad;
                 }
             case 2:
@@ -84,6 +82,14 @@ class ChangeCharStuffModule extends Module
                     PlayState.instance.currentStage.refresh();
 
                     return girlfriend;
+                }
+            default:
+                var char = CharacterDataParser.fetchCharacter(charString);
+
+                if (char != null) {
+                    PlayState.instance.currentStage.refresh();
+
+                    return char;
                 }
         }
     }

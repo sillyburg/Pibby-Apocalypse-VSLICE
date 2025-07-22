@@ -1,6 +1,10 @@
 {
     "version": "1.0.0",
     "name": "Bfsword",
+    "offsets": [
+        25,
+        -25
+    ],
     "assetPath": "characters/BfSwordUp",
     "singTime": 4,
     "isPixel": false,

@@ -59,6 +59,9 @@ class SufferingOhMyGod extends Song
         ModuleHandler.getModule('FinnHealthBar').scriptCall('addPlayer', [pibbyIcon]);
         ModuleHandler.getModule('FinnHealthBar').scriptCall('addCpu', [jakeIcon]);
 
+        // preload chars
+        for (i in ['finn-sword', 'finn-slash', 'finn-hurting', 'bfsword']) ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('preloadChar', [i]);
+
         // get finn's healthbar
         var finnH = ModuleHandler.getModule('FinnHealthBar').scriptCall('getPaHealthBar');
 
