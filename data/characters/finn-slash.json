@@ -4,7 +4,7 @@
     "assetPath": "characters/Finn-Slash",
     "singTime": 6.1,
     "isPixel": false,
-    "scale": 0.9,
+    "scale": 0.3,
     "healthIcon": {
         "id": "finn",
         "isPixel": false,

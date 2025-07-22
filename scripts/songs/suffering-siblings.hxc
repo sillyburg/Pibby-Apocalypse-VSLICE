@@ -80,8 +80,9 @@ class SufferingOhMyGod extends Song
 
         PlayState.instance.currentStage.addCharacter(jake, CharacterType.OTHER);
  
-        PlayState.instance.currentStage.remove(jake);
-        PlayState.instance.currentStage.insert(PlayState.instance.currentStage.members.indexOf(PlayState.instance.currentStage.getDad()), jake);
+        jake.zIndex = PlayState.instance?.currentStage.getDad().zIndex - 1;
+        
+        PlayState.instance.currentStage.refresh();
 
         jakeIcon = new HealthIcon('Jake', 1);
         pibbyIcon = new HealthIcon('Pibby', 0);

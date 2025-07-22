@@ -4,7 +4,7 @@
     "assetPath": "characters/BfSwordUp",
     "singTime": 4,
     "isPixel": false,
-    "scale": 1,
+    "scale": 0.7,
     "healthIcon": {
         "id": "bf",
         "isPixel": false,
