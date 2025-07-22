@@ -104,8 +104,8 @@ class SufferingOhMyGod extends Song
 
         if (PlayState.instance == null) return;
         
-        if (jakeIcon != null) jakeIcon?.scale.set(PlayState.instance.iconP2.scale.x, PlayState.instance.iconP2.scale.y);
-        if (pibbyIcon != null) pibbyIcon?.scale.set(PlayState.instance.iconP1.scale.x, PlayState.instance.iconP1.scale.y);
+        if (jakeIcon != null) jakeIcon?.scale.set(PlayState.instance?.iconP2?.scale.x, PlayState.instance?.iconP2?.scale.y);
+        if (pibbyIcon != null) pibbyIcon?.scale.set(PlayState.instance?.iconP1?.scale.x, PlayState.instance?.iconP1?.scale.y);
     }
 
     function onNoteHit(event:Dynamic)
