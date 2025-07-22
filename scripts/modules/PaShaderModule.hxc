@@ -13,7 +13,7 @@ import flixel.addons.display.FlxRuntimeShader;
 
 import flixel.FlxG;
 
-class ZoomShaderModule extends Module
+class PAShaderModule extends Module
 {
     var zoomShad:FlxRuntimeShader;
     var pibbyFNF:FlxRuntimeShader;
