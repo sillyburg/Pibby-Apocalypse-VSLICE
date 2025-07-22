@@ -47,6 +47,17 @@ class SufferingOhMyGod extends Song
         ModuleHandler.getModule('FinnHealthBar').scriptCall('createHealthBar');
         ModuleHandler.getModule('FinnHealthBar').scriptCall('addPlayer', [pibbyIcon]);
         ModuleHandler.getModule('FinnHealthBar').scriptCall('addCpu', [jakeIcon]);
+
+        var finnH = ModuleHandler.getModule('FinnHealthBar').scriptCall('getPaHealthBar');
+
+        var iconY = Preferences.get_downscroll() ? -15 : 550;
+
+        #if mobile
+        iconY = -15;
+        #end
+        
+        pibbyIcon.setPosition(finnH.width, iconY);
+        jakeIcon.setPosition(finnH.x, iconY);
     }
 
     function onCountdownStart(e:Dynamic)
@@ -70,16 +81,13 @@ class SufferingOhMyGod extends Song
 
         for (i in [pibbyIcon, jakeIcon])
         {
-            i.zIndex = 1000;
+            i.zIndex = 850;
 
-            PlayState.instance.insert(PlayState.instance.members.indexOf(PlayState.instance.iconP1) + 100, i);
+            PlayState.instance.insert(PlayState.instance.members.indexOf(PlayState.instance.iconP1) + 1, i);
             i.cameras = [PlayState.instance.camHUD];
             i.screenCenter();
             i.autoUpdate = false;
         }
-
-        pibbyIcon.setPosition(990, Preferences.get_downscroll() ? -15 : 550);
-        jakeIcon.setPosition(100, Preferences.get_downscroll() ? -15 : 550);
 
         jake.x = PlayState.instance.currentStage.getDad().x + 75;
         jake.y = PlayState.instance.currentStage.getDad().y + 10;
