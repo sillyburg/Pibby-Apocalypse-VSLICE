@@ -1,0 +1,67 @@
+{
+    "version": "1.0.0",
+    "name": "Finn Hurting",
+    "assetPath": "characters/Finn-hurting",
+    "singTime": 6.1,
+    "isPixel": false,
+    "scale": 0.9,
+    "healthIcon": {
+        "id": "finn",
+        "isPixel": false,
+        "flipX": false,
+        "scale": 1
+    },
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "Idle",
+            "offsets": [
+                144,
+                94
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singLEFT",
+            "prefix": "Hurt1",
+            "offsets": [
+                426,
+                192
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singUP",
+            "prefix": "Hurt1",
+            "offsets": [
+                427,
+                192
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singDOWN",
+            "prefix": "Hurt2",
+            "offsets": [
+                428,
+                253
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singRIGHT",
+            "prefix": "Hurt2",
+            "offsets": [
+                427,
+                252
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        }
+    ],
+    "flipX": false
+}

@@ -1,0 +1,107 @@
+{
+    "version": "1.0.0",
+    "name": "Finn Slash",
+    "assetPath": "characters/Finn-Slash",
+    "singTime": 6.1,
+    "isPixel": false,
+    "scale": 0.9,
+    "healthIcon": {
+        "id": "finn",
+        "isPixel": false,
+        "flipX": false,
+        "scale": 1
+    },
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "Charge",
+            "offsets": [
+                195,
+                108
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singLEFT",
+            "prefix": "Hit",
+            "offsets": [
+                -276,
+                215
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singDOWN",
+            "prefix": "Second-Hit",
+            "offsets": [
+                -192,
+                54
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singUP",
+            "prefix": "Hit",
+            "offsets": [
+                -279,
+                216
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singRIGHT",
+            "prefix": "Second-Hit",
+            "offsets": [
+                -193,
+                54
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singLEFT-alt",
+            "prefix": "Hit",
+            "offsets": [
+                -279,
+                215
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singDOWN-alt",
+            "prefix": "Second-Hit",
+            "offsets": [
+                -195,
+                54
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singUP-alt",
+            "prefix": "Hit",
+            "offsets": [
+                -280,
+                215
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singRIGHT-alt",
+            "prefix": "Second-Hit",
+            "offsets": [
+                -192,
+                52
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        }
+    ],
+    "flipX": false
+}

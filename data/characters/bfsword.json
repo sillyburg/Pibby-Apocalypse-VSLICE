@@ -1,0 +1,147 @@
+{
+    "version": "1.0.0",
+    "name": "Bfsword",
+    "assetPath": "characters/BfSwordUp",
+    "singTime": 4,
+    "isPixel": false,
+    "scale": 1,
+    "healthIcon": {
+        "id": "bf",
+        "isPixel": false,
+        "flipX": false,
+        "scale": 1
+    },
+    "animations": [
+        {
+            "name": "shootRIGHT",
+            "prefix": "Bf Shoot R",
+            "offsets": [
+                76,
+                106
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "shootLEFT",
+            "prefix": "Bf Shoot L",
+            "offsets": [
+                210,
+                110
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "shootUP",
+            "prefix": "Bf Shoot U",
+            "offsets": [
+                73,
+                85
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "shootDOWN",
+            "prefix": "Bf Shoot D",
+            "offsets": [
+                103,
+                -12
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "idle",
+            "prefix": "idle sword0",
+            "offsets": [
+                178,
+                -34
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singDOWN",
+            "prefix": "block good0",
+            "offsets": [
+                170,
+                223
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singRIGHT",
+            "prefix": "block good0",
+            "offsets": [
+                170,
+                223
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singLEFT",
+            "prefix": "block sick0",
+            "offsets": [
+                325,
+                201
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singUP",
+            "prefix": "block sick0",
+            "offsets": [
+                325,
+                201
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singLEFTmiss",
+            "prefix": "block bad0",
+            "offsets": [
+                27,
+                229
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singDOWNmiss",
+            "prefix": "block bad0",
+            "offsets": [
+                27,
+                229
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singUPmiss",
+            "prefix": "block bad0",
+            "offsets": [
+                27,
+                229
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        },
+        {
+            "name": "singRIGHTmiss",
+            "prefix": "block bad0",
+            "offsets": [
+                27,
+                229
+            ],
+            "frameRate": 24,
+            "frameIndices": []
+        }
+    ],
+    "flipX": true
+}
