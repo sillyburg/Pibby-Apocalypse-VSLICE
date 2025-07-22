@@ -16,7 +16,7 @@ class FinnCharacter extends SparrowCharacter
       // Override the hit note animation.
       switch (event.note.noteData.kind)
       {
-        case "jakeSing":
+        case "jakeSing", "glitchJakeChar":
           return;
       }
     }
