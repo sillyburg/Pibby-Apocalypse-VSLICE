@@ -39,18 +39,30 @@ class SufferingOhMyGod extends Song
 
         trace('meower');
 
+        // create shaders
         ModuleHandler.getModule('paShaderModule').scriptCall('createShaders');
+
+        // add pibby and jake icons to the glitch icon array
         ModuleHandler.getModule('paShaderModule').scriptCall('pa_addPlayerIcon', [pibbyIcon]);
         ModuleHandler.getModule('paShaderModule').scriptCall('pa_addCpuIcon', [jakeIcon]);
+
+        // glitch the strums
         ModuleHandler.getModule('glitchStrumsModule').scriptCall('glitchifyStrums');
+
+        // add camera movement
         ModuleHandler.getModule('CameraMovementModule').scriptCall('initCamMovement');
+
+        // create the finn healthbar
         ModuleHandler.getModule('FinnHealthBar').scriptCall('createHealthBar');
+
+        // disable the icon movement for jake and pibby icons
         ModuleHandler.getModule('FinnHealthBar').scriptCall('addPlayer', [pibbyIcon]);
         ModuleHandler.getModule('FinnHealthBar').scriptCall('addCpu', [jakeIcon]);
 
+        // get finn's healthbar
         var finnH = ModuleHandler.getModule('FinnHealthBar').scriptCall('getPaHealthBar');
 
-        var iconY = Preferences.get_downscroll() ? -15 : 550;
+        var iconY = finnH.y;
 
         #if mobile
         iconY = -15;

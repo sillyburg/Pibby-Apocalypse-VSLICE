@@ -30,16 +30,18 @@ class AnnoyingAhhShakeModule extends Module
     {
         super.onBeatHit(e);
 
+        if (PlayState.instance == null) return;
+
         if (enabled)
         {
-            if (PlayState.instance.camHUD != null) PlayState.instance.camHUD.zoom += 0.03;
+            if (PlayState.instance.camHUD != null) PlayState.instance?.camHUD.zoom += 0.03;
             if (FlxG.camera != null) FlxG.camera.zoom += 0.015;
 
-            if (PlayState.instance.camHUD != null) PlayState.instance.camHUD.shake(0.002, Conductor.instance.beatLengthMs / 1000);
+            if (PlayState.instance.camHUD != null) PlayState.instance?.camHUD.shake(0.002, Conductor.instance.beatLengthMs / 1000);
 
             angled = !angled;
 
-            if (PlayState.instance.camHUD != null) PlayState.instance.camHUD.angle = angled ? 1 : -1;
+            if (PlayState.instance.camHUD != null) PlayState.instance?.camHUD.angle = angled ? 1 : -1;
         }
     }
 }

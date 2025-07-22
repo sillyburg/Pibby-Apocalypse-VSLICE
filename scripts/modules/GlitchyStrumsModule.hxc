@@ -11,6 +11,10 @@ import flixel.tweens.FlxTween;
 
 class GlitchyStrumsModule extends Module
 {
+    /*
+    used to glitch the strum notes
+    */
+
     var glitchStrumsShads:Array<FlxRuntimeShader>;
     var initializedStrums:Bool = false;
 

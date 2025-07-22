@@ -15,6 +15,15 @@ import flixel.FlxG;
 
 class PAShaderModule extends Module
 {
+
+    /*
+    module for stuff like:
+    - the zoom aberration
+    - the opponent sing glitch
+    - health drain
+    - and the icon glitch
+    */
+    
     var zoomShad:FlxRuntimeShader;
     var pibbyFNF:FlxRuntimeShader;
 
@@ -58,11 +67,9 @@ class PAShaderModule extends Module
         playerIcons.push(PlayState.instance.iconP1);
         cpuIcons.push(PlayState.instance.iconP2);
 
-        var zoomShadString:String = Assets.getText(Paths.frag('aberrationCam'));
-        zoomShad = new FlxRuntimeShader(zoomShadString);
+        zoomShad = new FlxRuntimeShader(Assets.getText(Paths.frag('aberrationCam')));
 
-        var zoomShadStringpibbyFNF:String = Assets.getText(Paths.frag('Pibbified'));
-        pibbyFNF = new FlxRuntimeShader(zoomShadStringpibbyFNF);
+        pibbyFNF = new FlxRuntimeShader(Assets.getText(Paths.frag('Pibbified')));
 
         pibbyFNF.setFloat('iMouseX', 500);
         pibbyFNF.setInt('NUM_SAMPLES', 3);

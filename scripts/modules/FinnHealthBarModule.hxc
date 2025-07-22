@@ -10,6 +10,9 @@ import funkin.modding.module.Module;
 
 class FinnHealthBarModule extends Module
 {
+    /*
+    used to create finn's health bar
+    */
     function new ()
     {
         super('FinnHealthBar', 1);
