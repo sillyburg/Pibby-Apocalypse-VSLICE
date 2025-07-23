@@ -21,10 +21,10 @@
 			0,
 			0
 		],
+		"id": "SurvivorBF",
+		"flipX": false,
 		"isPixel": false,
-		"scale": 1,
-		"id": "bf",
-		"flipX": false
+		"scale": 1
 	},
 	"assetPath": "characters/BfSwordUp",
 	"animations": [
@@ -96,7 +96,7 @@
 		{
 			"flipY": false,
 			"offsets": [
-				620,
+				170,
 				223
 			],
 			"frameRate": 24,
@@ -109,7 +109,7 @@
 		{
 			"flipY": false,
 			"offsets": [
-				620,
+				170,
 				223
 			],
 			"frameRate": 24,

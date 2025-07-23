@@ -56,6 +56,8 @@ class GlitchNoteKind extends NoteKind
 
         if (e.note.noteData.kind != "glitchChar") return;
 
+        if (PlayState.instance.currentStage.getDad() == null) return;
+
         trace('you pressed a glitch note!!!!!!!!! kind to confirm: ' + e.note.noteData.kind);
 
         if (glitchShad != null) glitchShad = null;

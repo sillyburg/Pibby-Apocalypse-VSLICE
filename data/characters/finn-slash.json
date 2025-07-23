@@ -5,10 +5,10 @@
     "singTime": 6.1,
     "isPixel": false,
     "offsets": [
-        20,
-        25
+        50,
+        50
     ],
-    "scale": 0.65,
+    "scale": 0.6,
     "healthIcon": {
         "id": "finn",
         "isPixel": false,

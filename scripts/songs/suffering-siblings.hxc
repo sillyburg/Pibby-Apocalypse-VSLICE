@@ -139,6 +139,11 @@ class SufferingOhMyGod extends Song
         if (pibbyIcon != null) pibbyIcon.destroy();
         if (jakeIcon != null) jakeIcon.destroy();
 
+        for (i in ["bg", "light", "darkout", "darkin"]) PlayState.instance.currentStage.getNamedProp(i).visible = true;
+
+        PlayState.instance.currentStage.getGirlfriend().visible = true;
+        PlayState.instance.currentStage.getCharacter('Jake').visible = true;
+
         PlayState.instance.camHUD.alpha = 0;
     }
 
@@ -173,6 +178,11 @@ class SufferingOhMyGod extends Song
 
                 PlayState.instance.currentStage.getGirlfriend().visible = false;
                 PlayState.instance.currentStage.getCharacter('Jake').visible = false;
+            case 584:
+                for (i in ["bg", "light", "darkout", "darkin"]) PlayState.instance.currentStage.getNamedProp(i).visible = true;
+
+                PlayState.instance.currentStage.getGirlfriend().visible = true;
+                PlayState.instance.currentStage.getCharacter('Jake').visible = true;
         }
     }
     
