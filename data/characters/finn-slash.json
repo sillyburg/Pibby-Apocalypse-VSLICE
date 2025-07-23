@@ -4,7 +4,11 @@
     "assetPath": "characters/Finn-Slash",
     "singTime": 6.1,
     "isPixel": false,
-    "scale": 0.3,
+    "offsets": [
+        20,
+        25
+    ],
+    "scale": 0.65,
     "healthIcon": {
         "id": "finn",
         "isPixel": false,

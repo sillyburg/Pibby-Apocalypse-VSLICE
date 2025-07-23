@@ -1,0 +1,28 @@
+import funkin.play.character.SparrowCharacter;
+import funkin.play.character.CharacterType;
+import funkin.play.PlayState;
+
+class BFSwordCharacter extends SparrowCharacter
+{
+  function new()
+  {
+    super('bfsword');
+  }
+
+  function onNoteHit(event:HitNoteScriptEvent)
+  {
+    if (event.note.noteData.getMustHitNote())
+    {
+      // Override the hit note animation.
+      switch (event.note.noteData.kind)
+      {
+        case "altAnim":
+          holdTimer = 0;
+          this.playSingAnimation(event.note.noteData.getDirection(), false, 'alt');
+          return;
+      }
+    }
+
+    super.onNoteHit(event);
+  }
+}

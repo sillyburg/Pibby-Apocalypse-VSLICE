@@ -1,67 +1,97 @@
 {
-    "version": "1.0.0",
-    "name": "Finn Sword",
-    "assetPath": "characters/Finn-sword",
-    "singTime": 6.1,
-    "isPixel": false,
-    "scale": 1,
-    "healthIcon": {
-        "id": "finn",
-        "isPixel": false,
-        "flipX": false,
-        "scale": 1
-    },
-    "animations": [
-        {
-            "name": "singLEFT",
-            "prefix": "Left",
-            "offsets": [
-                288,
-                11
-            ],
-            "frameRate": 24,
-            "frameIndices": []
-        },
-        {
-            "name": "singDOWN",
-            "prefix": "Down",
-            "offsets": [
-                -62,
-                -206
-            ],
-            "frameRate": 24,
-            "frameIndices": []
-        },
-        {
-            "name": "singUP",
-            "prefix": "Up",
-            "offsets": [
-                30,
-                375
-            ],
-            "frameRate": 24,
-            "frameIndices": []
-        },
-        {
-            "name": "singRIGHT",
-            "prefix": "Right",
-            "offsets": [
-                -84,
-                13
-            ],
-            "frameRate": 24,
-            "frameIndices": []
-        },
-        {
-            "name": "idle",
-            "prefix": "Idle",
-            "offsets": [
-                0,
-                0
-            ],
-            "frameRate": 24,
-            "frameIndices": []
-        }
-    ],
-    "flipX": false
+	"version": "1.0.0",
+	"renderType": "sparrow",
+	"offsets": [
+		0,
+		0
+	],
+	"danceEvery": 1,
+	"scale": 0.9,
+	"name": "Finn Sword",
+	"flipX": false,
+	"cameraOffsets": [
+		0,
+		0
+	],
+	"isPixel": false,
+	"singTime": 6.1,
+	"startingAnimation": "idle",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"isPixel": false,
+		"scale": 1,
+		"id": "finn",
+		"flipX": false
+	},
+	"assetPath": "characters/Finn-sword",
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				288,
+				11
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Left",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-41,
+				-143
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Down",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				11,
+				255
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Up",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-84,
+				13
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Right",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				1
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Idle",
+			"flipX": false,
+			"looped": false,
+			"name": "idle"
+		}
+	]
 }

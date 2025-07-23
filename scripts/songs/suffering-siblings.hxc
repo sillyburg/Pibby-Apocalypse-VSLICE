@@ -59,9 +59,6 @@ class SufferingOhMyGod extends Song
         ModuleHandler.getModule('FinnHealthBar').scriptCall('addPlayer', [pibbyIcon]);
         ModuleHandler.getModule('FinnHealthBar').scriptCall('addCpu', [jakeIcon]);
 
-        // preload chars
-        for (i in ['finn-sword', 'finn-slash', 'finn-hurting', 'bfsword']) ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('preloadChar', [i]);
-
         // get finn's healthbar
         var finnH = ModuleHandler.getModule('FinnHealthBar').scriptCall('getPaHealthBar');
 
@@ -112,6 +109,9 @@ class SufferingOhMyGod extends Song
 
         FlxG.camera.fade(0xFF000000, 0.001);
         PlayState.instance.camHUD.alpha = 0;
+
+        // preload chars
+        for (i in ['finn-sword', 'finn-slash', 'finn-hurting', 'bfsword']) ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('preloadChar', [i]);
     }
 
     function onUpdate(e:Dynamic)
@@ -168,6 +168,11 @@ class SufferingOhMyGod extends Song
                 PlayState.instance.camHUD.fade(0xFF000000, 0.00001);
             case 424:
                 PlayState.instance.camHUD.fade(0xFF000000, 10, true);
+            case 520:
+                for (i in ["bg", "light", "darkout", "darkin"]) PlayState.instance.currentStage.getNamedProp(i).visible = false;
+
+                PlayState.instance.currentStage.getGirlfriend().visible = false;
+                PlayState.instance.currentStage.getCharacter('Jake').visible = false;
         }
     }
     

@@ -1,0 +1,58 @@
+import funkin.play.event.SongEvent;
+import funkin.play.PlayState;
+
+import flixel.FlxG;
+
+import flixel.util.FlxColor;
+
+class FlashCamEvent extends SongEvent
+{
+    function new()
+    {
+        super('FlashCamEvent');
+    }
+
+    override function getTitle()
+    {
+        return "Flash Camera";
+    }
+
+    override function handleEvent(params:Dynamic)
+    {
+        if (PlayState.instance == null) return;
+
+        switch (params.value.camera)
+        {
+            case 1: PlayState.instance.camHUD.flash(FlxColor.fromString(params.value.color), params.value.duration);
+            case 2: FlxG.camera.flash(FlxColor.fromString(params.value.color), params.value.duration);
+        }
+    }
+
+    override function getEventSchema()
+    {
+        return [
+            {
+                name: "camera",
+                title: "Camera",
+                defaultValue: "camHUD",
+                type: "enum",
+                keys: [
+                    "camHUD" => 1,
+                    "camGame" => 2
+                ]
+            },
+            {
+                name: "duration",
+                title: "Flash Duration",
+                defaultValue: "1",
+                type: "float"
+            },
+            {
+                name: "color",
+                title: "Flash Color",
+                defaultValue: "WHITE",
+                type: "string"
+            }
+        ];
+    }
+}
