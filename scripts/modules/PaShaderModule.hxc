@@ -144,6 +144,8 @@ class PAShaderModule extends Module
 
         super.onDestroy(e);
 
+        initialized = false;
+
         FlxG.camera.filters = [];
     }
 
