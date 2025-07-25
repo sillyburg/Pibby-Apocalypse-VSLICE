@@ -19,4 +19,3 @@ pull requests _are_ welcome just don't shit on my code or else i _will_ lose mot
 - Silly Funkin Remnants ~ Placeholder Icon
 - Poedev ~ Change Character Script
 - Y-Pansion (KoloInDaKrib) ~ Capsule Offset
-- 
