@@ -296,17 +296,6 @@
     },
     {
       "t": 32000,
-      "e": "FocusCamera",
-      "v": {
-	"duration": 8,
-	"x": 0,
-	"y": 0,
-	"ease": "expoOut",
-	"char": 1
-}
-    },
-    {
-      "t": 32000,
       "e": "CinematicsEvent",
       "v": {
 	"ease": "expoOut",
@@ -322,6 +311,17 @@
 	"ease": "expoOut",
 	"mode": "stage",
 	"zoom": 1.15
+}
+    },
+    {
+      "t": 32000,
+      "e": "FocusCamera",
+      "v": {
+	"duration": 8,
+	"x": 0,
+	"y": 0,
+	"ease": "expoOut",
+	"char": 1
 }
     },
     {
@@ -444,6 +444,14 @@
 }
     },
     {
+      "t": 53250,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 4,
+	"intensity": 1
+}
+    },
+    {
       "t": 53333.3333333333,
       "e": "ZoomCamera",
       "v": {
@@ -454,7 +462,7 @@
 }
     },
     {
-      "t": 53333.3333333334,
+      "t": 53333.3333333333,
       "e": "FocusCamera",
       "v": {
 	"duration": 4,
@@ -483,6 +491,14 @@
       "e": "FocusCamera",
       "v": {
 	"char": 0
+}
+    },
+    {
+      "t": 63916.6666666667,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 1,
+	"intensity": 1
 }
     },
     {
@@ -551,6 +567,14 @@
 }
     },
     {
+      "t": 83916.6666666667,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 2,
+	"intensity": 1
+}
+    },
+    {
       "t": 84666.6666666667,
       "e": "ZoomCamera",
       "v": {
@@ -587,10 +611,58 @@
 }
     },
     {
+      "t": 90083.6666666667,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 1,
+	"intensity": 1
+}
+    },
+    {
       "t": 90666.6666666666,
       "e": "FocusCamera",
       "v": {
 	"char": 0
+}
+    },
+    {
+      "t": 93500,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 93833.3333333333,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 94166.6666666667,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 94500,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 94666.6666666667,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 4,
+	"intensity": 1
 }
     },
     {
@@ -636,6 +708,14 @@
 	"y": 0,
 	"char": 0,
 	"ease": "CLASSIC"
+}
+    },
+    {
+      "t": 106583.333333333,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 2,
+	"intensity": 1
 }
     },
     {
@@ -706,6 +786,22 @@
 }
     },
     {
+      "t": 115750.666666667,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 4,
+	"intensity": 1
+}
+    },
+    {
+      "t": 117250,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 1,
+	"intensity": 1
+}
+    },
+    {
       "t": 117333.333333333,
       "e": "FocusCamera",
       "v": {
@@ -724,6 +820,14 @@
 	"duration": 4,
 	"zoom": 1,
 	"mode": "direct"
+}
+    },
+    {
+      "t": 138666.666666667,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 4,
+	"intensity": 1
 }
     },
     {
@@ -759,6 +863,14 @@
 }
     },
     {
+      "t": 162500,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 1,
+	"intensity": 1
+}
+    },
+    {
       "t": 162666.666666667,
       "e": "FocusCamera",
       "v": {
@@ -770,6 +882,70 @@
       "e": "JakeOrGF",
       "v": {
 	"focusTo": 1
+}
+    },
+    {
+      "t": 168166.666666667,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 168500,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 168833.333333333,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 169166.666666667,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 169500,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 169833.333333333,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 170166.666666667,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 170500,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
 }
     },
     {
@@ -794,6 +970,110 @@
 }
     },
     {
+      "t": 170750,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 170833.333333333,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 170916.666666667,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 171083.333333333,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 171166.666666667,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 171250,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 171416.666666667,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 171500,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 171583.333333333,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 171750,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 171833.333333333,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 171916.666666667,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 172000,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 4,
+	"intensity": 1
+}
+    },
+    {
       "t": 172500,
       "e": "BurgerChangeCharEvent",
       "v": {
@@ -808,6 +1088,14 @@
 	"duration": 1,
 	"color": "WHITE",
 	"camera": 2
+}
+    },
+    {
+      "t": 173250,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 1,
+	"intensity": 1
 }
     },
     {
@@ -964,12 +1252,38 @@
 }
     },
     {
+      "t": 193583.333333333,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 4,
+	"intensity": 1
+}
+    },
+    {
+      "t": 194583.333333333,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 2,
+	"intensity": 1
+}
+    },
+    {
       "t": 194666.666666667,
       "e": "FlashCamEvent",
       "v": {
 	"duration": 1,
 	"camera": 1,
 	"color": "WHITE"
+}
+    },
+    {
+      "t": 194666.666666667,
+      "e": "ZoomCamera",
+      "v": {
+	"ease": "expoOut",
+	"duration": 24,
+	"mode": "stage",
+	"zoom": 1.15
 }
     },
     {
@@ -996,48 +1310,151 @@
 }
     },
     {
+      "t": 197000,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 197666.666666667,
+      "e": "FocusCamera",
+      "v": {
+	"duration": 16,
+	"x": 620,
+	"y": 580,
+	"char": -1,
+	"ease": "sineInOut"
+}
+    },
+    {
+      "t": 197666.666666667,
+      "e": "ZoomCamera",
+      "v": {
+	"duration": 16,
+	"ease": "sineInOut",
+	"mode": "stage",
+	"zoom": 1
+}
+    },
+    {
+      "t": 197833.333333333,
+      "e": "PlayAnimBurgerEvent",
+      "v": {
+	"animation": "Cmon",
+	"character": 3
+}
+    },
+    {
+      "t": 198666.333333333,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 1,
+	"intensity": 1
+}
+    },
+    {
+      "t": 199916.666666667,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 4,
+	"intensity": 1
+}
+    },
+    {
       "t": 200000,
-      "e": "FocusCamera",
+      "e": "ZoomCamera",
       "v": {
-	"char": 0
+	"duration": 16,
+	"ease": "expoOut",
+	"mode": "stage",
+	"zoom": 1.15
 }
     },
     {
-      "t": 205333.333333334,
-      "e": "FocusCamera",
+      "t": 200000,
+      "e": "BurgerChangeCharEvent",
       "v": {
-	"char": 1
+	"changeFrom": 3,
+	"changeTo": "Pibby-Angy"
 }
     },
     {
-      "t": 210666.666666667,
-      "e": "FocusCamera",
+      "t": 200000,
+      "e": "JakeOrGF",
       "v": {
-	"char": 0
+	"focusTo": 1
 }
     },
     {
-      "t": 216000,
+      "t": 200083.333333333,
+      "e": "ZoomCamera",
+      "v": {
+	"ease": "expoOut",
+	"duration": 20,
+	"zoom": 1.15,
+	"mode": "stage"
+}
+    },
+    {
+      "t": 202666.666666667,
       "e": "FocusCamera",
       "v": {
-	"duration": 4,
 	"x": 0,
+	"duration": 4,
 	"y": 0,
-	"ease": "CLASSIC",
-	"char": 1
+	"char": 0,
+	"ease": "CLASSIC"
 }
     },
     {
-      "t": 221333.333333334,
+      "t": 203916.333333333,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 1,
+	"intensity": 1
+}
+    },
+    {
+      "t": 205000,
       "e": "FocusCamera",
       "v": {
-	"char": 0
+	"duration": 16,
+	"x": 620,
+	"y": 580,
+	"ease": "sineInOut",
+	"char": -1
+}
+    },
+    {
+      "t": 205000,
+      "e": "ZoomCamera",
+      "v": {
+	"ease": "sineInOut",
+	"duration": 16,
+	"mode": "stage",
+	"zoom": 1
+}
+    },
+    {
+      "t": 226666.666666667,
+      "e": "ZoomCamera",
+      "v": {
+	"duration": 16,
+	"ease": "expoOut",
+	"mode": "stage",
+	"zoom": 1.15
 }
     },
     {
       "t": 226666.666666667,
       "e": "FocusCamera",
       "v": {
+	"duration": 4,
+	"x": 0,
+	"y": 0,
+	"ease": "CLASSIC",
 	"char": 1
 }
     },
@@ -1049,6 +1466,24 @@
 }
     },
     {
+      "t": 230666.666666667,
+      "e": "JakeOrGF",
+      "v": {
+	"focusTo": 1
+}
+    },
+    {
+      "t": 232000,
+      "e": "FocusCamera",
+      "v": {
+	"x": -25,
+	"duration": 16,
+	"y": 0,
+	"char": 0,
+	"ease": "sineInOut"
+}
+    },
+    {
       "t": 237333.333333334,
       "e": "FocusCamera",
       "v": {
@@ -1056,9 +1491,13 @@
 }
     },
     {
-      "t": 241166.666666667,
+      "t": 240000,
       "e": "FocusCamera",
       "v": {
+	"duration": 4,
+	"x": 0,
+	"y": 0,
+	"ease": "CLASSIC",
 	"char": 0
 }
     },
@@ -1070,10 +1509,18 @@
 }
     },
     {
-      "t": 245333.333333334,
-      "e": "FocusCamera",
+      "t": 245333.333333333,
+      "e": "JakeOrGF",
       "v": {
-	"char": 0
+	"focusTo": 1
+}
+    },
+    {
+      "t": 247916.666666667,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 8,
+	"intensity": 1
 }
     },
     {
@@ -1091,10 +1538,26 @@
 }
     },
     {
-      "t": 253333.333333334,
-      "e": "FocusCamera",
+      "t": 251916.666666667,
+      "e": "SetCameraBop",
       "v": {
-	"char": 1
+	"rate": 1,
+	"intensity": 1
+}
+    },
+    {
+      "t": 253250,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 8,
+	"intensity": 1
+}
+    },
+    {
+      "t": 253333.333333334,
+      "e": "JakeOrGF",
+      "v": {
+	"focusTo": 2
 }
     },
     {
@@ -1102,6 +1565,14 @@
       "e": "FocusCamera",
       "v": {
 	"char": 0
+}
+    },
+    {
+      "t": 257250,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 1,
+	"intensity": 1
 }
     },
     {
@@ -1145,6 +1616,14 @@
 }
     },
     {
+      "t": 258583.333333333,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 2,
+	"intensity": 1
+}
+    },
+    {
       "t": 258666.666666667,
       "e": "ZoomCamera",
       "v": {
@@ -1162,10 +1641,17 @@
 }
     },
     {
-      "t": 264000.000000001,
-      "e": "FocusCamera",
+      "t": 262500,
+      "e": "JakeOrGF",
       "v": {
-	"char": 0
+	"focusTo": 2
+}
+    },
+    {
+      "t": 264000,
+      "e": "JakeOrGF",
+      "v": {
+	"focusTo": 1
 }
     },
     {
@@ -1180,6 +1666,95 @@
       "e": "FocusCamera",
       "v": {
 	"char": 0
+}
+    },
+    {
+      "t": 279916.666666667,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 8,
+	"intensity": 1
+}
+    },
+    {
+      "t": 280000,
+      "e": "FlashCamEvent",
+      "v": {
+	"duration": 1,
+	"color": "WHITE",
+	"camera": 1
+}
+    },
+    {
+      "t": 282583.333333333,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 4,
+	"intensity": 1
+}
+    },
+    {
+      "t": 304000,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 2,
+	"intensity": 1
+}
+    },
+    {
+      "t": 308750,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 1,
+	"intensity": 1
+}
+    },
+    {
+      "t": 309000,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 312166.666666667,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 312500,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 312833.333333333,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 313166.666666667,
+      "e": "AddZoomEvent",
+      "v": {
+	"hudZoom": 0.03,
+	"gameZoom": 0.015
+}
+    },
+    {
+      "t": 313250,
+      "e": "SetCameraBop",
+      "v": {
+	"rate": 12,
+	"intensity": 1
 }
     }
   ],
@@ -8286,56 +8861,56 @@
         "t": 118166.666666667,
         "d": 5,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
-        "t": 118208.333333333,
+        "t": 118222.222222222,
         "d": 7,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
         "t": 118250,
         "d": 4,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
         "t": 118291.666666667,
         "d": 6,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
         "t": 118333.333333333,
         "d": 5,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
         "t": 118375,
         "d": 4,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
         "t": 118416.666666667,
         "d": 7,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
         "t": 118458.333333333,
         "d": 6,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
@@ -8349,7 +8924,7 @@
         "t": 118500,
         "d": 7,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
@@ -11630,7 +12205,6 @@
         "t": 178666.666666667,
         "d": 2,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
@@ -11644,14 +12218,12 @@
         "t": 179000,
         "d": 1,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
         "t": 179000,
         "d": 0,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
@@ -11672,7 +12244,6 @@
         "t": 179333.333333333,
         "d": 3,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
@@ -11686,7 +12257,6 @@
         "t": 179500,
         "d": 1,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
@@ -11700,14 +12270,12 @@
         "t": 179666.666666667,
         "d": 0,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
         "t": 179666.666666667,
         "d": 1,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
@@ -11728,7 +12296,6 @@
         "t": 179750,
         "d": 2,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
@@ -11742,7 +12309,6 @@
         "t": 179833.333333333,
         "d": 3,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
@@ -11756,7 +12322,6 @@
         "t": 179916.666666667,
         "d": 1,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
@@ -11770,7 +12335,6 @@
         "t": 180000,
         "d": 2,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
@@ -11784,7 +12348,6 @@
         "t": 180166.666666667,
         "d": 2,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
@@ -11798,14 +12361,12 @@
         "t": 180333.333333334,
         "d": 3,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
         "t": 180333.333333334,
         "d": 1,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
@@ -11826,7 +12387,6 @@
         "t": 180416.666666667,
         "d": 0,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
@@ -11840,7 +12400,6 @@
         "t": 180583.333333334,
         "d": 1,
         "l": 0,
-        "k": "altAnim",
         "p": [        ]
       },
       {
@@ -18014,14 +18573,14 @@
         "t": 263166.666666667,
         "d": 6,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
         "t": 263250.000000001,
         "d": 5,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
@@ -18042,7 +18601,7 @@
         "t": 263500.000000001,
         "d": 7,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
@@ -18056,21 +18615,21 @@
         "t": 263666.666666667,
         "d": 6,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
         "t": 263750.000000001,
         "d": 4,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
         "t": 263833.333333334,
         "d": 7,
         "l": 0,
-        "k": "jakeSing",
+        "k": "glitchJakeChar",
         "p": [        ]
       },
       {
@@ -20436,5 +20995,5 @@
       }
     ]
   },
-  "generatedBy": "Friday Night Funkin' - v0.7.2"
+  "generatedBy": "Friday Night Funkin' - v0.7.3"
 }

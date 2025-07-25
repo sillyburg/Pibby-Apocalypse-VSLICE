@@ -23,11 +23,6 @@ class GlitchyStrumsModule extends Module
         super('glitchStrumsModule');
     }
 
-    function onDestroy(e:Dynamic)
-    {
-        super.onDestroy(e);
-    }
-
     function onSongRetry(e:Dynamic)
     {
         super.onSongRetry(e);
@@ -35,7 +30,7 @@ class GlitchyStrumsModule extends Module
         initializedStrums = false;
     }
 
-    function glitchifyStrums(e:Dynamic)
+    function glitchifyStrums()
     {
         if (PlayState.instance == null) return;
 
@@ -49,6 +44,20 @@ class GlitchyStrumsModule extends Module
         for (i in glitchStrumsShads) i.setFloat('negativity', 0);
 
         initializedStrums = true;
+    }
+
+    function unglitchifyStrums()
+    {
+        initializedStrums = false;
+
+        glitchStrumsShads = [
+            null,
+            null,
+            null,
+            null
+        ];
+
+        for (i in PlayState.instance.opponentStrumline.strumlineNotes.members) i.shader = null;
     }
 
     var time:Float = 0;

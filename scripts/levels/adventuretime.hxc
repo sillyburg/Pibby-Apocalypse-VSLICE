@@ -1,0 +1,13 @@
+import funkin.ui.story.Level;
+
+class AdventureTimePAWeek extends Level
+{
+    function new()
+    {
+        super('adventuretime');
+
+        this._data.visible = false;
+
+        trace(this.isVisible());
+    }
+}

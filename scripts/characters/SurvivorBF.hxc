@@ -32,6 +32,7 @@ class SurvivorBFCharacter extends SparrowCharacter
       switch (event.note.noteData.kind)
       {
         case "pibbySing":
+          holdTimer = 0;
           return;
       }
     }

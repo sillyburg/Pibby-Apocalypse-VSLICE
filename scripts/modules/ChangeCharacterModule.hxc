@@ -34,8 +34,6 @@ class ChangeCharStuffModule extends Module
 
         // thanks poedev for this
 
-        trace(ModuleHandler.getModule("CharacterResetHandler").scriptGet("characterZIndexes")['gf']);
-
         switch (charType)
         {
             case 1:

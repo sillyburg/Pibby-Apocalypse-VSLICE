@@ -1,0 +1,52 @@
+import funkin.play.event.SongEvent;
+import funkin.play.PlayState;
+
+import flixel.FlxG;
+
+class PlayAnimBurgerEvent extends SongEvent
+{
+    function new()
+    {
+        super('PlayAnimBurgerEvent');
+    }
+
+    override function getTitle()
+    {
+        return "Play Animation (BURGER EDITION)";
+    }
+
+    override function handleEvent(params:Dynamic)
+    {
+        if (PlayState.instance == null) return;
+
+        switch (params.value.character)
+        {
+            case 1: PlayState.instance.currentStage.getDad().playAnimation(params.value.animation, true);
+            case 2: PlayState.instance.currentStage.getBoyfriend().playAnimation(params.value.animation, true);
+            case 3: PlayState.instance.currentStage.getGirlfriend().playAnimation(params.value.animation, true);
+        }
+    }
+
+    override function getEventSchema()
+    {
+        return [
+            {
+                name: "character",
+                title: "Character",
+                defaultValue: "Girlfriend",
+                type: "enum",
+                keys: [
+                    "Opponent" => 1,
+                    "Boyfriend" => 2,
+                    "Girlfriend" => 3
+                ]
+            },
+            {
+                name: "animation",
+                title: "Animation",
+                defaultValue: "",
+                type: "string"
+            }
+        ];
+    }
+}

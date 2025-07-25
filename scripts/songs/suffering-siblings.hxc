@@ -72,9 +72,9 @@ class SufferingOhMyGod extends Song
         jakeIcon.setPosition(finnH.x, iconY);
     }
 
-    function onCountdownStart(e:Dynamic)
+    function onSongLoaded(e:Dynamic)
     {
-        super.onCountdownStart(e);
+        super.onSongLoaded(e);
 
         jake = CharacterDataParser.fetchCharacter('Jake', false);
 
@@ -111,7 +111,7 @@ class SufferingOhMyGod extends Song
         PlayState.instance.camHUD.alpha = 0;
 
         // preload chars
-        for (i in ['finn-sword', 'finn-slash', 'finn-hurting', 'bfsword']) ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('preloadChar', [i]);
+        for (i in ['finn-sword', 'finn-slash', 'finn-hurting', 'bfsword', 'Pibby-Angy']) ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('preloadChar', [i]);
     }
 
     function onUpdate(e:Dynamic)
@@ -145,15 +145,28 @@ class SufferingOhMyGod extends Song
         PlayState.instance.currentStage.getCharacter('Jake').visible = true;
 
         PlayState.instance.camHUD.alpha = 0;
+
+        PlayState.instance.camGame.visible = true;
     }
 
     function onDestroy(e:Dynamic)
     {
         super.onDestroy(e);
 
+        // unglitch the strums
+        ModuleHandler.getModule('glitchStrumsModule').scriptCall('unglitchifyStrums');
+
         if (jake != null) jake.destroy();
         if (pibbyIcon != null) pibbyIcon.destroy();
         if (jakeIcon != null) jakeIcon.destroy();
+    }
+
+    function onSongEnd(e:Dynamic)
+    {
+        super.onSongEnd(e);
+
+        // unglitch the strums
+        ModuleHandler.getModule('glitchStrumsModule').scriptCall('unglitchifyStrums');
     }
 
     function onBeatHit(e:Dynamic)
@@ -183,6 +196,21 @@ class SufferingOhMyGod extends Song
 
                 PlayState.instance.currentStage.getGirlfriend().visible = true;
                 PlayState.instance.currentStage.getCharacter('Jake').visible = true;
+            case 840:
+                PlayState.instance.camGame.visible = false;
+            case 848:
+                PlayState.instance.camGame.visible = true;
+                PlayState.instance.camGame.flash(0xFFFFFFFF, 0.5);
+
+                for (i in ["bg", "light", "darkout", "darkin"]) PlayState.instance.currentStage.getNamedProp(i).visible = false;
+
+                PlayState.instance.currentStage.getDad().visible = false;
+                PlayState.instance.currentStage.getCharacter('Jake').visible = false;
+
+                PlayState.instance.currentStage.getGirlfriend().colorTransform.color = 0xFFFFFFFF;
+                PlayState.instance.currentStage.getBoyfriend().colorTransform.color = 0xFFFFFFFF;
+            case 945:
+                PlayState.instance.camHUD.fade(0xFF000000, 1);
         }
     }
     

@@ -18,148 +18,148 @@
 	"isPixel": false,
 	"assetPath": "characters/pibby",
 	"healthIcon": {
-		"isPixel": false,
 		"offsets": [
 			0,
 			0
 		],
+		"isPixel": false,
 		"scale": 1,
-		"id": "pibby",
-		"flipX": false
+		"flipX": false,
+		"id": "pibby"
 	},
 	"animations": [
 		{
-			"loop": true,
+			"flipY": false,
 			"offsets": [
 				-30,
 				-48
 			],
-			"flipY": false,
+			"loop": true,
 			"frameRate": 24,
 			"prefix": "Idle",
-			"name": "idle",
+			"flipX": false,
 			"looped": false,
-			"flipX": false
+			"name": "idle"
 		},
 		{
+			"flipY": false,
 			"offsets": [
 				132,
 				5
 			],
-			"flipY": false,
 			"frameRate": 24,
 			"prefix": "Left",
-			"name": "singLEFT",
+			"flipX": false,
 			"looped": false,
-			"flipX": false
+			"name": "singLEFT"
 		},
 		{
+			"flipY": false,
 			"offsets": [
 				108,
 				13
 			],
-			"flipY": false,
 			"frameRate": 24,
 			"prefix": "Down",
-			"name": "singDOWN",
+			"flipX": false,
 			"looped": false,
-			"flipX": false
+			"name": "singDOWN"
 		},
 		{
+			"flipY": false,
 			"offsets": [
 				-7,
 				89
 			],
-			"flipY": false,
 			"frameRate": 24,
 			"prefix": "Up",
-			"name": "singUP",
+			"flipX": false,
 			"looped": false,
-			"flipX": false
+			"name": "singUP"
 		},
 		{
+			"flipY": false,
 			"offsets": [
 				1,
 				7
 			],
-			"flipY": false,
 			"frameRate": 24,
 			"prefix": "Right",
-			"name": "singRIGHT",
+			"flipX": false,
 			"looped": false,
-			"flipX": false
+			"name": "singRIGHT"
 		},
 		{
+			"flipY": false,
 			"offsets": [
 				132,
 				3
 			],
-			"flipY": false,
 			"frameRate": 24,
 			"prefix": "MissL",
-			"name": "singLEFTmiss",
+			"flipX": false,
 			"looped": false,
-			"flipX": false
+			"name": "singLEFTmiss"
 		},
 		{
+			"flipY": false,
 			"offsets": [
 				97,
 				-9
 			],
-			"flipY": false,
 			"frameRate": 24,
 			"prefix": "MissD",
-			"name": "singDOWNmiss",
+			"flipX": false,
 			"looped": false,
-			"flipX": false
+			"name": "singDOWNmiss"
 		},
 		{
+			"flipY": false,
 			"offsets": [
 				-10,
 				89
 			],
-			"flipY": false,
 			"frameRate": 24,
 			"prefix": "MissU",
-			"name": "singUPmiss",
+			"flipX": false,
 			"looped": false,
-			"flipX": false
+			"name": "singUPmiss"
 		},
 		{
+			"flipY": false,
 			"offsets": [
 				1,
 				4
 			],
-			"flipY": false,
 			"frameRate": 24,
 			"prefix": "MissR",
-			"name": "singRIGHTmiss",
+			"flipX": false,
 			"looped": false,
-			"flipX": false
+			"name": "singRIGHTmiss"
 		},
 		{
-			"offsets": [
-				-30,
-				-47
-			],
 			"flipY": false,
+			"offsets": [
+				50,
+				49
+			],
 			"frameRate": 24,
-			"prefix": "cmon",
-			"name": "Cmon",
+			"prefix": "Cmon instancia 1",
+			"flipX": false,
 			"looped": false,
-			"flipX": false
+			"name": "Cmon"
 		},
 		{
+			"flipY": false,
 			"offsets": [
 				-10,
 				-17
 			],
-			"flipY": false,
 			"frameRate": 24,
 			"prefix": "HEY Pose",
-			"name": "hey",
+			"flipX": false,
 			"looped": false,
-			"flipX": false
+			"name": "hey"
 		}
 	]
 }

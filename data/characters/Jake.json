@@ -37,7 +37,7 @@
 			"frameRate": 24,
 			"prefix": "Idle",
 			"name": "idle",
-			"looped": false,
+			"looped": true,
 			"flipX": false
 		},
 		{

@@ -1,0 +1,166 @@
+{
+	"version": "1.0.0",
+	"renderType": "sparrow",
+	"offsets": [
+		0,
+		-50
+	],
+	"danceEvery": 1,
+	"scale": 0.9,
+	"flipX": false,
+	"name": "Pibby Angy",
+	"cameraOffsets": [
+		-10,
+		40
+	],
+	"singTime": 8,
+	"startingAnimation": "idle",
+	"isPixel": false,
+	"assetPath": "characters/Pibby_Angy",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"isPixel": false,
+		"scale": 1,
+		"flipX": false,
+		"id": "pibbyangy"
+	},
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				-164,
+				-152
+			],
+			"loop": true,
+			"frameRate": 24,
+			"prefix": "Idle",
+			"flipX": false,
+			"looped": false,
+			"name": "Idle-Alt"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-64,
+				-132
+			],
+			"loop": true,
+			"frameRate": 24,
+			"prefix": "Idle alt",
+			"flipX": false,
+			"looped": false,
+			"name": "idle"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				68,
+				-100
+			],
+			"frameRate": 24,
+			"prefix": "Left Alt",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				95,
+				-95
+			],
+			"frameRate": 24,
+			"prefix": "Down",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				43,
+				-107
+			],
+			"frameRate": 24,
+			"prefix": "Up",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-60,
+				-155
+			],
+			"frameRate": 24,
+			"prefix": "Right Alt",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				68,
+				-7
+			],
+			"frameRate": 24,
+			"prefix": "MissL",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFTmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				48,
+				-187
+			],
+			"frameRate": 24,
+			"prefix": "MissD",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWNmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-77,
+				37
+			],
+			"frameRate": 24,
+			"prefix": "MissU",
+			"flipX": false,
+			"looped": false,
+			"name": "singUPmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-108,
+				1
+			],
+			"frameRate": 24,
+			"prefix": "MissR",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHTmiss"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				33,
+				-6
+			],
+			"frameRate": 24,
+			"prefix": "cmon",
+			"flipX": false,
+			"looped": false,
+			"name": "Cmon"
+		}
+	]
+}

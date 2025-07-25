@@ -92,6 +92,16 @@ class PAShaderModule extends Module
         if (!PlayState.instance.startingSong && e.beat % PlayState.instance.cameraZoomRate == 0) shadIntensity = 0.07;
     }
 
+    function onSongEvent(e:Dynamic)
+    {
+        if (PlayState.instance == null) return;
+        if (!initialized) return;
+
+        super.onSongEvent(e);
+
+        if (e.eventData.eventKind == 'AddZoomEvent') shadIntensity = 0.07;
+    }
+
     override function onNoteHit(event:Dynamic)
     {
         if (PlayState.instance == null) return;

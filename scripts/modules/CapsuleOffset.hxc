@@ -1,0 +1,29 @@
+package freeplay;
+
+import Std;
+
+import flixel.FlxG;
+
+import funkin.modding.module.Module;
+
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.freeplay.Album;
+
+class FreePlayCustomCapsuleOffset extends Module
+{
+    public function new()
+    {
+        super("FreePlayCustomCapsuleOffset");
+    }
+
+    function onUpdate(e:UpdateScriptEvent)
+    {
+        if (!Std.isOfType(FlxG.state?.subState, FreeplayState)) return;
+
+        var state:FreeplayState = FlxG.state.subState;
+        var currentCapsule:SongMenuItem = state.grpCapsules.members[state.curSelected];
+        var curSongId:String = currentCapsule.freeplayData?.data?.id;
+
+        if (curSongId == 'suffering-siblings') FlxG.state.subState.albumRoll.albumTitle.offset.set(62, 58);
+    }
+}

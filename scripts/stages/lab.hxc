@@ -22,7 +22,9 @@ class LabStage extends Stage
     {
         super.onCreate(event);
 
-        alphaTween = FlxTween.tween(getNamedProp('darkin'), {alpha: 0}, 0.25, {ease: FlxEase.bounceInOut, type: 4});
+        var alphaTweenStart:FlxTween = FlxTween.tween(getNamedProp('darkin'), {alpha: 0}, 0.25, {ease: FlxEase.bounceInOut, type: 4});
+
+        alphaTween = alphaTweenStart;
     }
 
     function onSongStart(event:ScriptEvent)
@@ -34,12 +36,29 @@ class LabStage extends Stage
     {
         super.onUpdate(event);
 
+        if (PlayState.instance == null) return;
+        if (PlayState.instance.currentStage == null) return;
+
         FlxG.camera.followLerp = 0.08;
 
-        if (PlayState.instance != null && !PlayState.instance.isGamePaused && GameOverSubState.instance == null){
+        if (PlayState.instance != null && !PlayState.instance.isGamePaused && GameOverSubState.instance == null && PlayState.instance.currentStage != null){
             if (getNamedProp('darkin') != null) getNamedProp('darkin').angle = Math.sin((Conductor.instance.songPosition / 1000) * (Conductor.instance.bpm / 60) * 1.0) * 5;
             if (getNamedProp('darkout') != null) getNamedProp('darkout').angle = getNamedProp('darkin').angle;
             if (getNamedProp('light') != null) getNamedProp('light').angle = getNamedProp('darkin').angle;   
         }
+    }
+
+    function onPause(e:Dynamic)
+    {
+        super.onPause(e);
+
+        if (alphaTween != null) alphaTween.active = false;
+    }
+
+    function onResume(e:Dynamic)
+    {
+        super.onResume(e);
+
+        if (alphaTween != null) alphaTween.active = true;
     }
 }
