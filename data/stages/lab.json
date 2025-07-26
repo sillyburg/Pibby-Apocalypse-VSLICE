@@ -3,8 +3,8 @@
     {
       "danceEvery": 0,
       "zIndex": 10,
-      "position": [ -200, 180 ],
-      "scale": [ 1.0, 1.0 ],
+      "position": [ -250, 80 ],
+      "scale": [ 1.1, 1.1 ],
       "animType": "sparrow",
       "name": "bg",
       "isPixel": false,
@@ -15,7 +15,7 @@
     {
       "danceEvery": 0,
       "zIndex": 400,
-      "position": [ 200, 180 ],
+      "position": [ 235, 180 ],
       "scale": [ 1.0, 1.0 ],
       "animType": "sparrow",
       "name": "light",
@@ -27,9 +27,9 @@
     {
       "danceEvery": 0,
       "zIndex": 500,
-      "position": [ -200, 180 ],
+      "position": [ -250, 130 ],
       "alpha": 0.7,
-      "scale": [ 1.0, 1.0 ],
+      "scale": [ 1.1, 1.1 ],
       "animType": "sparrow",
       "name": "darkout",
       "isPixel": false,
@@ -40,9 +40,9 @@
     {
       "danceEvery": 0,
       "zIndex": 500,
-      "position": [ -200, 180 ],
+      "position": [ -250, 130 ],
       "alpha": 0.5,
-      "scale": [ 1.0, 1.0 ],
+      "scale": [ 1.1, 1.1 ],
       "animType": "sparrow",
       "name": "darkin",
       "isPixel": false,
@@ -51,13 +51,13 @@
       "animations": []
     }
   ],
-  "cameraZoom": 1.1,
+  "cameraZoom": 1.35,
   "version": "1.0.0",
   "characters": {
     "bf": {
       "zIndex": 300,
       "position": [989.5, 885],
-      "cameraOffsets": [-100, -100]
+      "cameraOffsets": [-200, -100]
     },
     "dad": {
       "zIndex": 200,
@@ -71,5 +71,5 @@
     }
   },
   "name": "lab",
-  "directory": "AdventureTime"
+  "directory": ""
 }
