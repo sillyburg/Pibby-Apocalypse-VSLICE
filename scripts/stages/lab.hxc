@@ -39,6 +39,10 @@ class LabStage extends Stage
         if (PlayState.instance == null) return;
         if (PlayState.instance.currentStage == null) return;
 
+        getNamedProp('light').origin.y = 0;
+        getNamedProp('darkin').origin.y = 0;
+        getNamedProp('darkout').origin.y = 0;
+
         FlxG.camera.followLerp = 0.08;
 
         if (PlayState.instance != null && !PlayState.instance.isGamePaused && GameOverSubState.instance == null && PlayState.instance.currentStage != null){
