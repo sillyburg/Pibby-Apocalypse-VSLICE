@@ -92,7 +92,7 @@ class GlitchyStrumsModule extends Module
 
         if (!initializedStrums) return;
 
-        if (!event.note.noteData.getMustHitNote() && event.note.noteData.kind != 'pibbyInvisibleSing') glitchStrumsShads[event.note.noteData.getDirection()].setFloat('binaryIntensity', FlxG.random.float(1.5, 3) * FlxG.random.int(1, -1, [0]));
+        if (!event.note.noteData.getMustHitNote() && event.note.noteData.kind != 'pibbyInvisibleSing') glitchStrumsShads[event.note.noteData.getDirection()].setFloat('binaryIntensity', FlxG.random.float(1, 2) * FlxG.random.int(1, -1, [0]));
 
         if (event.note.noteData.kind == 'glitchChar') glitchStrums();
     }
@@ -105,6 +105,6 @@ class GlitchyStrumsModule extends Module
 
         if (!initializedStrums) return;
 
-        if (e.step % 2 == 0 && glitchStrumsShads != null) for (i in glitchStrumsShads) i.setFloat('binaryIntensity', FlxG.random.float(5, 6) * FlxG.random.int(1, -1, [0]));
+        if (glitchStrumsShads != null) for (i in glitchStrumsShads) i.setFloat('binaryIntensity', FlxG.random.float(5, 6) * FlxG.random.int(1, -1, [0]));
     }
 }
