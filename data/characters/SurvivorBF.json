@@ -1,6 +1,6 @@
 {
 	"version": "1.0.0",
-	"renderType": "sparrow",
+	"renderType": "multisparrow",
 	"offsets": [
 		0,
 		0
@@ -22,10 +22,10 @@
 			0,
 			0
 		],
-		"id": "SurvivorBF",
-		"flipX": false,
 		"isPixel": false,
-		"scale": 1
+		"scale": 1,
+		"flipX": false,
+		"id": "SurvivorBF"
 	},
 	"animations": [
 		{
@@ -88,6 +88,45 @@
 			"flipX": false,
 			"looped": false,
 			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				61,
+				241
+			],
+			"flipY": false,
+			"assetPath": "characters/bfdeathfinn",
+			"frameRate": 24,
+			"prefix": "bfdies",
+			"name": "firstDeath",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				-17,
+				76
+			],
+			"flipY": false,
+			"assetPath": "characters/bfdeathfinn",
+			"frameRate": 24,
+			"prefix": "deathloop",
+			"looped": true,
+			"name": "deathLoop",
+			"flipX": false
+		},
+		{
+			"offsets": [
+				401,
+				227
+			],
+			"flipY": false,
+			"assetPath": "characters/bfdeathfinn",
+			"frameRate": 24,
+			"prefix": "retry",
+			"name": "deathConfirm",
+			"looped": false,
+			"flipX": false
 		},
 		{
 			"flipY": false,

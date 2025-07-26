@@ -1,0 +1,29 @@
+import funkin.modding.module.Module;
+
+import funkin.play.PlayState;
+import funkin.play.GameOverSubState;
+
+import flixel.FlxG;
+
+import Std;
+
+class PAGameOverFocus extends Module
+{
+    function onUpdate(e:Dynamic)
+    {
+        super.onUpdate(e);
+
+        if (Std.isOfType(FlxG.state.subState, GameOverSubState))
+        {
+            trace('GAMEOVERED: ' + GameOverSubState.blueBallSuffix);
+            if (GameOverSubState.blueBallSuffix != '-Finn') return;
+
+            if (FlxG.camera != null) {
+                FlxG.camera.zoom = 1.3;
+                FlxG.camera.targetOffset.y = -20;
+                FlxG.camera.targetOffset.x = 65;
+                FlxG.camera.snapToTarget();
+            }
+        }
+    }
+}

@@ -176,6 +176,13 @@ class PAShaderModule extends Module
         } else for (i in cpuIcons) if (i != null)  removeIconGlitch(i);
     }
 
+    function onGameOver(e:Dynamic)
+    {
+        super.onGameOver(e);
+
+        FlxG.camera.filters = [];
+    }
+
     function setIconGlitch(icon:HealthIcon)
     {
         if (icon.shader != null) return;

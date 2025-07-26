@@ -1,12 +1,24 @@
-import funkin.play.character.SparrowCharacter;
+import funkin.play.character.MultiSparrowCharacter;
 import funkin.play.character.CharacterType;
+import funkin.play.GameOverSubState;
 import funkin.play.PlayState;
 
-class SurvivorBFCharacter extends SparrowCharacter
+class SurvivorBFCharacter extends MultiSparrowCharacter
 {
   function new()
   {
     super('SurvivorBF');
+  }
+
+  function onSongLoaded(e:Dynamic)
+  {
+    super.onSongLoaded(e);
+
+    if (PlayState.instance == null) return;
+    if (PlayState.instance.currentStage == null) return;
+
+    GameOverSubState.musicSuffix = '-PA';
+    GameOverSubState.blueBallSuffix = '-' + PlayState.instance?.currentStage?.getDad().characterId;
   }
 
   function onNoteHit(event:HitNoteScriptEvent)

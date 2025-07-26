@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="BF Intro.png">
+<TextureAtlas imagePath="BF_Intro.png">
 	<!-- Created with Adobe Animate version 21.0.4.39603 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="BF 10000" x="55" y="55" width="471" height="514" frameX="-128" frameY="-94" frameWidth="600" frameHeight="608"/>
