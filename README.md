@@ -10,7 +10,7 @@ pull requests *are* welcome just don't shit on my code or else i **will** lose m
 
 > [Lem0dy](https://www.youtube.com/@Lem0dy) - Base port (stage, characters, etc) and "Darkness Vol. 2" text
 
-> Zenith - Camera Movement Module (tweaked it a bit)
+> [Zenith](https://youtube.com/@simply_blues) - Camera Movement Module (tweaked it a bit)
 
 > [ADA_Funni](https://youtube.com/@ada_funni) - Helping me add Jake and some other stuff
 
