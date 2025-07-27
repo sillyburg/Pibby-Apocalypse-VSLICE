@@ -29,10 +29,11 @@ class SurvivorBFCharacter extends MultiSparrowCharacter
   {
     if ((StringTools.startsWith(name, 'firstDeath') || StringTools.startsWith(name, 'deathLoop') || StringTools.startsWith(name, 'deathConfirm')))
     {
-      trace('meowers');
-      trace(jaked);
+      // this is also peak code
       if (PlayState.instance.currentStage.getDad().characterId == 'Finn') super.playAnimation(jaked ? name+'-Jake' : name, restart, ignoreOther);
+
       else super.playAnimation(name + '-' + PlayState.instance.currentStage.getDad().characterId, restart, ignoreOther);
+      
       return;
     }
 
@@ -53,6 +54,8 @@ class SurvivorBFCharacter extends MultiSparrowCharacter
 
     switch (event.note.noteData.kind)
       {
+        // this is peak code
+
         case "jakeSing":
           jaked = true;
           GameOverSubState.blueBallSuffix = '-Jake';
