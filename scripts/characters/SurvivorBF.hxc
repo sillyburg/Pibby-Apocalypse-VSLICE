@@ -3,8 +3,12 @@ import funkin.play.character.CharacterType;
 import funkin.play.GameOverSubState;
 import funkin.play.PlayState;
 
+import StringTools;
+
 class SurvivorBFCharacter extends MultiSparrowCharacter
 {
+  var jaked:Bool = false;
+
   function new()
   {
     super('SurvivorBF');
@@ -21,6 +25,20 @@ class SurvivorBFCharacter extends MultiSparrowCharacter
     GameOverSubState.blueBallSuffix = '-' + PlayState.instance?.currentStage?.getDad().characterId;
   }
 
+  function playAnimation(name:String, restart:Bool, ignoreOther:Bool)
+  {
+    if ((StringTools.startsWith(name, 'firstDeath') || StringTools.startsWith(name, 'deathLoop') || StringTools.startsWith(name, 'deathConfirm')))
+    {
+      trace('meowers');
+      trace(jaked);
+      if (PlayState.instance.currentStage.getDad().characterId == 'Finn') super.playAnimation(jaked ? name+'-Jake' : name, restart, ignoreOther);
+      else super.playAnimation(name + '-' + PlayState.instance.currentStage.getDad().characterId, restart, ignoreOther);
+      return;
+    }
+
+    super.playAnimation(name, restart, ignoreOther);
+  }
+
   function onNoteHit(event:HitNoteScriptEvent)
   {
     if (event.note.noteData.getMustHitNote())
@@ -32,6 +50,16 @@ class SurvivorBFCharacter extends MultiSparrowCharacter
           return;
       }
     }
+
+    switch (event.note.noteData.kind)
+      {
+        case "jakeSing":
+          jaked = true;
+          GameOverSubState.blueBallSuffix = '-Jake';
+        default:
+          jaked = false;
+          GameOverSubState.blueBallSuffix = '-' + PlayState.instance?.currentStage?.getDad().characterId;
+      }
 
     super.onNoteHit(event);
   }

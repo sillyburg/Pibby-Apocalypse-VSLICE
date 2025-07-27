@@ -129,6 +129,45 @@
 			"flipX": false
 		},
 		{
+			"offsets": [
+				61,
+				241
+			],
+			"flipY": false,
+			"assetPath": "characters/bfjakedeath",
+			"frameRate": 24,
+			"prefix": "BF dies",
+			"name": "firstDeath-Jake",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				-17,
+				76
+			],
+			"flipY": false,
+			"assetPath": "characters/bfjakedeath",
+			"frameRate": 24,
+			"prefix": "deathloop",
+			"looped": true,
+			"name": "deathLoop-Jake",
+			"flipX": false
+		},
+		{
+			"offsets": [
+				401,
+				227
+			],
+			"flipY": false,
+			"assetPath": "characters/bfjakedeath",
+			"frameRate": 24,
+			"prefix": "retry",
+			"name": "deathConfirm-Jake",
+			"looped": false,
+			"flipX": false
+		},
+		{
 			"flipY": false,
 			"offsets": [
 				-53,

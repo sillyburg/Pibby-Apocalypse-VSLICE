@@ -15,8 +15,8 @@ class PAGameOverFocus extends Module
 
         if (Std.isOfType(FlxG.state.subState, GameOverSubState))
         {
-            trace('GAMEOVERED: ' + GameOverSubState.blueBallSuffix);
-            if (GameOverSubState.blueBallSuffix != '-Finn') return;
+            // trace('GAMEOVERED: ' + GameOverSubState.blueBallSuffix);
+            if (GameOverSubState.blueBallSuffix != '-Finn' && GameOverSubState.blueBallSuffix != '-Jake') return;
 
             if (FlxG.camera != null) {
                 FlxG.camera.zoom = 1.3;
