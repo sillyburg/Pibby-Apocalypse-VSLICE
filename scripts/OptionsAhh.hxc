@@ -23,6 +23,7 @@ class PAOptionsModule extends Module
                 "annoyingAhhShake" => false,
                 "healthDrain" => true,
                 "glitchEffects" => true,
+                "goreDeath" => true,
                 "singGlitchMult" => 1
             ];
 
@@ -53,7 +54,9 @@ class PAOptionsModule extends Module
 
             paOptions.createPrefItemCheckbox("Health Drain", "Enable health drain or not.", function(setTo:Bool) modSettings.set("healthDrain", setTo), modSettings.get("healthDrain"));
             paOptions.createPrefItemCheckbox("Camera Glitch Shaders", "Enable the glitch shaders or not.", function(setTo:Bool) modSettings.set("glitchEffects", setTo), modSettings.get("glitchEffects"));
+            paOptions.createPrefItemCheckbox("Death & Gore", "If disabled, will replace the gore death with the base game one.", function(setTo:Bool) modSettings.set("goreDeath", setTo), modSettings.get("goreDeath"));
             paOptions.createPrefItemNumber("Sing Intensity Multiplier", "Changes how much the glitch affects your camera when the opponent sings. Ignored if Camera Glitch Shaders is turned off.", function(setTo:Dynamic) modSettings.set("singGlitchMult", Std.parseFloat(setTo)), function(setTo:Dynamic) { return Std.string(setTo); }, modSettings.get("singGlitchMult"), 0.05, 10, 0.05, 2);
+            for (i in 0...20) paOptions.createPrefItemNumber(" ", " ", null, function(setTo:Dynamic) { return Std.string(' '); }, 0, 0, 0, 0, 0);
             paOptions.createPrefItemCheckbox("Annoying Ahh Shake", "Dude i dont know about you but im suffering. With my siblings. Call that a suffering siblings. Heh. Get it. Suffering siblings? Like that one pibby apocalypse demo song? please laugh. please. i spent too much thinking about this joke. i just wanna hear you laugh. please. it'd mean the world to me. please.", function(setTo:Bool) modSettings.set("annoyingAhhShake", setTo), modSettings.get("annoyingAhhShake"));
 
             Save.instance.flush();
