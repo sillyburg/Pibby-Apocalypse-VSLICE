@@ -18,7 +18,7 @@ class CameraMovementModule extends Module {
      super('CameraMovementModule', 1);
    }
 
-   var intensity = 10;
+   var intensity = 12.5;
    
    var initialized = false;
 
@@ -83,13 +83,13 @@ class CameraMovementModule extends Module {
    {
       switch(name)
       {
-         case "singLEFT": updateMovement(-intensity, 0, -1);
+         case "singLEFT": updateMovement(-intensity, 0, -1.5);
 
          case "singDOWN": updateMovement(0, intensity, 0);
 
          case "singUP": updateMovement(0, -intensity, 0);
 
-         case "singRIGHT": updateMovement(intensity, 1);
+         case "singRIGHT": updateMovement(intensity, 0, 1.5);
 
          case "idle": updateMovement(0, 0);          
       }
