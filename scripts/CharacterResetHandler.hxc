@@ -20,7 +20,11 @@ class CharacterResetHandler extends Module {
         if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
 		if (PlayState.instance.isMinimalMode) return;
 
-        characterZIndexes = ["bf" => PlayState.instance.currentStage.getBoyfriend().zIndex, "gf" => PlayState.instance.currentStage.getGirlfriend().zIndex, "dad" => PlayState.instance.currentStage.getDad().zIndex];
+        characterZIndexes = [
+            "bf" => bfExists().zIndex,
+            "gf" => gfExists().zIndex,
+            "dad" => dadExists().zIndex
+        ];
 
         super.onCountdownStart(event);
 
@@ -63,5 +67,20 @@ class CharacterResetHandler extends Module {
         }
 
         PlayState.instance.currentStage.refresh();
+    }
+
+    function gfExists()
+    {
+        return PlayState.instance?.currentStage.getGirlfriend() != null ? PlayState.instance?.currentStage.getGirlfriend() : null;
+    }
+
+    function bfExists()
+    {
+        return PlayState.instance?.currentStage.getBoyfriend() != null ? PlayState.instance?.currentStage.getBoyfriend() : null;
+    }
+
+    function dadExists()
+    {
+        return PlayState.instance?.currentStage.getDad() != null ? PlayState.instance?.currentStage.getDad() : null;
     }
 }

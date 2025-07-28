@@ -1,0 +1,45 @@
+import flixel.FlxSprite;
+import flixel.FlxG;
+
+import funkin.Preferences;
+
+import funkin.play.PlayState;
+
+import funkin.modding.module.Module;
+
+class LogoChannelModule extends Module
+{
+    public function new()
+    {
+        super("LogoChannelModule");
+    }
+
+    var curLogo:FlxSprite;
+    var initialized:Bool = false;
+
+    function onDestroy(e:Dynamic)
+    {
+        super.onDestroy(e);
+
+        initialized = false;
+        if (curLogo != null) curLogo.destroy();
+    }
+
+    function initLogo(logo:String)
+    {
+        curLogo = new FlxSprite(0, 0, Paths.image(logo+'-logo'));
+        curLogo.cameras = [PlayState.instance.camCutscene];
+        curLogo.alpha = 0.4;
+        curLogo.scale.set(0.2, 0.2);
+        curLogo.x = 670;
+        curLogo.y = Preferences.get_downscroll() ? -120 : 400;
+
+        PlayState.instance.add(curLogo);
+    }
+
+    function onSongRetry(e:Dynamic)
+    {
+        initialized = false;
+        if (curLogo != null) curLogo.destroy();
+    }
+}

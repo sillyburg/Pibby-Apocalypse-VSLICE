@@ -120,6 +120,9 @@ class SufferingOhMyGod extends Song
         FlxG.camera.fade(0xFF000000, 0.001);
         PlayState.instance.camHUD.alpha = 0;
 
+        // add logo
+        ModuleHandler.getModule('LogoChannelModule').scriptCall('initLogo', ['cn']);
+        
         // preload chars
         for (i in ['finn-sword', 'finn-slash', 'finn-hurting', 'bfsword', 'Pibby-Angy']) ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('preloadChar', [i]);
     }
