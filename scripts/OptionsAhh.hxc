@@ -13,7 +13,7 @@ class PAOptionsModule extends Module
 {
     public function new()
     {
-        super('paOptions');
+        super('paOptions');//siuu
 
         // thanks gameplay modifiers
 
