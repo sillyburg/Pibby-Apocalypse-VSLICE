@@ -99,7 +99,7 @@ class PAShaderModule extends Module
 
         super.onSongEvent(e);
 
-        if (e.eventData.eventKind == 'AddZoomEvent') shadIntensity = 0.07;
+        if (e.eventData.eventKind == 'AddZoomEvent') shadIntensity = 0.08;
     }
 
     override function onNoteHit(event:Dynamic)
@@ -123,14 +123,14 @@ class PAShaderModule extends Module
 
         super.onUpdate(e);
 
-        time += e.elapsed * 2;
+        time += e.elapsed;
 
         if (PlayState.instance != null)
         {
             if (PlayState.instance.isGamePaused) return;
             
-            shadIntensity = FlxMath.lerp(shadIntensity, 0, e.elapsed * 6);
-            glitchIntensity = FlxMath.lerp(glitchIntensity, 0, e.elapsed * 7) * FlxG.random.int(1, -1, [0]);
+            shadIntensity = FlxMath.lerp(shadIntensity, 0, FlxMath.bound(e.elapsed * 6, 0, 1));
+            glitchIntensity = FlxMath.lerp(glitchIntensity, 0, FlxMath.bound(e.elapsed * 7, 0, 1));
             zoomShad.setFloat('aberration', shadIntensity);
             pibbyFNF.setFloat('glitchMultiply', glitchIntensity);
             pibbyFNF.setFloat('uTime', time);
@@ -199,7 +199,7 @@ class PAShaderModule extends Module
 
     function updateIconGlitch(icon:HealthIcon)
     {
-        icon.shader.setFloat('binaryIntensity', FlxG.random.float(5, 1) * FlxG.random.int(1, -1, [0]));
+        icon.shader.setFloat('binaryIntensity', FlxG.random.float(4, 6));
         icon.shader.setFloat('negativity', 0);
     }
 

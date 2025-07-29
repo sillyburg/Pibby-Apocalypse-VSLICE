@@ -18,7 +18,7 @@ class CameraMovementModule extends Module {
      super('CameraMovementModule', 1);
    }
 
-   var intensity = 12.5;
+   var intensity = 15;
    
    var initialized = false;
 
@@ -38,23 +38,35 @@ class CameraMovementModule extends Module {
    	}
 
    override function onSongEvent(event:SongEventScriptEvent)
-{
+   {
    if (PlayState.instance == null || !initialized) return;
 
-	     	 super.onSongEvent(event);
-		         if (PlayState.instance == null)
-		        	     return;
+	   super.onSongEvent(event);
+         if (PlayState.instance == null)
+            return;
 
-      		   var eventData = event.eventData;
+      var eventData = event.eventData;
 
-       		 switch (eventData.eventKind)
-{
-		           	case "FocusCamera":
-				              setCharFocus(eventData.value.char);
-                  case "JakeOrGF":
-                          setCharFocus(eventData.value.focusTo == 2 ? 3 : 2);
-		         }
-     }
+      switch (eventData.eventKind)
+         {
+            case "FocusCamera":
+                     setCharFocus(eventData.value.char);
+            case "JakeOrGF":
+                     setCharFocus(eventData.value.focusTo == 2 ? 3 : 2);
+         }
+   }
+
+   override function onSongStart(){
+		super.onSongStart();
+		var game = PlayState.instance;
+
+		if (game == null) return;
+		game.camGame.width += 20;
+		game.camGame.height += 20;
+		game.camGame.x -= 10;
+		game.camGame.y -= 10;
+      //This fixes missing border of camGame screen
+	}
 
    function initCamMovement()
    {
