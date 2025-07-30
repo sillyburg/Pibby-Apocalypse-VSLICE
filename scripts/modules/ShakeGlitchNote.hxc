@@ -1,0 +1,52 @@
+import funkin.modding.module.Module;
+
+import flixel.addons.display.FlxRuntimeShader;
+
+import funkin.play.PlayState;
+
+import flixel.FlxG;
+
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+
+class ShakeGlitchNote extends Module
+{
+    var game:PlayState;
+
+    var originalNotePos:Array = [];
+
+    public function new(){
+        super('ShakeGlitchNote');
+    }
+
+    function setNotePos(){
+        originalNotePos = [];
+        var pos = 0;
+        for (i in PlayState.instance.opponentStrumline.strumlineNotes.members){
+            originalNotePos.insert(pos, [i.x, i.y]);
+            pos += 1;
+        }
+
+        for (i in PlayState.instance.playerStrumline.strumlineNotes.members){
+            originalNotePos.insert(pos, [i.x, i.y]);
+            pos += 1;
+        }
+        trace('oiiaioiiiaioiiaioiiiaioiiaioiiiaioiiaioiiiaihehehehe');
+        
+    }
+
+    function glitchStrums(){
+        var pos = 0;
+        for (i in PlayState.instance.opponentStrumline.strumlineNotes.members){
+            i.x = originalNotePos[pos][0] + FlxG.random.int(-8, 8);
+            i.y = originalNotePos[pos][1] + FlxG.random.int(-8, 8);
+            pos += 1;
+        }
+
+        for (i in PlayState.instance.playerStrumline.strumlineNotes.members){
+            i.x = originalNotePos[(pos)][0] + FlxG.random.int(-8, 8);
+            i.y = originalNotePos[(pos)][1] + FlxG.random.int(-8, 8);
+            pos += 1;
+        }
+    }
+}
