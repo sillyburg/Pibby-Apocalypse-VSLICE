@@ -61,10 +61,10 @@ class CameraMovementModule extends Module {
 		var game = PlayState.instance;
 
 		if (game == null) return;
-		game.camGame.width += 20;
-		game.camGame.height += 20;
-		game.camGame.x -= 10;
-		game.camGame.y -= 10;
+		game.camGame.width += 40;
+		game.camGame.height += 40;
+		game.camGame.x -= 20;
+		game.camGame.y -= 20;
       //This fixes missing border of camGame screen
 	}
 

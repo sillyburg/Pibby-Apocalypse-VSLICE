@@ -1,0 +1,45 @@
+import funkin.play.PlayState;
+import funkin.modding.module.Module;
+import funkin.save.Save;
+
+class HealthDrain extends Module
+{
+    var game:PlayState;
+    var healthDrainEnabled:Bool;
+
+    function onNoteHit(event:Dynamic){
+        super.onNoteHit(event);
+        game = PlayState.instance;
+
+        healthDrainEnabled = Save.instance.modOptions.get('PibbyApocalypse').get('healthDrain');
+
+        if (game == null) return;
+
+        if (!event.note.noteData.getMustHitNote() && event.note.noteData.kind != 'pibbyInvisibleSing'){
+            if (game.health > 0.1 && healthDrainEnabled)
+                switch (game.currentChart.songName){
+                    case "Child's Play":
+                        game.health -= 0.0075;
+                    case "My Amazing World":
+                        game.health -= 0.0150;
+                    case "Retcon":
+                        game.health -= 0.0175;
+                    case "Forgotten World":
+                        game.health -= 0.02;
+                    case "Mindless":
+                        game.health -= 0.03;
+                    case "Blessed by Swords":
+                        game.health -= 0.0325;
+                    case "Brotherly Love":
+                        game.health -= 0.025;
+                    case "Suffering Siblings":
+                        game.health -= 0.035;
+                    case "Come Along With Me":
+                        game.health -= 0.0225;
+                          
+                }
+        }else{
+            if (game.isBotPlayMode) game.health += 0.0125;
+        }
+    }
+}

@@ -1,0 +1,59 @@
+import funkin.play.event.SongEvent;
+import funkin.play.PlayState;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import funkin.modding.module.ModuleHandler;
+
+import Reflect;
+
+class CinematicsEvent extends SongEvent
+{
+    function new()
+    {
+        super('Cinematics');
+    }
+
+    override function getTitle()
+    {
+        return "Cinematics";
+    }
+
+    override function handleEvent(params:Dynamic)
+    {
+        if (PlayState.instance == null) return;
+
+        trace('Distance: ' + params.value.distance);
+        trace('Speed: ' + params.value.speed);
+        trace('Ease: ' + params.value.ease);
+        ModuleHandler.getModule('CinematicsModule').scriptCall('doCinematics', [params.value.distance, params.value.speed, params.value.ease]);
+    }
+
+    override function getEventSchema()
+    {
+        return [
+            {
+                name: "distance",
+                title: "Distance",
+                defaultValue: "0",
+                type: "float"
+            },
+            {
+                name: "speed",
+                title: "Speed",
+                defaultValue: "1",
+                step: 0.25,
+                type: "float",
+                units: "steps"
+            },
+            {
+                name: "ease",
+                title: "Ease",
+                defaultValue: "",
+                type: "string"
+            }
+        ];
+    }
+}

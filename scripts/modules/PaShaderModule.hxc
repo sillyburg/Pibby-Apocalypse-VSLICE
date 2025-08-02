@@ -1,6 +1,7 @@
 import funkin.play.PlayState;
 import funkin.play.components.HealthIcon;
 
+import funkin.Preferences;
 import funkin.save.Save;
 
 import flixel.math.FlxMath;
@@ -35,8 +36,6 @@ class PAShaderModule extends Module
 
     var initialized:Bool = false;
 
-    var healthDrainEnabled:Bool;
-
     var singMult:Float;
 
     public function new()
@@ -59,8 +58,6 @@ class PAShaderModule extends Module
         if (!Save.instance.modOptions.get('PibbyApocalypse').get('glitchEffects')) return;
 
         if (PlayState.instance == null) return;
-
-        healthDrainEnabled = Save.instance.modOptions.get('PibbyApocalypse').get('healthDrain');
 
         singMult = Save.instance.modOptions.get("PibbyApocalypse").get('singGlitchMult');
 
@@ -89,7 +86,7 @@ class PAShaderModule extends Module
 
         super.onBeatHit(e);
 
-        if (!PlayState.instance.startingSong && e.beat % PlayState.instance.cameraZoomRate == 0) shadIntensity = 0.07;
+        if (!PlayState.instance.startingSong && e.beat % PlayState.instance.cameraZoomRate == 0) shadIntensity = 0.08;
     }
 
     function onSongEvent(e:Dynamic)
@@ -108,9 +105,6 @@ class PAShaderModule extends Module
         if (!initialized) return;
 
         super.onNoteHit(event);
-
-        if (PlayState.instance.health > 0.1 && !event.note.noteData.getMustHitNote() && healthDrainEnabled && event.note.noteData.kind != 'pibbyInvisibleSing') PlayState.instance.health -= 0.0275;
-
         if (!event.note.noteData.getMustHitNote() && FlxG.random.bool(50) && event.note.noteData.kind != 'pibbyInvisibleSing') glitchIntensity = FlxG.random.float(0.2, 0.7) * singMult;
     }
 
@@ -135,6 +129,8 @@ class PAShaderModule extends Module
             pibbyFNF.setFloat('glitchMultiply', glitchIntensity);
             pibbyFNF.setFloat('uTime', time);
         }
+
+        Preferences.zoomCamera = true;
     }
 
     function onDestroy(e:Dynamic)

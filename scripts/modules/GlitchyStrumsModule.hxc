@@ -46,8 +46,9 @@ class GlitchyStrumsModule extends Module
 
     function unglitchifyStrums()
     {
+        if (PlayState.instance == null) return;
+        
         initializedStrums = false;
-
         for (i in PlayState.instance.opponentStrumline.strumlineNotes.members) i.shader = null;
     }
 
