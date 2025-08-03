@@ -11,8 +11,6 @@ import funkin.modding.module.Module;
 
 import funkin.Conductor;
 
-import Reflect;
-
 class CinematicsModule extends Module
 {
     var topBar:FlxSprite;
@@ -48,8 +46,8 @@ class CinematicsModule extends Module
 
         barCamera.bgColor = 0;
 
-        topBar = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
-        bottomBar = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
+        topBar = new FlxSprite().makeGraphic(FlxG.camera.width, FlxG.camera.height, 0xFF000000);
+        bottomBar = new FlxSprite().makeGraphic(FlxG.camera.width, FlxG.camera.height, 0xFF000000);
 
         topBar.cameras = [barCamera];
         topBar.screenCenter(0x01);
