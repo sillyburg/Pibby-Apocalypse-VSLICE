@@ -46,8 +46,13 @@ class CinematicsModule extends Module
 
         barCamera.bgColor = 0;
 
-        topBar = new FlxSprite().makeGraphic(FlxG.camera.width, FlxG.camera.height, 0xFF000000);
-        bottomBar = new FlxSprite().makeGraphic(FlxG.camera.width, FlxG.camera.height, 0xFF000000);
+        barCamera.width *= 1.5;
+        barCamera.height *= 1.5;
+
+        barCamera.x -= 50;
+
+        topBar = new FlxSprite(-50, 0).makeGraphic(FlxG.camera.width * 1.2, FlxG.camera.height, 0xFF000000);
+        bottomBar = new FlxSprite(-50, 0).makeGraphic(FlxG.camera.width * 1.2, FlxG.camera.height, 0xFF000000);
 
         topBar.cameras = [barCamera];
         topBar.screenCenter(0x01);
