@@ -31,7 +31,7 @@ class LogoChannelModule extends Module
         curLogo.cameras = [PlayState.instance.camCutscene];
         curLogo.alpha = 0.4;
         curLogo.scale.set(0.2, 0.2);
-        curLogo.x = 670;
+        curLogo.x = FlxG.width - 550;
         curLogo.y = Preferences.get_downscroll() ? -120 : 400;
 
         PlayState.instance.add(curLogo);
