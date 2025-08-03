@@ -15,6 +15,9 @@ class HealthDrain extends Module
 
         if (game == null) return;
 
+
+        // it would be better if we soft coded this instead of having switches
+        
         if (!event.note.noteData.getMustHitNote() && event.note.noteData.kind != 'pibbyInvisibleSing'){
             if (game.health > 0.1 && healthDrainEnabled)
                 switch (game.currentChart.songName){

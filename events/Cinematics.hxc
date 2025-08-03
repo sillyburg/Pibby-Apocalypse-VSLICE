@@ -1,13 +1,14 @@
 import funkin.play.event.SongEvent;
 import funkin.play.PlayState;
+
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
+
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import funkin.modding.module.ModuleHandler;
 
-import Reflect;
+import funkin.modding.module.ModuleHandler;
 
 class CinematicsEvent extends SongEvent
 {
@@ -25,9 +26,10 @@ class CinematicsEvent extends SongEvent
     {
         if (PlayState.instance == null) return;
 
-        trace('Distance: ' + params.value.distance);
+        /* trace('Distance: ' + params.value.distance);
         trace('Speed: ' + params.value.speed);
-        trace('Ease: ' + params.value.ease);
+        trace('Ease: ' + params.value.ease); */
+
         ModuleHandler.getModule('CinematicsModule').scriptCall('doCinematics', [params.value.distance, params.value.speed, params.value.ease]);
     }
 
