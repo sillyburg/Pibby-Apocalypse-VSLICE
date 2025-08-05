@@ -35,40 +35,51 @@ class CinematicsModule extends Module
 
         if (PlayState.instance == null) return;
 
-        barCamera = new FlxCamera();
+        if (barCamera == null)
+        {
+            barCamera = new FlxCamera();
 
-        FlxG.cameras.remove(PlayState.instance.camHUD, false);
-        FlxG.cameras.remove(PlayState.instance.camCutscene, false);
+            FlxG.cameras.remove(PlayState.instance.camHUD, false);
+            FlxG.cameras.remove(PlayState.instance.camCutscene, false);
 
-        FlxG.cameras.add(barCamera, false);
-        FlxG.cameras.add(PlayState.instance.camHUD, false);
-        FlxG.cameras.add(PlayState.instance.camCutscene, false);
+            FlxG.cameras.add(barCamera, false);
+            FlxG.cameras.add(PlayState.instance.camHUD, false);
+            FlxG.cameras.add(PlayState.instance.camCutscene, false);
 
-        barCamera.bgColor = 0;
+            
+            barCamera.bgColor = 0;
 
-        barCamera.width *= 1.5;
-        barCamera.height *= 1.5;
+            barCamera.width *= 1.5;
+            barCamera.height *= 1.5;
 
-        barCamera.x -= 50;
+            barCamera.x -= 50;
+        }
 
-        topBar = new FlxSprite(-50, 0).makeGraphic(FlxG.camera.width * 1.2, FlxG.camera.height, 0xFF000000);
-        bottomBar = new FlxSprite(-50, 0).makeGraphic(FlxG.camera.width * 1.2, FlxG.camera.height, 0xFF000000);
+        if (topBar == null)
+        {
+            topBar = new FlxSprite(-50, 0).makeGraphic(FlxG.camera.width * 1.2, FlxG.camera.height, 0xFF000000);
 
-        topBar.cameras = [barCamera];
-        topBar.screenCenter(0x01);
-        topBar.y = -FlxG.height;
+            topBar.cameras = [barCamera];
+            topBar.screenCenter(0x01);
+            topBar.y = -FlxG.height;
 
-        bottomBar.cameras = [barCamera];
-        bottomBar.screenCenter(0x01);
-        bottomBar.y = FlxG.height;
+            topY = topBar.y;
 
-        topY = topBar.y;
-        bottomY = bottomBar.y;
-        
-        trace('truers2');
+            PlayState.instance.add(topBar);
+        }
 
-        PlayState.instance.add(topBar);
-        PlayState.instance.add(bottomBar);
+        if (bottomBar == null)
+        {
+            bottomBar = new FlxSprite(-50, 0).makeGraphic(FlxG.camera.width * 1.2, FlxG.camera.height, 0xFF000000);
+
+            bottomBar.cameras = [barCamera];
+            bottomBar.screenCenter(0x01);
+            bottomBar.y = FlxG.height;
+
+            bottomY = bottomBar.y;
+
+            PlayState.instance.add(bottomBar);
+        }
     }
 
     function onSongStart(e:Dynamic)
@@ -78,6 +89,9 @@ class CinematicsModule extends Module
 
     function doCinematics(distance:Float, speed:Float, ease:String)
     {
+        if (topBar == null) return;
+        if (bottomBar == null) return;
+
         if (topBarTween != null) topBarTween.cancel();
         if (bottomBarTween != null) bottomBarTween.cancel();
 
@@ -102,17 +116,22 @@ class CinematicsModule extends Module
     {
         super.onDestroy(e);
 
-        if (topBar != null) topBar.kill();
-        if (bottomBar != null) bottomBar.kill();
+        if (topBar != null) topBar.destroy();
+        if (bottomBar != null) bottomBar.destroy();
+        if (barCamera != null) barCamera.destroy();
+
+        if (barCamera != null) barCamera = null;
+        if (topBar != null) topBar = null;
+        if (bottomBar != null) bottomBar = null;
     }
 
     function onPause(e:Dynamic)
     {
-        super.onPause(e);
-
         if (e.cancelled) return;
 
         for (i in [topBarTween, bottomBarTween]) if (i != null) i.active = false;
+
+        super.onPause(e);
     }
 
     function onResume(e:Dynamic)
