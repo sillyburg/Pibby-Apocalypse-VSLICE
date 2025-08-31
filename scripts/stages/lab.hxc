@@ -43,7 +43,7 @@ class LabStage extends Stage
         getNamedProp('darkin').origin.y = 0;
         getNamedProp('darkout').origin.y = 0;
 
-        FlxG.camera.followLerp = 0.08;
+        FlxG.camera.followLerp = event.elapsed * 2.4 * 2;
 
         if (PlayState.instance != null && !PlayState.instance.isGamePaused && GameOverSubState.instance == null && PlayState.instance.currentStage != null){
             if (getNamedProp('darkin') != null) getNamedProp('darkin').angle = Math.sin((Conductor.instance.songPosition / 1000) * (Conductor.instance.bpm / 60) * 1.0) * 5;
