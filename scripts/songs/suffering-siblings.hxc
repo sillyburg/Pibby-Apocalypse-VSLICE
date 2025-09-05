@@ -47,8 +47,6 @@ class SufferingOhMyGod extends Song
 
         FlxG.camera.fade(0xFF000000, 10, true);
 
-        trace('meower');
-
         // create shaders
         ModuleHandler.getModule('paShaderModule').scriptCall('createShaders');
 
