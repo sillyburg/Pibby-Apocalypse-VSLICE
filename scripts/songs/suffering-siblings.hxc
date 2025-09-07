@@ -1,4 +1,5 @@
 import funkin.play.song.Song;
+import funkin.play.GameOverSubState;
 import funkin.play.PlayState;
 
 import funkin.Conductor;
@@ -19,6 +20,8 @@ import flixel.FlxG;
 
 import funkin.modding.module.ModuleHandler;
 
+import Std;
+
 class SufferingOhMyGod extends Song
 {
     public var jake:BaseCharacter;
@@ -31,13 +34,18 @@ class SufferingOhMyGod extends Song
         super('suffering-siblings');
     }
 
+    function onGameOver(e:Dynamic)
+    {
+        super.onGameOver(e);
+        
+        FlxG.camera.stopFade();
+    }
+
     function onSongStart(e:Dynamic)
     {
         super.onSongStart(e);
 
         FlxG.camera.fade(0xFF000000, 10, true);
-
-        trace('meower');
 
         // create shaders
         ModuleHandler.getModule('paShaderModule').scriptCall('createShaders');
@@ -110,6 +118,9 @@ class SufferingOhMyGod extends Song
         FlxG.camera.fade(0xFF000000, 0.001);
         PlayState.instance.camHUD.alpha = 0;
 
+        // add logo
+        ModuleHandler.getModule('LogoChannelModule').scriptCall('initLogo', ['cn']);
+        
         // preload chars
         for (i in ['finn-sword', 'finn-slash', 'finn-hurting', 'bfsword', 'Pibby-Angy']) ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('preloadChar', [i]);
     }
@@ -174,6 +185,7 @@ class SufferingOhMyGod extends Song
         super.onBeatHit(e);
 
         if (PlayState.instance == null) return;
+        if (Std.isOfType(FlxG.state.subState, GameOverSubState)) return;
 
         if (!PlayState.instance.startingSong && jake.animation.curAnim.name != 'idle' && jake.animation.curAnim.finished && jake.holdTimer <= 0) jake.playAnimation('idle', false, false, false);
 

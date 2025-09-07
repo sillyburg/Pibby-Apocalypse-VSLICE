@@ -1,5 +1,5 @@
 # "Pibby: Apocalypse" (V-Slice Port)
-a shitty coded v-slice port of "Pibber: Apocolapse"
+a shitty coded v-slice port of "Pibby: Apocaleaks"
 pull requests *are* welcome just don't shit on my code or else i **will** lose motivation 🙏
 
 # Songs added:

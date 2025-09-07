@@ -18,7 +18,9 @@ class CameraMovementModule extends Module {
      super('CameraMovementModule', 1);
    }
 
-   var intensity = 10;
+   var heighted:Bool = false;
+
+   var intensity = 15;
    
    var initialized = false;
 
@@ -38,23 +40,44 @@ class CameraMovementModule extends Module {
    	}
 
    override function onSongEvent(event:SongEventScriptEvent)
-{
+   {
    if (PlayState.instance == null || !initialized) return;
 
-	     	 super.onSongEvent(event);
-		         if (PlayState.instance == null)
-		        	     return;
+	   super.onSongEvent(event);
+         if (PlayState.instance == null)
+            return;
 
-      		   var eventData = event.eventData;
+      var eventData = event.eventData;
 
-       		 switch (eventData.eventKind)
-{
-		           	case "FocusCamera":
-				              setCharFocus(eventData.value.char);
-                  case "JakeOrGF":
-                          setCharFocus(eventData.value.focusTo == 2 ? 3 : 2);
-		         }
-     }
+      switch (eventData.eventKind)
+         {
+            case "FocusCamera":
+                     setCharFocus(eventData.value.char);
+            case "JakeOrGF":
+                     setCharFocus(eventData.value.focusTo == 2 ? 3 : 2);
+         }
+   }
+
+   override function onSongStart(){
+		super.onSongStart();
+		var game = PlayState.instance;
+
+		if (game == null) return;
+		if (heighted) return;
+
+      heighted = true;
+		game.camGame.height += 40;
+		game.camGame.y -= 20;
+      
+      //This fixes missing border of camGame screen
+
+      /* 
+         also makes hud camera and bar camera look weird,
+         we should try to find another approach
+
+         yeah if anyone knows a different way pls tell me
+      */
+	}
 
    function initCamMovement()
    {
@@ -83,13 +106,13 @@ class CameraMovementModule extends Module {
    {
       switch(name)
       {
-         case "singLEFT": updateMovement(-intensity, 0, -1);
+         case "singLEFT": updateMovement(-intensity, 0, -1.5);
 
          case "singDOWN": updateMovement(0, intensity, 0);
 
          case "singUP": updateMovement(0, -intensity, 0);
 
-         case "singRIGHT": updateMovement(intensity, 1);
+         case "singRIGHT": updateMovement(intensity, 0, 1.5);
 
          case "idle": updateMovement(0, 0);          
       }
@@ -114,5 +137,7 @@ class CameraMovementModule extends Module {
 
 	     	super.onDestroy(event); 
 	      	ismovement = false;
+
+            heighted = false;
    	}
 }

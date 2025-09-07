@@ -1,6 +1,7 @@
 import funkin.play.PlayState;
 import funkin.play.components.HealthIcon;
 
+import funkin.Preferences;
 import funkin.save.Save;
 
 import flixel.math.FlxMath;
@@ -35,8 +36,6 @@ class PAShaderModule extends Module
 
     var initialized:Bool = false;
 
-    var healthDrainEnabled:Bool;
-
     var singMult:Float;
 
     public function new()
@@ -59,8 +58,6 @@ class PAShaderModule extends Module
         if (!Save.instance.modOptions.get('PibbyApocalypse').get('glitchEffects')) return;
 
         if (PlayState.instance == null) return;
-
-        healthDrainEnabled = Save.instance.modOptions.get('PibbyApocalypse').get('healthDrain');
 
         singMult = Save.instance.modOptions.get("PibbyApocalypse").get('singGlitchMult');
 
@@ -89,7 +86,7 @@ class PAShaderModule extends Module
 
         super.onBeatHit(e);
 
-        if (!PlayState.instance.startingSong && e.beat % PlayState.instance.cameraZoomRate == 0) shadIntensity = 0.07;
+        if (!PlayState.instance.startingSong && e.beat % PlayState.instance.cameraZoomRate == 0) shadIntensity = 0.08;
     }
 
     function onSongEvent(e:Dynamic)
@@ -99,7 +96,7 @@ class PAShaderModule extends Module
 
         super.onSongEvent(e);
 
-        if (e.eventData.eventKind == 'AddZoomEvent') shadIntensity = 0.07;
+        if (e.eventData.eventKind == 'AddZoomEvent') shadIntensity = 0.08;
     }
 
     override function onNoteHit(event:Dynamic)
@@ -108,9 +105,6 @@ class PAShaderModule extends Module
         if (!initialized) return;
 
         super.onNoteHit(event);
-
-        if (PlayState.instance.health > 0.1 && !event.note.noteData.getMustHitNote() && healthDrainEnabled && event.note.noteData.kind != 'pibbyInvisibleSing') PlayState.instance.health -= 0.0275;
-
         if (!event.note.noteData.getMustHitNote() && FlxG.random.bool(50) && event.note.noteData.kind != 'pibbyInvisibleSing') glitchIntensity = FlxG.random.float(0.2, 0.7) * singMult;
     }
 
@@ -123,18 +117,20 @@ class PAShaderModule extends Module
 
         super.onUpdate(e);
 
-        time += e.elapsed * 2;
+        time += e.elapsed;
 
         if (PlayState.instance != null)
         {
             if (PlayState.instance.isGamePaused) return;
             
-            shadIntensity = FlxMath.lerp(shadIntensity, 0, e.elapsed * 6);
-            glitchIntensity = FlxMath.lerp(glitchIntensity, 0, e.elapsed * 7) * FlxG.random.int(1, -1, [0]);
+            shadIntensity = FlxMath.lerp(shadIntensity, 0, FlxMath.bound(e.elapsed * 6, 0, 1));
+            glitchIntensity = FlxMath.lerp(glitchIntensity, 0, FlxMath.bound(e.elapsed * 7, 0, 1));
             zoomShad.setFloat('aberration', shadIntensity);
             pibbyFNF.setFloat('glitchMultiply', glitchIntensity);
             pibbyFNF.setFloat('uTime', time);
         }
+
+        Preferences.zoomCamera = true;
     }
 
     function onDestroy(e:Dynamic)
@@ -176,6 +172,13 @@ class PAShaderModule extends Module
         } else for (i in cpuIcons) if (i != null)  removeIconGlitch(i);
     }
 
+    function onGameOver(e:Dynamic)
+    {
+        super.onGameOver(e);
+
+        FlxG.camera.filters = [];
+    }
+
     function setIconGlitch(icon:HealthIcon)
     {
         if (icon.shader != null) return;
@@ -192,7 +195,7 @@ class PAShaderModule extends Module
 
     function updateIconGlitch(icon:HealthIcon)
     {
-        icon.shader.setFloat('binaryIntensity', FlxG.random.float(5, 1) * FlxG.random.int(1, -1, [0]));
+        icon.shader.setFloat('binaryIntensity', FlxG.random.float(4, 6));
         icon.shader.setFloat('negativity', 0);
     }
 

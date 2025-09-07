@@ -1,12 +1,64 @@
-import funkin.play.character.SparrowCharacter;
+import funkin.play.character.MultiSparrowCharacter;
 import funkin.play.character.CharacterType;
+import funkin.play.GameOverSubState;
 import funkin.play.PlayState;
 
-class SurvivorBFCharacter extends SparrowCharacter
+import funkin.save.Save;
+
+import funkin.ui.debug.anim.DebugBoundingState;
+
+import flixel.FlxG;
+
+import StringTools;
+import Std;
+
+class SurvivorBFCharacter extends MultiSparrowCharacter
 {
+  var jaked:Bool = false;
+  var pibbyd:Bool = false;
+  var nonGore:Bool = Save.instance.modOptions.get('PibbyApocalypse').get('goreDeath');
+
   function new()
   {
     super('SurvivorBF');
+  }
+
+  function onSongLoaded(e:Dynamic)
+  {
+    super.onSongLoaded(e);
+
+    if (PlayState.instance == null) return;
+    if (PlayState.instance.currentStage == null) return;
+
+    GameOverSubState.musicSuffix = '-PA';
+    if (nonGore) GameOverSubState.blueBallSuffix = '-' + PlayState.instance?.currentStage?.getDad().characterId; else GameOverSubState.blueBallSuffix = '';
+  }
+
+  function playAnimation(name:String, restart:Bool, ignoreOther:Bool)
+  {
+    if (Std.isOfType(FlxG.state, DebugBoundingState))
+    {
+      super.playAnimation(name, restart, ignoreOther);
+      return;
+    }
+
+    if ((StringTools.startsWith(name, 'firstDeath') || StringTools.startsWith(name, 'deathLoop') || StringTools.startsWith(name, 'deathConfirm')))
+    {
+      // this is also peak code
+      if (!nonGore)
+      {
+        super.playAnimation(name+'-nonGore', restart, ignoreOther);
+        return;
+      }
+
+      if (PlayState.instance.currentStage.getDad().characterId == 'Finn') super.playAnimation(jaked ? name+'-Jake' : name, restart, ignoreOther);
+
+      else super.playAnimation(name + '-' + PlayState.instance.currentStage.getDad().characterId, restart, ignoreOther);
+      
+      return;
+    }
+
+    super.playAnimation(name, restart, ignoreOther);
   }
 
   function onNoteHit(event:HitNoteScriptEvent)
@@ -20,6 +72,18 @@ class SurvivorBFCharacter extends SparrowCharacter
           return;
       }
     }
+
+    if (!event.note.noteData.getMustHitNote() && nonGore) switch (event.note.noteData.kind)
+      {
+        // this is peak code
+
+        case "jakeSing", 'glitchJakeChar':
+          jaked = true;
+          GameOverSubState.blueBallSuffix = '-Jake';
+        default:
+          jaked = false;
+          GameOverSubState.blueBallSuffix = '-' + PlayState.instance?.currentStage?.getDad().characterId;
+      }
 
     super.onNoteHit(event);
   }

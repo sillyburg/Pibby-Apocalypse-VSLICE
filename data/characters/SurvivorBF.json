@@ -1,6 +1,6 @@
 {
 	"version": "1.0.0",
-	"renderType": "sparrow",
+	"renderType": "multisparrow",
 	"offsets": [
 		0,
 		0
@@ -22,10 +22,10 @@
 			0,
 			0
 		],
-		"id": "SurvivorBF",
-		"flipX": false,
 		"isPixel": false,
-		"scale": 1
+		"scale": 1,
+		"flipX": false,
+		"id": "SurvivorBF"
 	},
 	"animations": [
 		{
@@ -88,6 +88,123 @@
 			"flipX": false,
 			"looped": false,
 			"name": "singRIGHT"
+		},
+		{
+			"offsets": [
+				61,
+				241
+			],
+			"flipY": false,
+			"assetPath": "characters/bfdeathfinn",
+			"frameRate": 24,
+			"prefix": "bfdies",
+			"name": "firstDeath",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				-17,
+				76
+			],
+			"flipY": false,
+			"assetPath": "characters/bfdeathfinn",
+			"frameRate": 24,
+			"prefix": "deathloop0",
+			"looped": true,
+			"name": "deathLoop",
+			"flipX": false
+		},
+		{
+			"offsets": [
+				401,
+				227
+			],
+			"flipY": false,
+			"assetPath": "characters/bfdeathfinn",
+			"frameRate": 24,
+			"prefix": "retry0",
+			"name": "deathConfirm",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				66,
+				58
+			],
+			"flipY": false,
+			"assetPath": "characters/BOYFRIEND",
+			"frameRate": 24,
+			"prefix": "BF dies0",
+			"name": "firstDeath-nonGore",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				66,
+				52
+			],
+			"flipY": false,
+			"assetPath": "characters/BOYFRIEND",
+			"frameRate": 24,
+			"prefix": "BF Dead Loop0",
+			"looped": true,
+			"name": "deathLoop-nonGore",
+			"flipX": false
+		},
+		{
+			"offsets": [
+				66,
+				116
+			],
+			"flipY": false,
+			"assetPath": "characters/BOYFRIEND",
+			"frameRate": 24,
+			"prefix": "BF Dead confirm0",
+			"name": "deathConfirm-nonGore",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				167,
+				102
+			],
+			"flipY": false,
+			"assetPath": "characters/bfjakedeath",
+			"frameRate": 24,
+			"prefix": "BF dies Jake",
+			"name": "firstDeath-Jake",
+			"looped": false,
+			"flipX": false
+		},
+		{
+			"offsets": [
+				153,
+				116
+			],
+			"flipY": false,
+			"assetPath": "characters/bfjakedeath",
+			"frameRate": 24,
+			"prefix": "deathloopJaked",
+			"looped": true,
+			"name": "deathLoop-Jake",
+			"flipX": false
+		},
+		{
+			"offsets": [
+				168,
+				108
+			],
+			"flipY": false,
+			"assetPath": "characters/bfjakedeath",
+			"frameRate": 24,
+			"prefix": "retryJake",
+			"name": "deathConfirm-Jake",
+			"looped": false,
+			"flipX": false
 		},
 		{
 			"flipY": false,
