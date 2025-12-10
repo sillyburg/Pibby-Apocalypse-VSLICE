@@ -6,7 +6,7 @@
   "events": [
     {
       "t": 0,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "",
 	"distance": 80,
@@ -86,7 +86,7 @@
     },
     {
       "t": 10666.6666666667,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "expoOut",
 	"distance": 0,
@@ -269,7 +269,7 @@
     },
     {
       "t": 30666.6666666667,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "expoOut",
 	"distance": 25,
@@ -278,7 +278,7 @@
     },
     {
       "t": 31333.3333333333,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "expoOut",
 	"speed": 8,
@@ -305,7 +305,7 @@
     },
     {
       "t": 32000,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "expoOut",
 	"speed": 8.5,
@@ -370,7 +370,7 @@
     },
     {
       "t": 45333.3333333333,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "expoOut",
 	"speed": 8,
@@ -389,7 +389,7 @@
     },
     {
       "t": 46000,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "expoOut",
 	"speed": 8,
@@ -398,7 +398,7 @@
     },
     {
       "t": 46666.6666666667,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "cubeOut",
 	"speed": 8,
@@ -444,7 +444,7 @@
     },
     {
       "t": 50666.6666666667,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "expoOut",
 	"speed": 8,
@@ -473,7 +473,7 @@
     },
     {
       "t": 51333.3333333333,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "expoOut",
 	"speed": 8,
@@ -532,7 +532,7 @@
     },
     {
       "t": 53333.3333333333,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "cubeOut",
 	"speed": 8,
@@ -577,7 +577,7 @@
     },
     {
       "t": 64000,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "expoOut",
 	"distance": 70,
@@ -660,7 +660,7 @@
     },
     {
       "t": 85333.3333333333,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "expoOut",
 	"distance": 0,
@@ -741,7 +741,7 @@
     },
     {
       "t": 96000,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "expoOut",
 	"distance": 50,
@@ -787,7 +787,7 @@
     },
     {
       "t": 106666.666666667,
-      "e": "Cinematics",
+      "e": "CinematicsEvent",
       "v": {
 	"ease": "expoOut",
 	"distance": 0,
