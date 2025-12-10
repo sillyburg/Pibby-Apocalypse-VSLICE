@@ -21,8 +21,10 @@ class CinematicsEvent extends SongEvent
         return "Cinematics";
     }
 
-    override function handleEvent(params:Dynamic)
+    public override function handleEvent(params:Dynamic)
     {
+        super.handleEvent(params);
+        
         if (PlayState.instance == null) return;
 
         trace('Distance: ' + params.value.distance);

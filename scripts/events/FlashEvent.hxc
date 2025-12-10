@@ -17,8 +17,10 @@ class FlashCamEvent extends SongEvent
         return "Flash Camera";
     }
 
-    override function handleEvent(params:Dynamic)
+    public override function handleEvent(params:Dynamic)
     {
+        super.handleEvent(params);
+        
         if (PlayState.instance == null) return;
 
         switch (params.value.camera)
