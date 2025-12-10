@@ -16,7 +16,7 @@
 	"singTime": 8,
 	"startingAnimation": "idle",
 	"isPixel": false,
-	"assetPath": "characters/Jake",
+	"assetPath": "characters/jake",
 	"healthIcon": {
 		"isPixel": false,
 		"offsets": [

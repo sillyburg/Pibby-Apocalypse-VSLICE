@@ -17,9 +17,11 @@ class ChangeCharStuffModule extends Module
     {
         var preloadedChar:BaseCharacter = changeChar(charString, null, true);
 
-        preloadedChar.alpha = 0.00001;
-
-        PlayState.instance.add(preloadedChar);
+        if (preloadedChar != null)
+        {
+            preloadedChar.alpha = 0.00001;
+            PlayState.instance.add(preloadedChar);
+        }
     }
 
     function onSongRetry(e:Dymamic)

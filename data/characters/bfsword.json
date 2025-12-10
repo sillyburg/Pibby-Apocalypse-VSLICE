@@ -21,12 +21,12 @@
 			0,
 			0
 		],
-		"id": "SurvivorBF",
+		"id": "survivorbf",
 		"flipX": false,
 		"isPixel": false,
 		"scale": 1
 	},
-	"assetPath": "characters/BfSwordUp",
+	"assetPath": "characters/bfswordup",
 	"animations": [
 		{
 			"flipY": false,

@@ -60,15 +60,15 @@ class GlitchJakeNoteKind extends NoteKind
 
         glitchShad = new FlxRuntimeShader(Assets.getText(Paths.frag('distort')));
 
-        PlayState.instance.currentStage.getCharacter("Jake").shader = glitchShad;
+        var jake = PlayState.instance.currentStage.getCharacter('jake');
 
-        PlayState.instance.currentStage.getCharacter('Jake').holdTimer = 0;
-
-        PlayState.instance.currentStage.getCharacter('Jake').playSingAnimation(e.note.noteData.getDirection(), false);
+        jake.shader = glitchShad;
+        jake.holdTimer = 0;
+        jake.playSingAnimation(e.note.noteData.getDirection(), false);
         
         glitchShad.setFloat('negativity', 1);
         glitchShad.setFloat('binaryIntensity', FlxG.random.float(2, 1) * FlxG.random.int(-1, 1, [0]));
 
-        new FlxTimer().start(0.05, function() PlayState.instance.currentStage.getCharacter("Jake").shader = null);
+        new FlxTimer().start(0.05, function() jake.shader = null);
     }
 }

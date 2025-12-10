@@ -16,16 +16,16 @@
       "normal"
     ],
     "characters": {
-      "player": "SurvivorBF",
-      "girlfriend": "Pibby",
-      "opponent": "Finn",
+      "player": "survivorbf",
+      "girlfriend": "pibby",
+      "opponent": "finn",
       "instrumental": "",
       "altInstrumentals": [      ],
       "opponentVocals": [
-        "Finn"
+        "finn"
       ],
       "playerVocals": [
-        "SurvivorBF"
+        "survivorbf"
       ]
     },
     "stage": "lab",

@@ -26,7 +26,7 @@
 		"id": "finn",
 		"flipX": false
 	},
-	"assetPath": "characters/Finn-sword",
+	"assetPath": "characters/finn-sword",
 	"animations": [
 		{
 			"flipY": false,

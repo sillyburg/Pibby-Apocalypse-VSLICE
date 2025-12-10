@@ -16,7 +16,7 @@
 	"singTime": 8,
 	"startingAnimation": "idle",
 	"isPixel": false,
-	"assetPath": "characters/Finn-CN",
+	"assetPath": "characters/finn-cn",
 	"healthIcon": {
 		"offsets": [
 			0,

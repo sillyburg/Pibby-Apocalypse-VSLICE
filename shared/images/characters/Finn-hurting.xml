@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="Finn-hurting.png">
+<TextureAtlas imagePath="finn-hurting.png">
 	<!-- Created with Adobe Animate version 23.0.1.70 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="Hurt10000" x="0" y="0" width="818" height="767" frameX="-307" frameY="-56" frameWidth="1214" frameHeight="823"/>

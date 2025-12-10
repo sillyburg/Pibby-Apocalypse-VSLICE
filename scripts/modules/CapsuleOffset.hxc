@@ -24,6 +24,7 @@ class FreePlayCustomCapsuleOffset extends Module
         var currentCapsule:SongMenuItem = state.grpCapsules.members[state.curSelected];
         var curSongId:String = currentCapsule.freeplayData?.data?.id;
 
-        if (curSongId == 'suffering-siblings') FlxG.state.subState.albumRoll.albumTitle.offset.set(62, 58);
+        if (curSongId == 'suffering-siblings')
+            FlxG.state.subState.albumRoll.albumTitle.offset.set(62, 58);
     }
 }

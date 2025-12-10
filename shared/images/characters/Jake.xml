@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="Jake.png">
+<TextureAtlas imagePath="jake.png">
 	<!-- Created with Adobe Animate version 23.0.1.70 -->
 	<!-- http://www.adobe.com/products/animate.html -->
 	<SubTexture name="Down0000" x="0" y="0" width="531" height="400" frameX="-5" frameY="0" frameWidth="540" frameHeight="407"/>

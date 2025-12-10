@@ -6,7 +6,7 @@ class FinnCharacter extends SparrowCharacter
 {
   function new()
   {
-    super('Finn');
+    super('finn');
   }
 
   function onNoteHit(event:HitNoteScriptEvent)

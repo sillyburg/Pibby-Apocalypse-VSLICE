@@ -84,7 +84,7 @@ class SufferingOhMyGod extends Song
     {
         super.onSongLoaded(e);
 
-        jake = CharacterDataParser.fetchCharacter('Jake', false);
+        jake = CharacterDataParser.fetchCharacter('jake', false);
 
         PlayState.instance.currentStage.addCharacter(jake, CharacterType.OTHER);
  

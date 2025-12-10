@@ -54,12 +54,14 @@ class GlitchBothChar extends NoteKind
 
         if (glitchShad != null) glitchShad = null;
 
-        PlayState.instance.currentStage.getCharacter('Jake').playSingAnimation(e.note.noteData.getDirection(), false);
+        var jake = PlayState.instance.currentStage.getCharacter('jake');
+
+        jake.playSingAnimation(e.note.noteData.getDirection(), false);
 
         glitchShad = new FlxRuntimeShader(Assets.getText(Paths.frag('distort')));
 
         PlayState.instance.currentStage.getDad().shader = glitchShad;
-        PlayState.instance.currentStage.getCharacter('Jake').shader = glitchShad;
+        jake.shader = glitchShad;
 
         glitchShad.setFloat('negativity', 1);
         glitchShad.setFloat('binaryIntensity', FlxG.random.float(2, 1) * FlxG.random.int(-1, 1, [0]));

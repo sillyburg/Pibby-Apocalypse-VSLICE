@@ -25,6 +25,7 @@ class BothCharSing extends NoteKind
         if (PlayState.instance == null) return;
         if (e.note.noteData.kind != "bothChar") return;
 
-        PlayState.instance.currentStage.getCharacter('Jake').playSingAnimation(e.note.noteData.getDirection(), false);
+        var jake = PlayState.instance.currentStage.getCharacter('jake');
+        jake.playSingAnimation(e.note.noteData.getDirection(), false);
     }
 }

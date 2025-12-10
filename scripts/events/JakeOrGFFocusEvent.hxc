@@ -23,9 +23,11 @@ class JakeFocusEvent extends SongEvent
         switch (params.value.focusTo)
         {
             case 1:
-                PlayState.instance.cameraFollowPoint.setPosition(PlayState.instance.currentStage.getGirlfriend().cameraFocusPoint.x, PlayState.instance.currentStage.getGirlfriend().cameraFocusPoint.y);
+                var followPoint = PlayState.instance.currentStage.getGirlfriend().cameraFocusPoint;
+                PlayState.instance.cameraFollowPoint.setPosition(followPoint.x, followPoint.cameraFocusPoint.y);
             case 2:
-                PlayState.instance.cameraFollowPoint.setPosition(PlayState.instance.currentStage.getCharacter('Jake').cameraFocusPoint.x, PlayState.instance.currentStage.getCharacter('Jake').cameraFocusPoint.y);
+                var followPoint = PlayState.instance.currentStage.getCharacter('jake').cameraFocusPoint;
+                PlayState.instance.cameraFollowPoint.setPosition(followPoint.x, followPoint.y);
         }
     }
 

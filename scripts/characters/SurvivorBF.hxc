@@ -20,7 +20,7 @@ class SurvivorBFCharacter extends MultiSparrowCharacter
 
   function new()
   {
-    super('SurvivorBF');
+    super('survivorbf');
   }
 
   function onSongLoaded(e:Dynamic)
