@@ -16,7 +16,7 @@ class JakeFocusEvent extends SongEvent
         return "Focus on GF or Jake";
     }
 
-    public override function handleEvent(params:Dynamic)
+    override function handleEvent(params:Dynamic)
     {    
         if (PlayState.instance == null) return;
 
@@ -24,7 +24,7 @@ class JakeFocusEvent extends SongEvent
         {
             case 1:
                 var followPoint = PlayState.instance.currentStage.getGirlfriend().cameraFocusPoint;
-                PlayState.instance.cameraFollowPoint.setPosition(followPoint.x, followPoint.cameraFocusPoint.y);
+                PlayState.instance.cameraFollowPoint.setPosition(followPoint.x, followPoint.y);
             case 2:
                 var followPoint = PlayState.instance.currentStage.getCharacter('jake').cameraFocusPoint;
                 PlayState.instance.cameraFollowPoint.setPosition(followPoint.x, followPoint.y);

@@ -157,7 +157,7 @@ class SufferingOhMyGod extends Song
 
         PlayState.instance.camHUD.alpha = 0;
 
-        PlayState.instance.camGame.visible = true;
+        PlayState.instance.camGame?.visible = true;
     }
 
     function onDestroy(e:Dynamic)
@@ -201,13 +201,13 @@ class SufferingOhMyGod extends Song
             case 520:
                 for (i in ["bg", "light", "darkout", "darkin"]) PlayState.instance.currentStage.getNamedProp(i).visible = false;
 
-                PlayState.instance.currentStage.getGirlfriend().visible = false;
-                PlayState.instance.currentStage.getCharacter('Jake').visible = false;
+                PlayState.instance.currentStage.getGirlfriend().visible = 
+                PlayState.instance.currentStage.getCharacter('jake').visible = false;
             case 584:
                 for (i in ["bg", "light", "darkout", "darkin"]) PlayState.instance.currentStage.getNamedProp(i).visible = true;
 
-                PlayState.instance.currentStage.getGirlfriend().visible = true;
-                PlayState.instance.currentStage.getCharacter('Jake').visible = true;
+                PlayState.instance.currentStage.getGirlfriend().visible = 
+                PlayState.instance.currentStage.getCharacter('jake').visible = true;
             case 840:
                 PlayState.instance.camGame.visible = false;
             case 848:
@@ -216,10 +216,10 @@ class SufferingOhMyGod extends Song
 
                 for (i in ["bg", "light", "darkout", "darkin"]) PlayState.instance.currentStage.getNamedProp(i).visible = false;
 
-                PlayState.instance.currentStage.getDad().visible = false;
-                PlayState.instance.currentStage.getCharacter('Jake').visible = false;
+                PlayState.instance.currentStage.getDad().visible =
+                PlayState.instance.currentStage.getCharacter('jake').visible = false;
 
-                PlayState.instance.currentStage.getGirlfriend().colorTransform.color = 0xFFFFFFFF;
+                PlayState.instance.currentStage.getGirlfriend().colorTransform.color =
                 PlayState.instance.currentStage.getBoyfriend().colorTransform.color = 0xFFFFFFFF;
             case 945:
                 PlayState.instance.camHUD.fade(0xFF000000, 1);
@@ -228,7 +228,8 @@ class SufferingOhMyGod extends Song
     
     function onPause(e:Dynamic)
     {
-        if (Conductor.instance.currentBeat >= 517 && Conductor.instance.currentBeat < 584) e.cancel();
+        if (Conductor.instance.currentBeat >= 517 && Conductor.instance.currentBeat < 584)
+            e.cancel();
 
         super.onPause(e);
     }

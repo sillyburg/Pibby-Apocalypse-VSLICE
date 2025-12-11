@@ -21,7 +21,7 @@ class CinematicsEvent extends SongEvent
         return "Cinematics";
     }
 
-    public override function handleEvent(params:Dynamic)
+    override function handleEvent(params:Dynamic)
     {   
         if (PlayState.instance == null) return;
 

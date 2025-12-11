@@ -14,7 +14,7 @@ class AddZoomEvent extends SongEvent
         return "Add Camera Zoom";
     }
 
-    public override function handleEvent(params:Dynamic)
+    override function handleEvent(params:Dynamic)
     {
         if (PlayState.instance == null) return;
 

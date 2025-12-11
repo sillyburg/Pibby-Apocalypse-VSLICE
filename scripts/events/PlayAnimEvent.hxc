@@ -15,7 +15,7 @@ class PlayAnimBurgerEvent extends SongEvent
         return "Play Animation (BURGER EDITION)";
     }
 
-    public override function handleEvent(params:Dynamic)
+    override function handleEvent(params:Dynamic)
     {     
         if (PlayState.instance == null) return;
 

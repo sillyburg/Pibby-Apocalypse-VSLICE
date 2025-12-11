@@ -18,7 +18,7 @@ class BurgerChangeCharEvent extends SongEvent
         return "Change Character";
     }
 
-    public override function handleEvent(params:Dynamic)
+    override function handleEvent(params:Dynamic)
     {
         ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('changeChar', [params.value.changeTo, params.value.changeFrom]);
     }
