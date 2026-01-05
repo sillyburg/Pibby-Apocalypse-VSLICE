@@ -29,9 +29,24 @@ class SufferingOhMyGod extends Song
     var jakeIcon:HealthIcon = null;
     var pibbyIcon:HealthIcon = null;
 
+    var _shaderModule:Module;
+    var _healthBarModule:Module;
+    var _glitchStrumModule:Module;
+
     public function new()
     {
         super('suffering-siblings');
+    }
+
+    function onCreate()
+    {
+        _shaderModule = ModuleHandler.getModule('paShaderModule');
+        _healthBarModule = ModuleHandler.getModule('FinnHealthBar');
+        _glitchStrumModule = ModuleHandler.getModule('glitchStrumsModule');
+
+        // preload chars
+        for (i in ['finn-sword', 'finn-slash', 'finn-hurting', 'bfsword', 'pibby-angy'])
+            ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('preloadChar', [i]);
     }
 
     function onGameOver(e:Dynamic)
@@ -48,14 +63,14 @@ class SufferingOhMyGod extends Song
         FlxG.camera.fade(0xFF000000, 10, true);
 
         // create shaders
-        ModuleHandler.getModule('paShaderModule').scriptCall('createShaders');
+        _shaderModule.createShaders();
 
         // add pibby and jake icons to the glitch icon array
-        ModuleHandler.getModule('paShaderModule').scriptCall('pa_addPlayerIcon', [pibbyIcon]);
-        ModuleHandler.getModule('paShaderModule').scriptCall('pa_addCpuIcon', [jakeIcon]);
+        _shaderModule.pa_addPlayerIcon(pibbyIcon);
+        _shaderModule.pa_addCpuIcon(jakeIcon);
 
         // glitch the strums
-        ModuleHandler.getModule('glitchStrumsModule').scriptCall('glitchifyStrums');
+        _glitchStrumModule.glitchifyStrums();
 
         // add camera movement
         ModuleHandler.getModule('CameraMovementModule').scriptCall('initCamMovement');
@@ -64,13 +79,13 @@ class SufferingOhMyGod extends Song
         ModuleHandler.getModule('FinnHealthBar').scriptCall('createHealthBar');
 
         // disable the icon movement for jake and pibby icons
-        ModuleHandler.getModule('FinnHealthBar').scriptCall('addPlayer', [pibbyIcon]);
-        ModuleHandler.getModule('FinnHealthBar').scriptCall('addCpu', [jakeIcon]);
+        _healthBarModule.addPlayer(pibbyIcon);
+        _healthBarModule.addCpu(jakeIcon);
 
         // get finn's healthbar
-        var finnH = ModuleHandler.getModule('FinnHealthBar').scriptCall('getPaHealthBar');
+        var finnH:FlxSprite = _healthBarModule.getPaHealthBar();
 
-        var iconY = finnH.y;
+        var iconY:Int = finnH.y;
 
         #if mobile
         iconY = -15;
@@ -120,9 +135,6 @@ class SufferingOhMyGod extends Song
 
         // add logo
         ModuleHandler.getModule('LogoChannelModule').scriptCall('initLogo', ['cn']);
-        
-        // preload chars
-        for (i in ['finn-sword', 'finn-slash', 'finn-hurting', 'bfsword', 'Pibby-Angy']) ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('preloadChar', [i]);
     }
 
     function onUpdate(e:Dynamic)
@@ -131,8 +143,11 @@ class SufferingOhMyGod extends Song
 
         if (PlayState.instance == null) return;
         
-        if (jakeIcon != null) jakeIcon?.scale?.set(PlayState.instance?.iconP2?.scale.x, PlayState.instance?.iconP2?.scale.y);
-        if (pibbyIcon != null) pibbyIcon?.scale?.set(PlayState.instance?.iconP1?.scale.x, PlayState.instance?.iconP1?.scale.y);
+        if (jakeIcon != null)
+            jakeIcon.scale?.set(PlayState.instance?.iconP2?.scale.x, PlayState.instance?.iconP2?.scale.y);
+
+        if (pibbyIcon != null)
+            pibbyIcon.scale?.set(PlayState.instance?.iconP1?.scale.x, PlayState.instance?.iconP1?.scale.y);
     }
 
     function onNoteHit(event:Dynamic)
@@ -165,11 +180,16 @@ class SufferingOhMyGod extends Song
         super.onDestroy(e);
 
         // unglitch the strums
-        ModuleHandler.getModule('glitchStrumsModule').scriptCall('unglitchifyStrums');
+        _glitchStrumModule.unglitchifyStrums();
 
-        if (jake != null) jake.destroy();
-        if (pibbyIcon != null) pibbyIcon.destroy();
-        if (jakeIcon != null) jakeIcon.destroy();
+        if (jake != null)
+            jake.destroy();
+
+        if (pibbyIcon != null)
+            pibbyIcon.destroy();
+
+        if (jakeIcon != null)
+            jakeIcon.destroy();
     }
 
     function onSongEnd(e:Dynamic)
@@ -177,7 +197,7 @@ class SufferingOhMyGod extends Song
         super.onSongEnd(e);
 
         // unglitch the strums
-        ModuleHandler.getModule('glitchStrumsModule').scriptCall('unglitchifyStrums');
+        _glitchStrumModule.unglitchifyStrums();
     }
 
     function onBeatHit(e:Dynamic)

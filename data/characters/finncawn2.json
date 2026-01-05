@@ -1,0 +1,81 @@
+{
+	"renderType": "sparrow",
+	"version": "1.0.1",
+	"offsets": [
+		0,
+		50
+	],
+	"danceEvery": 2,
+	"scale": 1,
+	"name": "",
+	"cameraOffsets": [
+		0,
+		100
+	],
+	"flipX": false,
+	"isPixel": false,
+	"singTime": 6.1,
+	"startingAnimation": "idle",
+	"healthIcon": {
+		"id": "bf",
+		"isPixel": false
+	},
+	"assetPath": "characters/COME_ALONG_Finn",
+	"animations": [
+		{
+			"frameIndices": [],
+			"prefix": "Finn Idle",
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 24,
+			"name": "idle",
+			"looped": true
+		},
+		{
+			"frameIndices": [],
+			"prefix": "Finn Left",
+			"offsets": [
+				9,
+				-4
+			],
+			"frameRate": 24,
+			"name": "singLEFT",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "Finn Down",
+			"offsets": [
+				6,
+				-5
+			],
+			"frameRate": 24,
+			"name": "singDOWN",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "Finn Up",
+			"offsets": [
+				-5,
+				3
+			],
+			"frameRate": 24,
+			"name": "singUP",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "Finn Right",
+			"offsets": [
+				-6,
+				-9
+			],
+			"frameRate": 24,
+			"name": "singRIGHT",
+			"looped": false
+		}
+	]
+}

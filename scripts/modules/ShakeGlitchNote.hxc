@@ -13,9 +13,16 @@ class ShakeGlitchNote extends Module
 {
     var game:PlayState;
 
-    var originalNotePos:Array = [];
+    var originalNotePos:Array<Float, Float> = [];
 
-    public function new(){
+    final pa_resetInterval:Float = 3;
+
+    var _resetTime:Float = 0.0;
+
+    var _glitched:Bool = false;
+    var _tweens:Array<FlxTween> = [];
+
+    public function new() {
         super('ShakeGlitchNote');
     }
 
@@ -30,13 +37,44 @@ class ShakeGlitchNote extends Module
         for (i in PlayState.instance.playerStrumline.strumlineNotes.members){
             originalNotePos.insert(pos, [i.x, i.y]);
             pos += 1;
+        }    
+    }
+
+    function onUpdate(e)
+    {
+        if (PlayState.instance == null) return;
+
+        var _paused:Bool = !PlayState.instance.isGamePaused; // caching cuz it has a get
+
+        for (twn in _tweens)
+            if (twn != null && twn.active != _paused)
+                twn.active = _paused;
+
+        if (PlayState.instance.isGamePaused || !_glitched) return;
+
+        function _twn(obj, id:Int)
+            _tweens.push(FlxTween.tween(obj, {x: originalNotePos[id][0], y: originalNotePos[id][1]}, 1, {ease: FlxEase.sineInOut, onComplete: (twn:FlxTween) -> _tweens.remove(twn)}));
+
+        for (b => i in PlayState.instance.opponentStrumline.strumlineNotes.members)
+            _twn(i, b);
+
+        for (b => i in PlayState.instance.playerStrumline.strumlineNotes.members)
+            _twn(i, b + 4);
+
+        _resetTime += e.elapsed;
+
+        if (_resetTime >= pa_resetInterval)
+        {
+            _resetTime = 0;
+
+            _glitched = false;
         }
-        trace('oiiaioiiiaioiiaioiiiaioiiaioiiiaioiiaioiiiaihehehehe');
-        
     }
 
     function glitchStrums(){
         var pos = 0;
+        _resetTime = 0;
+
         for (i in PlayState.instance.opponentStrumline.strumlineNotes.members){
             i.x = originalNotePos[pos][0] + FlxG.random.int(-8, 8);
             i.y = originalNotePos[pos][1] + FlxG.random.int(-8, 8);
@@ -48,5 +86,7 @@ class ShakeGlitchNote extends Module
             i.y = originalNotePos[(pos)][1] + FlxG.random.int(-8, 8);
             pos += 1;
         }
+
+        _glitched = true;
     }
 }

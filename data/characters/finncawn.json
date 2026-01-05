@@ -1,0 +1,81 @@
+{
+	"renderType": "sparrow",
+	"version": "1.0.1",
+	"offsets": [
+		-100,
+		550
+	],
+	"danceEvery": 2,
+	"scale": 1,
+	"name": "",
+	"cameraOffsets": [
+		60,
+		-250
+	],
+	"flipX": false,
+	"isPixel": false,
+	"singTime": 6.1,
+	"startingAnimation": "idle",
+	"healthIcon": {
+		"id": "bf",
+		"isPixel": false
+	},
+	"assetPath": "characters/CAWM_FINN",
+	"animations": [
+		{
+			"frameIndices": [],
+			"prefix": "FInn Idle",
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 24,
+			"name": "idle",
+			"looped": true
+		},
+		{
+			"frameIndices": [],
+			"prefix": "FInn Left",
+			"offsets": [
+				21,
+				-19
+			],
+			"frameRate": 24,
+			"name": "singLEFT",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "FInn Down",
+			"offsets": [
+				0,
+				-17
+			],
+			"frameRate": 24,
+			"name": "singDOWN",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "FInn Up",
+			"offsets": [
+				-4,
+				10
+			],
+			"frameRate": 24,
+			"name": "singUP",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "FInn Right",
+			"offsets": [
+				-10,
+				-7
+			],
+			"frameRate": 24,
+			"name": "singRIGHT",
+			"looped": false
+		}
+	]
+}

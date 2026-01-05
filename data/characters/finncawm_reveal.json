@@ -1,0 +1,97 @@
+{
+	"renderType": "sparrow",
+	"version": "1.0.1",
+	"offsets": [
+		-65,
+		200
+	],
+	"danceEvery": 2,
+	"scale": 2,
+	"name": "",
+	"cameraOffsets": [
+		-270,
+		0
+	],
+	"flipX": false,
+	"isPixel": false,
+	"singTime": 6.1,
+	"startingAnimation": "idle",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"isPixel": false,
+		"scale": 1,
+		"id": "bf",
+		"flipX": false
+	},
+	"assetPath": "characters/finn_reveal",
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				-99,
+				-100
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "full-idle0",
+			"flipX": false,
+			"looped": true,
+			"name": "idle"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-130,
+				-139
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Left-full0",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-172,
+				-36
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Up0",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-294,
+				-97
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Right0",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-154,
+				-257
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Down0",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN"
+		}
+	]
+}

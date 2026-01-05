@@ -1,0 +1,149 @@
+import funkin.play.song.Song;
+import funkin.play.PlayState;
+import funkin.play.stage.Stage;
+
+import funkin.modding.module.ModuleHandler;
+
+import funkin.Conductor;
+import funkin.Preferences;
+
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+
+import flixel.FlxG;
+import flixel.FlxSprite;
+
+class ComeAlongWithMeSong extends Song
+{
+    // Module used for the shaders.
+    var _shaderModule:Module;
+    var _strumGlitchModule:Module;
+
+    // Float saved for de-mini-fying the opponent strums.
+    var _strumAmplification:Float = 0.0;
+
+    public function new()
+    {
+        super('come-along-with-me');
+    }
+
+    function onCreate()
+    {
+        super.onCreate();
+
+        _shaderModule = ModuleHandler.getModule("paShaderModule");
+        _strumGlitchModule = ModuleHandler.getModule("glitchStrumsModule");
+
+        _strumAmplification = (FlxG.width / FlxG.height) / (FlxG.initialWidth / FlxG.initialHeight);
+
+        PlayState.instance.opponentStrumline.enterMiniMode(0.4 * _strumAmplification);
+
+        // create shaders
+        _shaderModule.createShaders();
+
+        // glitch the strums
+        _strumGlitchModule.glitchifyStrums();
+
+        // add camera movement
+        ModuleHandler.getModule('CameraMovementModule').scriptCall('initCamMovement');
+
+        // add logo
+        ModuleHandler.getModule('LogoChannelModule').scriptCall('initLogo', ['cn']);
+
+        PlayState.instance.opponentStrumline.notes.visible =
+        PlayState.instance.opponentStrumline.holdNotes.visible = true;
+    }
+
+    function onGameOver(e:Dynamic)
+    {   
+        FlxG.camera.stopFade();
+        
+        super.onGameOver(e);
+    }
+
+    function onSongStart(e:Dynamic)
+    {
+        PlayState.instance.currentStage.getGirlfriend().destroy();
+        
+        super.onSongStart(e);
+
+        FlxG.camera.fade(0xFF000000, 10, true);
+    }
+
+    function onSongLoaded(e:Dynamic)
+    {
+        super.onSongLoaded(e);
+        
+        // preload chars
+        // for (i in ['finn-sword', 'finn-slash', 'finn-hurting', 'bfsword', 'Pibby-Angy'])
+            // ModuleHandler.getModule('ChangeCharacterBurgerModule').scriptCall('preloadChar', [i]);
+    }
+
+    function onUpdate(e:Dynamic)
+    {
+        super.onUpdate(e);
+
+        if (PlayState.instance == null) return;
+    }
+
+    function onNoteHit(event:Dynamic)
+    {
+        super.onNoteHit(event);
+    }
+
+    function onSongRetry(e:Dynamic)
+    {
+        FlxG.camera.fade(0xFF000000, 0.001);
+        
+        super.onSongRetry(e);
+
+        PlayState.instance.currentStage.getGirlfriend()?.visible = true;
+        PlayState.instance.camHUD?.alpha = 0;
+        PlayState.instance.camGame?.visible = true;
+    }
+
+    function onDestroy(e:Dynamic)
+    {
+        super.onDestroy(e);
+
+        // unglitch the strums
+        _strumGlitchModule.unglitchifyStrums();
+    }
+
+    function onSongEnd(e:Dynamic)
+    {
+        super.onSongEnd(e);
+
+        // unglitch the strums
+        _strumGlitchModule.unglitchifyStrums();
+    }
+
+    function onBeatHit(e:Dynamic)
+    {
+        super.onBeatHit(e);
+
+        if (PlayState.instance == null) return;
+
+        switch (e.beat)
+        {
+            case 32:
+                var _strumLine = PlayState.instance.opponentStrumline;
+
+                if (_strumLine != null)
+                {
+                    function _noteTwn()
+                        for (obj in _strumLine.notes) {
+                            obj.scale.set(
+                                _strumLine.strumlineScale.x * _strumLine.noteStyle.getNoteScale(),
+                                _strumLine.strumlineScale.y * _strumLine.noteStyle.getNoteScale()
+                            );
+
+                            _strumLine.setNoteSpacing(_strumLine.noteSpacingScale);
+                        }
+
+                    FlxTween.tween(_strumLine, {x: _strumLine.x + 30}, 4, {ease: FlxEase.quartInOut});
+                    FlxTween.tween(_strumLine.strumlineScale, {x: 1, y: 1}, 4, {ease: FlxEase.quartInOut, onUpdate: () -> _noteTwn(), onComplete: () -> _noteTwn()});
+                }
+        }
+    }
+}

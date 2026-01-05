@@ -21,9 +21,17 @@ class GlitchyStrumsModule extends Module
     var glitchNote:FlxRuntimeShader;
     var initializedStrums:Bool = false;
 
+    var _strumShakeModule:Module;
+
     public function new()
     {
         super('glitchStrumsModule');
+    }
+
+    function onCreate()
+    {
+        _strumShakeModule = ModuleHandler.getModule('ShakeGlitchNote');
+        trace("im shakign it");
     }
 
     function onSongRetry(e:Dynamic)
@@ -73,7 +81,7 @@ class GlitchyStrumsModule extends Module
             PlayState.instance.camGame.shake(FlxG.random.float(0.015, 0.02), FlxG.random.float(0.075, 0.125));
         } else{
             PlayState.instance.camHUD.shake(FlxG.random.float(0.015, 0.02), FlxG.random.float(0.075, 0.125));
-            ModuleHandler.getModule('ShakeGlitchNote').scriptCall('glitchStrums');
+            _strumShakeModule.glitchStrums();
         }
     }
 

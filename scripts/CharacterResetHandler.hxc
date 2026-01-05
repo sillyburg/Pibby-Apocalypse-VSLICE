@@ -1,10 +1,13 @@
 import funkin.modding.module.Module;
 import funkin.modding.module.ModuleHandler;
+
 import funkin.modding.events.SongLoadScriptEvent;
+
 import funkin.play.PlayState;
 
 import funkin.play.character.CharacterDataParser;
 import funkin.play.character.CharacterType;
+
 import funkin.play.components.HealthIcon;
 
 class CharacterResetHandler extends Module {
@@ -39,31 +42,43 @@ class CharacterResetHandler extends Module {
         
         // GF reset
 
-        PlayState.instance.currentStage.getGirlfriend().destroy();
-		var girlfriend = CharacterDataParser.fetchCharacter(currentCharacterData.girlfriend);
-        if (girlfriend != null) {
-            girlfriend.set_characterType(CharacterType.GF);
-            PlayState.instance.currentStage.addCharacter(girlfriend, CharacterType.GF);
-        }
+        var _gf = PlayState.instance.currentStage.getGirlfriend();
+        var _dad = PlayState.instance.currentStage.getDad();
+        var _bf = PlayState.instance.currentStage.getBoyfriend();
 
+        if (_gf != null)
+        {
+            PlayState.instance.currentStage.getGirlfriend().destroy();
+            var girlfriend = CharacterDataParser.fetchCharacter(currentCharacterData.girlfriend);
+            if (girlfriend != null) {
+                girlfriend.set_characterType(CharacterType.GF);
+                PlayState.instance.currentStage.addCharacter(girlfriend, CharacterType.GF);
+            }
+        }
         // BF reset
 
-        PlayState.instance.currentStage.getBoyfriend().destroy();
-		var boyfriend = CharacterDataParser.fetchCharacter(currentCharacterData.player);
-        if (boyfriend != null) {
-            boyfriend.set_characterType(CharacterType.BF);
-            boyfriend.initHealthIcon(false);
-            PlayState.instance.currentStage.addCharacter(boyfriend, CharacterType.BF);
+        if (_bf != null)
+        {
+            PlayState.instance.currentStage.getBoyfriend().destroy();
+            var boyfriend = CharacterDataParser.fetchCharacter(currentCharacterData.player);
+            if (boyfriend != null) {
+                boyfriend.set_characterType(CharacterType.BF);
+                boyfriend.initHealthIcon(false);
+                PlayState.instance.currentStage.addCharacter(boyfriend, CharacterType.BF);
+            }
         }
 
         // DAD reset
 
-        PlayState.instance.currentStage.getDad().destroy();
-		var dad = CharacterDataParser.fetchCharacter(currentCharacterData.opponent);
-        if (dad != null) {
-            dad.set_characterType(CharacterType.DAD);
-            dad.initHealthIcon(true);
-            PlayState.instance.currentStage.addCharacter(dad, CharacterType.DAD);
+        if (_dad != null)
+        {
+            PlayState.instance.currentStage.getDad().destroy();
+            var dad = CharacterDataParser.fetchCharacter(currentCharacterData.opponent);
+            if (dad != null) {
+                dad.set_characterType(CharacterType.DAD);
+                dad.initHealthIcon(true);
+                PlayState.instance.currentStage.addCharacter(dad, CharacterType.DAD);
+            }
         }
 
         PlayState.instance.currentStage.refresh();
@@ -71,16 +86,16 @@ class CharacterResetHandler extends Module {
 
     function gfExists()
     {
-        return PlayState.instance?.currentStage.getGirlfriend() != null ? PlayState.instance?.currentStage.getGirlfriend() : null;
+        return PlayState.instance?.currentStage?.getGirlfriend();
     }
 
     function bfExists()
     {
-        return PlayState.instance?.currentStage.getBoyfriend() != null ? PlayState.instance?.currentStage.getBoyfriend() : null;
+        return PlayState.instance?.currentStage?.getBoyfriend();
     }
 
     function dadExists()
     {
-        return PlayState.instance?.currentStage.getDad() != null ? PlayState.instance?.currentStage.getDad() : null;
+        return PlayState.instance?.currentStage?.getDad();
     }
 }

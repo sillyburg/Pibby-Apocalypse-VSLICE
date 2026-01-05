@@ -1,0 +1,37 @@
+{
+	"renderType": "sparrow",
+	"version": "1.0.1",
+	"offsets": [
+		-320,
+		30
+	],
+	"danceEvery": 2,
+	"scale": 1.5,
+	"name": "",
+	"cameraOffsets": [
+		-170,
+		30
+	],
+	"flipX": false,
+	"isPixel": false,
+	"singTime": 6.1,
+	"startingAnimation": "idle",
+	"healthIcon": {
+		"id": "finn",
+		"isPixel": false
+	},
+	"assetPath": "characters/FinnAnim",
+	"animations": [
+		{
+			"frameIndices": [],
+			"prefix": "Finn Animation yez",
+			"offsets": [
+				-294,
+				-101
+			],
+			"frameRate": 24,
+			"name": "lesgo",
+			"looped": false
+		}
+	]
+}

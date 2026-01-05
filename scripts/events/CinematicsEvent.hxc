@@ -1,13 +1,13 @@
 import funkin.play.event.SongEvent;
 import funkin.play.PlayState;
-import flixel.tweens.FlxTween;
-import flixel.tweens.FlxEase;
-import flixel.FlxCamera;
-import flixel.FlxG;
-import flixel.FlxSprite;
+
 import funkin.modding.module.ModuleHandler;
 
-import Reflect;
+import funkin.util.ReflectUtil;
+
+import funkin.Conductor;
+
+import flixel.tweens.FlxEase;
 
 class CinematicsEvent extends SongEvent
 {
@@ -28,7 +28,11 @@ class CinematicsEvent extends SongEvent
         trace('Distance: ' + params.value.distance);
         trace('Speed: ' + params.value.speed);
         trace('Ease: ' + params.value.ease);
-        ModuleHandler.getModule('CinematicsModule').scriptCall('doCinematics', [params.value.distance, params.value.speed, params.value.ease]);
+        ModuleHandler.getModule('CinematicsModule').scriptCall('doCinematics', [
+            params.value.distance,
+            (Conductor.instance.stepLengthMs * params.value.speed) / 1000,
+            ReflectUtil.field(FlxEase, params.value.ease)
+        ]);
     }
 
     override function getEventSchema()

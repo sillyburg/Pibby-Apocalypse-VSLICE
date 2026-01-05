@@ -1,0 +1,98 @@
+{
+	"renderType": "sparrow",
+	"version": "1.0.1",
+	"offsets": [
+		0,
+		470
+	],
+	
+	"danceEvery": 2,
+	"scale": 1.3,
+	"name": "",
+	"cameraOffsets": [
+		-160,
+		-180
+	],
+	"flipX": false,
+	"isPixel": false,
+	"singTime": 6.1,
+	"startingAnimation": "idle",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"isPixel": false,
+		"scale": 1,
+		"id": "bf",
+		"flipX": false
+	},
+	"assetPath": "characters/Finn-sword-shader",
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				110,
+				47
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Left",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-56,
+				29
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Down",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				20,
+				270
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Up",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-44,
+				83
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Right",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Idle",
+			"flipX": false,
+			"looped": true,
+			"name": "idle"
+		}
+	]
+}

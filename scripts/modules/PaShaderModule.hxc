@@ -2,6 +2,7 @@ import funkin.play.PlayState;
 import funkin.play.components.HealthIcon;
 
 import funkin.Preferences;
+
 import funkin.save.Save;
 
 import flixel.math.FlxMath;
@@ -53,6 +54,17 @@ class PAShaderModule extends Module
         playerIcons = [];
     }
 
+    function removeShaders()
+    {
+        if (!Save.instance.modOptions.get('PibbyApocalypse').get('glitchEffects')) return;
+
+        FlxG.camera.filters = PlayState.instance.camHUD.filters = [];
+
+        initialized = false;
+
+        pibbyFNF = zoomShad = null;
+    }
+
     function createShaders()
     {
         if (!Save.instance.modOptions.get('PibbyApocalypse').get('glitchEffects')) return;
@@ -61,8 +73,11 @@ class PAShaderModule extends Module
 
         singMult = Save.instance.modOptions.get("PibbyApocalypse").get('singGlitchMult');
 
-        playerIcons.push(PlayState.instance.iconP1);
-        cpuIcons.push(PlayState.instance.iconP2);
+        if (!playerIcons.contains(PlayState.instance.iconP1))
+            playerIcons.push(PlayState.instance.iconP1);
+
+        if (!cpuIcons.contains(PlayState.instance.iconP2))
+            cpuIcons.push(PlayState.instance.iconP2);
 
         zoomShad = new FlxRuntimeShader(Assets.getText(Paths.frag('aberrationCam')));
 
@@ -73,7 +88,7 @@ class PAShaderModule extends Module
 
         pibbyFNF.setFloat('glitchMultiply', 0);
 
-        FlxG.camera.filters = [new ShaderFilter(zoomShad), new ShaderFilter(pibbyFNF)];
+        FlxG.camera.filters =
         PlayState.instance.camHUD.filters = [new ShaderFilter(zoomShad), new ShaderFilter(pibbyFNF)];
 
         initialized = true;
@@ -153,23 +168,47 @@ class PAShaderModule extends Module
 
         if (!initialized) return;
 
-        if (PlayState.instance.health <= 0.4)
+        for (iconsArray in [cpuIcons, playerIcons])
+            for (icon in iconsArray)
+                if (icon != null)
+                    if (icon.getCurrentAnimation() == "losing")
+                        _iconGlitch(icon);
+                    else
+                        removeIconGlitch(icon);
+
+        /*
+        if (PlayState.instance.health <= )
         {
             for (i in playerIcons)
-            {
-                if (i != null) setIconGlitch(i);
-                if (i != null) updateIconGlitch(i);
-            }
-        } else for (i in playerIcons) if (i != null) removeIconGlitch(i);
+                if (i != null)
+                {
+                    setIconGlitch(i);
+                    updateIconGlitch(i);
+                }
+        } else for (i in playerIcons)
+            if (i != null)
+                removeIconGlitch(i);
 
         if (PlayState.instance.health >= 1.6)
         {
             for (i in cpuIcons)
             {
-                if (i != null) setIconGlitch(i);
-                if (i != null) updateIconGlitch(i);
+                if (i != null)
+                {
+                    setIconGlitch(i);
+                    updateIconGlitch(i);
+                }
             }
-        } else for (i in cpuIcons) if (i != null)  removeIconGlitch(i);
+        } else for (i in cpuIcons)
+            if (i != null)
+                removeIconGlitch(i);
+            */
+    }
+
+    function _iconGlitch(icon:HealthIcon)
+    {
+        setIconGlitch(icon);
+        updateIconGlitch(icon);
     }
 
     function onGameOver(e:Dynamic)
@@ -195,6 +234,8 @@ class PAShaderModule extends Module
 
     function updateIconGlitch(icon:HealthIcon)
     {
+        if (icon.shader == null) return;
+
         icon.shader.setFloat('binaryIntensity', FlxG.random.float(4, 6));
         icon.shader.setFloat('negativity', 0);
     }

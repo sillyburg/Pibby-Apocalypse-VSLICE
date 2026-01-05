@@ -39,16 +39,29 @@ class LabStage extends Stage
         if (PlayState.instance == null) return;
         if (PlayState.instance.currentStage == null) return;
 
-        getNamedProp('light').origin.y = 0;
-        getNamedProp('darkin').origin.y = 0;
-        getNamedProp('darkout').origin.y = 0;
+        var _light = getNamedProp("light");
+        var _darkin = getNamedProp("darkin");
+        var _darkout = getNamedProp("darkout");
 
-        FlxG.camera.followLerp = event.elapsed * 2.4 * 2;
+        if (_light == null ||
+            _darkin == null ||
+            _darkout == null
+            ) return;
 
-        if (PlayState.instance != null && !PlayState.instance.isGamePaused && GameOverSubState.instance == null && PlayState.instance.currentStage != null){
-            if (getNamedProp('darkin') != null) getNamedProp('darkin').angle = Math.sin((Conductor.instance.songPosition / 1000) * (Conductor.instance.bpm / 60) * 1.0) * 5;
-            if (getNamedProp('darkout') != null) getNamedProp('darkout').angle = getNamedProp('darkin').angle;
-            if (getNamedProp('light') != null) getNamedProp('light').angle = getNamedProp('darkin').angle;   
+        _light.origin.y = 0;
+        _darkin.origin.y = 0;
+        _darkout.origin.y = 0;
+
+        FlxG.camera.followLerp = 0.08;
+
+        if (PlayState.instance != null &&
+            !PlayState.instance.isGamePaused &&
+            GameOverSubState.instance == null &&
+            PlayState.instance.currentStage != null && 
+            Conductor.instance != null){
+            _darkin.angle = Math.sin((Conductor.instance.songPosition / 1000) * (Conductor.instance.bpm / 60) * 1.0) * 5;
+            _darkout.angle = _darkin.angle;
+            _light.angle = _darkin.angle;   
         }
     }
 
@@ -56,13 +69,15 @@ class LabStage extends Stage
     {
         super.onPause(e);
 
-        if (alphaTween != null) alphaTween.active = false;
+        if (alphaTween != null)
+            alphaTween.active = false;
     }
 
     function onResume(e:Dynamic)
     {
         super.onResume(e);
 
-        if (alphaTween != null) alphaTween.active = true;
+        if (alphaTween != null)
+            alphaTween.active = true;
     }
 }

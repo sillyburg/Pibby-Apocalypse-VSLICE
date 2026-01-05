@@ -1,0 +1,97 @@
+{
+	"renderType": "sparrow",
+	"version": "1.0.1",
+	"offsets": [
+		0,
+		310
+	],
+	"danceEvery": 2,
+	"scale": 1.55,
+	"name": "",
+	"cameraOffsets": [
+		-320,
+		-220
+	],
+	"flipX": false,
+	"isPixel": false,
+	"singTime": 6.1,
+	"startingAnimation": "idle",
+	"healthIcon": {
+		"offsets": [
+			0,
+			0
+		],
+		"isPixel": false,
+		"scale": 1,
+		"id": "bf",
+		"flipX": false
+	},
+	"assetPath": "characters/Fake_Finn",
+	"animations": [
+		{
+			"flipY": false,
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Idle",
+			"flipX": false,
+			"looped": false,
+			"name": "idle"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-69,
+				-2
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Left",
+			"flipX": false,
+			"looped": false,
+			"name": "singLEFT"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-66,
+				8
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Down",
+			"flipX": false,
+			"looped": false,
+			"name": "singDOWN"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-67,
+				13
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Up",
+			"flipX": false,
+			"looped": false,
+			"name": "singUP"
+		},
+		{
+			"flipY": false,
+			"offsets": [
+				-56,
+				-14
+			],
+			"frameRate": 24,
+			"frameIndices": [],
+			"prefix": "Right",
+			"flipX": false,
+			"looped": false,
+			"name": "singRIGHT"
+		}
+	]
+}

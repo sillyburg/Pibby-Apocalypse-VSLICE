@@ -17,7 +17,7 @@ class FreePlayCustomCapsuleOffset extends Module
     }
 
     function onUpdate(e:UpdateScriptEvent)
-    {
+    { 
         if (!Std.isOfType(FlxG.state?.subState, FreeplayState)) return;
 
         var state:FreeplayState = FlxG.state.subState;
