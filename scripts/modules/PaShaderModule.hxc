@@ -11,6 +11,8 @@ import openfl.filters.ShaderFilter;
 
 import funkin.modding.module.Module;
 
+import funkin.modding.base.ScriptedFlxRuntimeShader;
+
 import flixel.addons.display.FlxRuntimeShader;
 
 import flixel.FlxG;
@@ -26,8 +28,9 @@ class PAShaderModule extends Module
     - and the icon glitch
     */
     
-    var zoomShad:FlxRuntimeShader;
-    var pibbyFNF:FlxRuntimeShader;
+    var zoomShad:ScriptedFlxRuntimeShader;
+    var pibbyFNF:ScriptedFlxRuntimeShader;
+    var iconDistort:ScriptedFlxRuntimeShader;
 
     var shadIntensity:Float;
     var glitchIntensity:Float;
@@ -79,15 +82,11 @@ class PAShaderModule extends Module
         if (!cpuIcons.contains(PlayState.instance.iconP2))
             cpuIcons.push(PlayState.instance.iconP2);
 
-        zoomShad = new FlxRuntimeShader(Assets.getText(Paths.frag('aberrationCam')));
+        zoomShad = ScriptedFlxRuntimeShader.init("PA_AberrationShader");
+        iconDistort = ScriptedFlxRuntimeShader.init("PA_DistortShader");
+        pibbyFNF = ScriptedFlxRuntimeShader.init("PA_ChromaticShader");
 
-        pibbyFNF = new FlxRuntimeShader(Assets.getText(Paths.frag('Pibbified')));
-
-        pibbyFNF.setFloat('iMouseX', 500);
-        pibbyFNF.setInt('NUM_SAMPLES', 3);
-
-        pibbyFNF.setFloat('glitchMultiply', 0);
-
+        // use the same array for the filters
         FlxG.camera.filters =
         PlayState.instance.camHUD.filters = [new ShaderFilter(zoomShad), new ShaderFilter(pibbyFNF)];
 
@@ -101,7 +100,8 @@ class PAShaderModule extends Module
 
         super.onBeatHit(e);
 
-        if (!PlayState.instance.startingSong && e.beat % PlayState.instance.cameraZoomRate == 0) shadIntensity = 0.08;
+        if (!PlayState.instance.startingSong && e.beat % PlayState.instance.cameraZoomRate == 0 && Preferences.zoomCamera)
+            shadIntensity = 0.08;
     }
 
     function onSongEvent(e:Dynamic)
@@ -111,7 +111,8 @@ class PAShaderModule extends Module
 
         super.onSongEvent(e);
 
-        if (e.eventData.eventKind == 'AddZoomEvent') shadIntensity = 0.08;
+        if (e.eventData.eventKind == 'AddZoomEvent')
+            shadIntensity = 0.08;
     }
 
     override function onNoteHit(event:Dynamic)
@@ -120,7 +121,9 @@ class PAShaderModule extends Module
         if (!initialized) return;
 
         super.onNoteHit(event);
-        if (!event.note.noteData.getMustHitNote() && FlxG.random.bool(50) && event.note.noteData.kind != 'pibbyInvisibleSing') glitchIntensity = FlxG.random.float(0.2, 0.7) * singMult;
+
+        if (!event.note.noteData.getMustHitNote() && FlxG.random.bool(50) && event.note.noteData.kind != 'pibbyInvisibleSing')
+            glitchIntensity = FlxG.random.float(0.2, 0.7) * singMult;
     }
 
     var time:Float = 0;
@@ -132,20 +135,16 @@ class PAShaderModule extends Module
 
         super.onUpdate(e);
 
+        if (PlayState.instance.isGamePaused) return;
+            
         time += e.elapsed;
 
-        if (PlayState.instance != null)
-        {
-            if (PlayState.instance.isGamePaused) return;
-            
-            shadIntensity = FlxMath.lerp(shadIntensity, 0, FlxMath.bound(e.elapsed * 6, 0, 1));
-            glitchIntensity = FlxMath.lerp(glitchIntensity, 0, FlxMath.bound(e.elapsed * 7, 0, 1));
-            zoomShad.setFloat('aberration', shadIntensity);
-            pibbyFNF.setFloat('glitchMultiply', glitchIntensity);
-            pibbyFNF.setFloat('uTime', time);
-        }
+        shadIntensity = FlxMath.lerp(shadIntensity, 0, FlxMath.bound(e.elapsed * 6, 0, 1));
+        glitchIntensity = FlxMath.lerp(glitchIntensity, 0, FlxMath.bound(e.elapsed * 7, 0, 1));
 
-        Preferences.zoomCamera = true;
+        zoomShad.aberration = shadIntensity;
+        pibbyFNF.multiplier = glitchIntensity;
+        pibbyFNF.time = time;
     }
 
     function onDestroy(e:Dynamic)
@@ -171,10 +170,7 @@ class PAShaderModule extends Module
         for (iconsArray in [cpuIcons, playerIcons])
             for (icon in iconsArray)
                 if (icon != null)
-                    if (icon.getCurrentAnimation() == "losing")
-                        _iconGlitch(icon);
-                    else
-                        removeIconGlitch(icon);
+                    (icon.getCurrentAnimation() == "losing" ? _iconGlitch : removeIconGlitch)(icon);
 
         /*
         if (PlayState.instance.health <= )
@@ -234,10 +230,10 @@ class PAShaderModule extends Module
 
     function updateIconGlitch(icon:HealthIcon)
     {
-        if (icon.shader == null) return;
+        if (iconDistort == null) return;
 
-        icon.shader.setFloat('binaryIntensity', FlxG.random.float(4, 6));
-        icon.shader.setFloat('negativity', 0);
+        iconDistort.intensity = FlxG.random.float(4, 6);
+        iconDistort.negativity = 0;
     }
 
     function pa_addPlayerIcon(icon:HealthIcon)

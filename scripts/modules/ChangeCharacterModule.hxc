@@ -24,12 +24,7 @@ class ChangeCharStuffModule extends Module
         }
     }
 
-    function onSongRetry(e:Dymamic)
-    {
-        super.onSongRetry(e);
-    }
-
-    function changeChar(charString:String, ?charType:Int = 1, ?preloadAction:Bool = false)
+    function changeChar(charString:String, ?charType:Int = 1)
     {
         if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
 		if (PlayState.instance.isMinimalMode) return;
@@ -39,6 +34,8 @@ class ChangeCharStuffModule extends Module
         switch (charType)
         {
             case 1:
+                var _z:Int = PlayState.instance.currentStage.getDad().zIndex;
+
                 PlayState.instance.currentStage.getDad().destroy();
 
                 var dad = CharacterDataParser.fetchCharacter(charString);
@@ -47,13 +44,15 @@ class ChangeCharStuffModule extends Module
                     dad.set_characterType(CharacterType.DAD);
                     PlayState.instance.currentStage.addCharacter(dad, CharacterType.DAD);
 
-                    dad.zIndex = ModuleHandler.getModule("CharacterResetHandler").scriptGet("characterZIndexes")['bf'];
+                    dad.zIndex = _z;
 
                     PlayState.instance.currentStage.refresh();
 
                     return dad;
                 }
             case 2:
+                var _z:Int = PlayState.instance.currentStage.getBoyfriend().zIndex;
+
                 PlayState.instance.currentStage.getBoyfriend().destroy();
 
                 var boyfriend = CharacterDataParser.fetchCharacter(charString);
@@ -62,13 +61,15 @@ class ChangeCharStuffModule extends Module
                     boyfriend.set_characterType(CharacterType.BF);
                     PlayState.instance.currentStage.addCharacter(boyfriend, CharacterType.BF);
 
-                    boyfriend.zIndex = ModuleHandler.getModule("CharacterResetHandler").scriptGet("characterZIndexes")['bf'];
+                    boyfriend.zIndex = _z;
 
                     PlayState.instance.currentStage.refresh();
 
                     return boyfriend;
                 }
             case 3:
+                var _z:Int = PlayState.instance.currentStage.getGirlfriend().zIndex;
+
                 PlayState.instance.currentStage.getGirlfriend().destroy();
 
                 var girlfriend = CharacterDataParser.fetchCharacter(charString);
@@ -77,7 +78,7 @@ class ChangeCharStuffModule extends Module
                     girlfriend.set_characterType(CharacterType.GF);
                     PlayState.instance.currentStage.addCharacter(girlfriend, CharacterType.GF);
 
-                    girlfriend.zIndex = ModuleHandler.getModule("CharacterResetHandler").scriptGet("characterZIndexes")['gf'];
+                    girlfriend.zIndex = _z;
 
                     PlayState.instance.currentStage.refresh();
 

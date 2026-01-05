@@ -1,0 +1,45 @@
+import flixel.addons.display.FlxRuntimeShader;
+
+class PA_ChromaticShader extends FlxRuntimeShader
+{
+    /**
+     * Glitch multiplier of the shader.
+     */
+    public var multiplier(get, set):Float;
+    
+    /**
+     * Current shader time.
+     */
+    public var time(get, set):Float;
+
+    public function new()
+    {
+        super(Assets.getText(Paths.frag('Pibbified')));
+
+        this.setFloat("iMouseX", 500.0);
+        this.setFloat("uTime", 0.0);
+        this.setFloat("glitchMultiply", 0.0);
+
+        this.setInt('NUM_SAMPLES', 3);
+    }
+
+    function get_multiplier():Float
+    {
+        return this.getFloat("glitchMultiply");
+    }
+
+    function set_multiplier(val:Float):Float
+    {
+        return this.setFloat("glitchMultiply", val);
+    }
+
+    function get_time():Float
+    {
+        return this.getFloat("uTime");
+    }
+
+    function set_time(val:Float):Float
+    {
+        return this.setFloat("uTime", val);
+    }
+}

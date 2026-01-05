@@ -1,0 +1,42 @@
+import flixel.addons.display.FlxRuntimeShader;
+
+class PA_DistortShader extends FlxRuntimeShader
+{
+    /**
+     * Intensity of the shader.
+     */
+    public var intensity(get, set):Float;
+    
+    /**
+     * Inversion of the colors.
+     */
+    public var negativity(get, set):Float;
+
+    public function new()
+    {
+        super(Assets.getText(Paths.frag('distort')));
+
+        this.setFloat("binaryIntensity", 0.0);
+        this.setFloat("negativity", 0);
+    }
+
+    function get_intensity():Float
+    {
+        return this.getFloat("binaryIntensity");
+    }
+
+    function set_intensity(val:Float):Float
+    {
+        return this.setFloat("binaryIntensity", val);
+    }
+
+    function get_negativity():Float
+    {
+        return this.getFloat("negativity");
+    }
+    
+    function set_negativity(val:Float):Float
+    {
+        return this.setFloat("negativity", val);
+    }
+}

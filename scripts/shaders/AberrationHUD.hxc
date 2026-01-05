@@ -1,0 +1,26 @@
+import flixel.addons.display.FlxRuntimeShader;
+
+class PA_AberrationShader extends FlxRuntimeShader
+{
+    /**
+     * Aberration.
+     */
+    public var aberration(get, set):Float;
+
+    public function new()
+    {
+        super(Assets.getText(Paths.frag('aberrationCam')));
+
+        this.setFloat("aberration", 0.0);
+    }
+
+    function get_aberration():Float
+    {
+        return this.getFloat("aberration");
+    }
+
+    function set_aberration(val:Float):Float
+    {
+        return this.setFloat("aberration", val);
+    }
+}
